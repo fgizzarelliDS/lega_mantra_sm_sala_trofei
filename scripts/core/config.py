@@ -25,7 +25,7 @@ def load_environment():
     using line-by-line parsing to avoid python-dotenv multi-line comment noise.
     """
     base_dir = get_base_dir()
-    for env_name in [".env.local", ".env"]:
+    for env_name in [".env.local", "env.local", ".env"]:
         env_file = os.path.join(base_dir, env_name)
         if os.path.exists(env_file):
             try:
@@ -44,55 +44,45 @@ def load_environment():
 load_environment()
 
 LEAGUE_RULES = {
-    "id": "insalatlas",
-    "brand_name": "InsalAtlas",
+    "id": "se55o-mantrico",
+    "brand_name": "Se55o Mantrico",
     "spoon_min_teams": 8,
-    "excluded_manager_ids": ["m_sorfra"],
+    "excluded_manager_ids": [],
     "features": {
         "spoon": True,
         "cup": True,
         "supercup": True,
-        "mundialito": True,
-        "cartonato": True
+        "mundialito": False,
+        "cartonato": False
     },
     "competitions": {
         "championship": {
             "category": "Campionato",
-            "name_contains": ["serie"],
+            "name_contains": ["serie", "campionato", "mantr-a", "mantrico"],
             "title": "Scudetto"
         },
         "cup": {
             "category": "Coppa",
-            "title": "Coppa InsalAtlas",
-            "runner_up_title": "Finalista Coppa InsalAtlas"
+            "title": "Coppa Se55o-Mantrico",
+            "runner_up_title": "Finalista Coppa Se55o-Mantrico"
         },
         "supercup": {
             "category": "Supercoppa",
-            "title": "Supercoppa InsalAtlas",
+            "title": "Supercoppa Se55o-Mantrico",
             "runner_up_title": "Finalista Supercoppa"
         },
-        "mundialito": {
-            "category": "Mundialito",
-            "title": "Mundialito",
-            "runner_up_title": "Finalista Mundialito"
-        },
-        "cartonato": {
-            "category": "Perdenti",
-            "title": "Vincitore Playout (Cartonato)"
-        },
         "category_id_map": {
-            31666: "Coppa",
-            348809: "Supercoppa",
-            348808: "Mundialito",
-            348805: "Perdenti"
+            119513: "Campionato",
+            119514: "Coppa",
+            265499: "Supercoppa"
         }
     }
 }
 
-LEAGUE_ALIAS = os.getenv("LEAGUE_ALIAS", "")
+LEAGUE_ALIAS = os.getenv("LEAGUE_ALIAS", "se55o-mantrico")
 APP_KEY = os.getenv("APP_KEY", "")
 BEARER_TOKEN = os.getenv("BEARER_TOKEN", "")
-BASE_API = os.getenv("BASE_API", "")
+BASE_API = os.getenv("BASE_API", "https://apileague.fantacalcio.it/onboarding/v1/hof")
 
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",

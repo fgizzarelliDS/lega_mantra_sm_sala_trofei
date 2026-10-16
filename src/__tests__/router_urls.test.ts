@@ -160,7 +160,7 @@ describe('Exhaustive URL & Deep-Linking Test Matrix', () => {
     it('finds manager correctly with findManagerByParam', () => {
       expect(findManagerByParam('m_lucchetto')?.name).toBe('Lucchetto');
       expect(findManagerByParam('Lucchetto')?.id).toBe('m_lucchetto');
-      expect(findManagerByParam('makako')?.id).toBe('m_makako');
+      expect(findManagerByParam('gizza')?.id).toBe('m_gizza');
       expect(findManagerByParam('inexistent_manager_xyz')).toBeUndefined();
     });
   });

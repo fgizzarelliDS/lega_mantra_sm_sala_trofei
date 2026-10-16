@@ -1,25 +1,25 @@
 import { ScoringWeights, TitlesConfig, LeagueProfile, LeagueFeatures, AlboColumnDef } from '@/types';
 
 export const LEAGUE: LeagueProfile = {
-  id: 'insalatlas',
+  id: 'se55o-mantrico',
   brand: {
-    name: 'InsalAtlas',
+    name: 'Se55o Mantrico',
     mainTitle: 'Sala Trofei',
     subtitle: "Albo d'Oro Storico Ufficiale",
-    pwaShortName: 'InsalAtlas',
-    description: "Albo d'Oro Storico Ufficiale e Sala Trofei della Lega Fantacalcio InsalAtlas",
-    championshipLabel: 'Serie InsalAtlas'
+    pwaShortName: 'Se55o Mantrico',
+    description: "Albo d'Oro Storico Ufficiale e Sala Trofei della Lega Fantacalcio Se55o Mantrico",
+    championshipLabel: 'Campionato'
   },
-  siteUrl: 'https://fgizzarellids.github.io/insalatlas_sala_trofei/',
-  filePrefix: 'insalatlas',
-  storagePrefix: 'fantacalcio',
+  siteUrl: 'https://fgizzarellids.github.io/lega_mantra_sm_sala_trofei/',
+  filePrefix: 'se55o_mantrico',
+  storagePrefix: 'se55o_mantrico',
   defaultTheme: 'gazzetta',
   features: {
     spoon: true,
     cup: true,
     supercup: true,
-    mundialito: true,
-    cartonato: true
+    mundialito: false,
+    cartonato: false
   },
   rules: {
     spoonMinTeams: 8
@@ -27,24 +27,23 @@ export const LEAGUE: LeagueProfile = {
   competitions: {
     championship: {
       category: 'Campionato',
-      nameContains: ['serie'],
+      nameContains: ['serie', 'campionato', 'mantr-a', 'mantrico'],
       title: 'Scudetto'
     },
     cup: {
       category: 'Coppa',
-      title: 'Coppa InsalAtlas',
-      runnerUpTitle: 'Finalista Coppa InsalAtlas'
+      title: 'Coppa Se55o-Mantrico',
+      runnerUpTitle: 'Finalista Coppa Se55o-Mantrico'
     },
     supercup: {
       category: 'Supercoppa',
-      title: 'Supercoppa InsalAtlas',
+      title: 'Supercoppa Se55o-Mantrico',
       runnerUpTitle: 'Finalista Supercoppa'
     },
     categoryIdMap: {
-      '31666': 'Coppa',
-      '348809': 'Supercoppa',
-      '348808': 'Mundialito',
-      '348805': 'Perdenti'
+      '119513': 'Campionato',
+      '119514': 'Coppa',
+      '265499': 'Supercoppa'
     }
   }
 };
@@ -91,9 +90,9 @@ export const DEFAULT_TITLES: TitlesConfig = {
   col2: 'Campionato',
   col3: 'Coppa di Lega',
   col4: 'Supercoppa',
-  col5: 'Mundialito',
-  col6: 'Cucchiaio',
-  col7: 'Cartonato'
+  col5: 'Cucchiaio',
+  col6: '',
+  col7: ''
 };
 
 export const ADMIN_TOKEN: string = import.meta.env.VITE_ADMIN_TOKEN || '';

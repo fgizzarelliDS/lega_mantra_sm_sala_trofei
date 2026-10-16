@@ -7,7 +7,8 @@ import os
 import time
 import json
 from typing import Optional, Dict, Any, List, Tuple
-import requests
+import urllib.request
+import urllib.error
 
 from .config import BASE_API, LEAGUE_ALIAS, HEADERS, get_scripts_dir
 from .logger import ok, info, warn, error, banner
@@ -15,17 +16,21 @@ from .logger import ok, info, warn, error, banner
 def fetch_json(url: str, output_path: Optional[str] = None) -> Optional[Any]:
     """Fetches a JSON resource and optionally caches it locally."""
     try:
-        resp = requests.get(url, headers=HEADERS, timeout=15)
-        if resp.status_code == 200:
-            data = resp.json()
-            if output_path:
-                os.makedirs(os.path.dirname(os.path.abspath(output_path)), exist_ok=True)
-                with open(output_path, "w", encoding="utf-8") as f:
-                    json.dump(data, f, ensure_ascii=False, indent=2)
-            return data
-        else:
-            warn(f"HTTP error {resp.status_code} fetching {url}")
-            return None
+        req = urllib.request.Request(url, headers=HEADERS)
+        with urllib.request.urlopen(req, timeout=15) as resp:
+            if resp.status == 200:
+                data = json.loads(resp.read().decode('utf-8'))
+                if output_path:
+                    os.makedirs(os.path.dirname(os.path.abspath(output_path)), exist_ok=True)
+                    with open(output_path, "w", encoding="utf-8") as f:
+                        json.dump(data, f, ensure_ascii=False, indent=2)
+                return data
+            else:
+                warn(f"HTTP error {resp.status} fetching {url}")
+                return None
+    except urllib.error.HTTPError as he:
+        warn(f"HTTP error {he.code} fetching {url}: {he.reason}")
+        return None
     except Exception as e:
         error(f"Connection failed to {url}: {e}")
         return None
@@ -63,6 +68,13 @@ def run_download_pipeline(output_dir: Optional[str] = None) -> Tuple[Optional[An
         for s in trophy_room_data.get("otherSeasons", []):
             for c in s.get("competitions", []):
                 cid = c.get("id")
+                if cid and cid not in comp_ids:
+                    comp_ids.append(cid)
+
+    if palmares_data and isinstance(palmares_data, list):
+        for mgr in palmares_data:
+            for t in mgr.get("trophies", []):
+                cid = t.get("competition", {}).get("id")
                 if cid and cid not in comp_ids:
                     comp_ids.append(cid)
 

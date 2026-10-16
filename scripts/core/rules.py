@@ -34,7 +34,9 @@ def is_championship(category: str, name: str) -> bool:
     champ_cfg = LEAGUE_RULES["competitions"]["championship"]
     cat = (category or "").strip()
     nm = (name or "").strip().lower()
-    return cat == champ_cfg.get("category", "Campionato") or any(sub in nm for sub in champ_cfg.get("name_contains", ["serie"]))
+    if any(sub in nm for sub in ["coppa", "supercoppa", "supercup", "final four", "final fo"]):
+        return False
+    return cat == champ_cfg.get("category", "Campionato") or any(sub in nm for sub in champ_cfg.get("name_contains", ["serie", "campionato"]))
 
 def get_cartonato_icon(season: str = "") -> str:
     """Standardized icon for Playout / Cartonato achievement across all seasons."""

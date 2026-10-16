@@ -91,10 +91,10 @@ describe('Season Creation Modal & Controller', () => {
 
   describe('SeasonModalTemplate', () => {
     it('builds manager select options including all managers and marks selected option', () => {
-      const optionsHtml = buildManagerSelectOptions('m_alfo', '-- Test Placeholder --');
+      const optionsHtml = buildManagerSelectOptions('m_gizza', '-- Test Placeholder --');
       expect(optionsHtml).toContain('<option value="">-- Test Placeholder --</option>');
-      expect(optionsHtml).toContain('value="m_alfo" selected');
-      expect(optionsHtml).toContain('value="m_gigicholo"');
+      expect(optionsHtml).toContain('value="m_gizza" selected');
+      expect(optionsHtml).toContain('value="m_peterdani"');
     });
 
     it('renders championship rows HTML for 8 teams with 1st, 2nd, 3rd and wooden spoon', () => {
@@ -152,11 +152,10 @@ describe('Season Creation Modal & Controller', () => {
       const selectEl = registerMock('season-manager-1', 'select');
       selectEl.classList.add('border-amber-500');
 
-      handleManagerSelectChange(1, 'm_alfo');
+      handleManagerSelectChange(1, 'm_gizza');
 
-      expect(teamInput.value).toBeTruthy();
-      expect(teamInput.value).toContain('Steven');
-      expect(coachInput.value).toBe('alfius91');
+      expect(teamInput.value).toBe('Vrace FRC');
+      expect(coachInput.value).toBe('Gizza');
       expect(datalistEl.innerHTML).toContain('option value=');
       expect(selectEl.classList.contains('border-amber-500')).toBe(false);
     });
@@ -206,21 +205,21 @@ describe('Season Creation Modal & Controller', () => {
       registerMock('season-field-team-count', 'select').value = '8';
 
       // Setup 8 teams
-      const mgrIds = ['m_alfo', 'm_gigicholo', 'm_valery', 'm_peterdani', 'm_scurcio', 'm_vannico', 'm_avvisatina', 'm_pippo'];
+      const mgrIds = ['m_gizza', 'm_peterdani', 'm_mf', 'm_valery', 'm_luca', 'm_lucchetto', 'm_ale', 'm_simone'];
       
-      // Snapshot baseline stats for 1st (m_alfo), 2nd (m_gigicholo), 3rd (m_valery), 8th (m_pippo)
-      const alfoBefore = state.managers.find(m => m.id === 'm_alfo')!;
-      const alfoGoldBefore = alfoBefore.gold || 0;
-      const alfoYearsBefore = alfoBefore.years || 1;
+      // Snapshot baseline stats for 1st (m_gizza), 2nd (m_peterdani), 3rd (m_mf), 8th (m_simone)
+      const gizzaBefore = state.managers.find(m => m.id === 'm_gizza')!;
+      const gizzaGoldBefore = gizzaBefore.gold || 0;
+      const gizzaYearsBefore = gizzaBefore.years || 1;
 
-      const choloBefore = state.managers.find(m => m.id === 'm_gigicholo')!;
-      const choloSilverBefore = choloBefore.silver || 0;
+      const peterdaniBefore = state.managers.find(m => m.id === 'm_peterdani')!;
+      const peterdaniSilverBefore = peterdaniBefore.silver || 0;
 
-      const valeryBefore = state.managers.find(m => m.id === 'm_valery')!;
-      const valeryBronzeBefore = valeryBefore.bronze || 0;
+      const mfBefore = state.managers.find(m => m.id === 'm_mf')!;
+      const mfBronzeBefore = mfBefore.bronze || 0;
 
-      const pippoBefore = state.managers.find(m => m.id === 'm_pippo')!;
-      const pippoSpoonBefore = pippoBefore.spoon || 0;
+      const simoneBefore = state.managers.find(m => m.id === 'm_simone')!;
+      const simoneSpoonBefore = simoneBefore.spoon || 0;
 
       for (let i = 1; i <= 8; i++) {
         registerMock(`season-team-${i}`, 'input').value = `Team ${i}`;
@@ -230,13 +229,13 @@ describe('Season Creation Modal & Controller', () => {
       }
 
       // Secondary cups
-      registerMock('season-cup-gold', 'select').value = 'm_alfo';
+      registerMock('season-cup-gold', 'select').value = 'm_gizza';
       registerMock('season-cup-silver', 'select').value = 'm_valery';
       registerMock('season-supercup-gold', 'select').value = '';
       registerMock('season-supercup-silver', 'select').value = '';
       registerMock('season-mundialito-gold', 'select').value = '';
       registerMock('season-mundialito-silver', 'select').value = '';
-      registerMock('season-cartonato-winner', 'select').value = 'm_pippo';
+      registerMock('season-cartonato-winner', 'select').value = 'm_simone';
       registerMock('season-cartonato-coach', 'input').value = 'MAZZARRI';
 
       const event = { preventDefault: vi.fn() } as unknown as Event;
@@ -247,36 +246,36 @@ describe('Season Creation Modal & Controller', () => {
       expect(champ).toBeDefined();
       expect(champ?.name).toBe('Serie Atlas 2027-2028');
       expect(champ?.ranking.length).toBe(8);
-      expect(champ?.ranking[0].managerId).toBe('m_alfo');
+      expect(champ?.ranking[0].managerId).toBe('m_gizza');
       expect(champ?.ranking[0].rank).toBe(1);
 
       // Verify Coppa was created
       const coppa = state.competitions.find(c => c.season === '2027/28' && c.category === 'Coppa');
       expect(coppa).toBeDefined();
-      expect(coppa?.ranking[0].managerId).toBe('m_alfo');
+      expect(coppa?.ranking[0].managerId).toBe('m_gizza');
       expect(coppa?.ranking[1].managerId).toBe('m_valery');
 
       // Verify Playout was created
       const playout = state.competitions.find(c => c.season === '2027/28' && c.category === 'Playout');
       expect(playout).toBeDefined();
-      expect(playout?.ranking[0].managerId).toBe('m_pippo');
+      expect(playout?.ranking[0].managerId).toBe('m_simone');
 
       // Verify Manager trophies & years
-      const alfoAfter = state.managers.find(m => m.id === 'm_alfo')!;
-      expect(alfoAfter.gold).toBe(alfoGoldBefore + 1);
-      expect(alfoAfter.years).toBe(alfoYearsBefore + 1);
-      expect(alfoAfter.cup_gold).toBeGreaterThanOrEqual(1);
+      const gizzaAfter = state.managers.find(m => m.id === 'm_gizza')!;
+      expect(gizzaAfter.gold).toBe(gizzaGoldBefore + 1);
+      expect(gizzaAfter.years).toBe(gizzaYearsBefore + 1);
+      expect(gizzaAfter.cup_gold).toBeGreaterThanOrEqual(1);
 
-      const choloAfter = state.managers.find(m => m.id === 'm_gigicholo')!;
-      expect(choloAfter.silver).toBe(choloSilverBefore + 1);
+      const peterdaniAfter = state.managers.find(m => m.id === 'm_peterdani')!;
+      expect(peterdaniAfter.silver).toBe(peterdaniSilverBefore + 1);
 
-      const valeryAfter = state.managers.find(m => m.id === 'm_valery')!;
-      expect(valeryAfter.bronze).toBe(valeryBronzeBefore + 1);
+      const mfAfter = state.managers.find(m => m.id === 'm_mf')!;
+      expect(mfAfter.bronze).toBe(mfBronzeBefore + 1);
 
-      const pippoAfter = state.managers.find(m => m.id === 'm_pippo')!;
-      expect(pippoAfter.spoon).toBe(pippoSpoonBefore + 1);
-      expect(pippoAfter.cartonato).toBeGreaterThanOrEqual(1);
-      expect(pippoAfter.cartonato_coaches).toContain('MAZZARRI');
+      const simoneAfter = state.managers.find(m => m.id === 'm_simone')!;
+      expect(simoneAfter.spoon).toBe(simoneSpoonBefore + 1);
+      expect(simoneAfter.cartonato).toBeGreaterThanOrEqual(1);
+      expect(simoneAfter.cartonato_coaches).toContain('MAZZARRI');
 
       // Verify modal was closed
       expect(modalEl.classList.contains('hidden')).toBe(true);
@@ -284,9 +283,9 @@ describe('Season Creation Modal & Controller', () => {
 
     it('cleans up and rolls back previous awards when overwriting an existing season', () => {
       // Re-saving the same season should not double-count years or gold trophies
-      const alfo = state.managers.find(m => m.id === 'm_alfo')!;
-      const goldCount = alfo.gold || 0;
-      const yearsCount = alfo.years || 1;
+      const gizza = state.managers.find(m => m.id === 'm_gizza')!;
+      const goldCount = gizza.gold || 0;
+      const yearsCount = gizza.years || 1;
 
       // Mock confirmation dialog returning true
       (globalThis as any).confirm = vi.fn(() => true);
@@ -294,10 +293,10 @@ describe('Season Creation Modal & Controller', () => {
       const event = { preventDefault: vi.fn() } as unknown as Event;
       saveSeason(event);
 
-      const alfoAfterOverwrite = state.managers.find(m => m.id === 'm_alfo')!;
+      const gizzaAfterOverwrite = state.managers.find(m => m.id === 'm_gizza')!;
       // Gold and years should remain exactly the same as after 1st save, NOT +2
-      expect(alfoAfterOverwrite.gold).toBe(goldCount);
-      expect(alfoAfterOverwrite.years).toBe(yearsCount);
+      expect(gizzaAfterOverwrite.gold).toBe(goldCount);
+      expect(gizzaAfterOverwrite.years).toBe(yearsCount);
     });
 
     it('does NOT award trophies or spoons when saving with in_progress = true', () => {
@@ -309,13 +308,13 @@ describe('Season Creation Modal & Controller', () => {
       const inProgressEl = registerMock('season-field-in-progress', 'input');
       (inProgressEl as unknown as HTMLInputElement).checked = true;
 
-      const mgrIds = ['m_alfo', 'm_gigicholo', 'm_valery', 'm_peterdani', 'm_scurcio', 'm_vannico', 'm_avvisatina', 'm_pippo'];
-      const alfoBefore = state.managers.find(m => m.id === 'm_alfo')!;
-      const alfoGoldBefore = alfoBefore.gold || 0;
-      const alfoYearsBefore = alfoBefore.years || 1;
+      const mgrIds = ['m_gizza', 'm_peterdani', 'm_mf', 'm_valery', 'm_luca', 'm_lucchetto', 'm_ale', 'm_simone'];
+      const gizzaBefore = state.managers.find(m => m.id === 'm_gizza')!;
+      const gizzaGoldBefore = gizzaBefore.gold || 0;
+      const gizzaYearsBefore = gizzaBefore.years || 1;
 
-      const pippoBefore = state.managers.find(m => m.id === 'm_pippo')!;
-      const pippoSpoonBefore = pippoBefore.spoon || 0;
+      const simoneBefore = state.managers.find(m => m.id === 'm_simone')!;
+      const simoneSpoonBefore = simoneBefore.spoon || 0;
 
       for (let i = 1; i <= 8; i++) {
         registerMock(`season-team-${i}`, 'input').value = `Team ${i}`;
@@ -325,7 +324,7 @@ describe('Season Creation Modal & Controller', () => {
       }
 
       // Secondary cup inputs filled (should not award honors when in_progress)
-      registerMock('season-cup-gold', 'select').value = 'm_alfo';
+      registerMock('season-cup-gold', 'select').value = 'm_gizza';
       registerMock('season-cup-silver', 'select').value = 'm_valery';
       registerMock('season-supercup-gold', 'select').value = '';
       registerMock('season-supercup-silver', 'select').value = '';
@@ -342,17 +341,17 @@ describe('Season Creation Modal & Controller', () => {
       expect(champ?.in_progress).toBe(true);
       expect(champ?.status).toBe('in_progress');
 
-      const alfoAfter = state.managers.find(m => m.id === 'm_alfo')!;
+      const gizzaAfter = state.managers.find(m => m.id === 'm_gizza')!;
       // Gold and cup honors should NOT be incremented
-      expect(alfoAfter.gold).toBe(alfoGoldBefore);
+      expect(gizzaAfter.gold).toBe(gizzaGoldBefore);
       // Years played IS incremented (participating active season)
-      expect(alfoAfter.years).toBe(alfoYearsBefore + 1);
+      expect(gizzaAfter.years).toBe(gizzaYearsBefore + 1);
 
-      const pippoAfter = state.managers.find(m => m.id === 'm_pippo')!;
-      expect(pippoAfter.spoon).toBe(pippoSpoonBefore);
+      const simoneAfter = state.managers.find(m => m.id === 'm_simone')!;
+      expect(simoneAfter.spoon).toBe(simoneSpoonBefore);
 
       // Verify history item has in_progress flag and empty achievements
-      const historyEntry = alfoAfter.history?.find(h => h.season === '2028/29');
+      const historyEntry = gizzaAfter.history?.find(h => h.season === '2028/29');
       expect(historyEntry).toBeDefined();
       expect(historyEntry?.in_progress).toBe(true);
       expect(historyEntry?.achievements).toEqual([]);

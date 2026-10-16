@@ -8,8 +8,14 @@ dist/
 .env
 .env.local
 .env.*.local
+env.local
+
+# Vitest cache
+.vitest/
+
 specs/*
 scripts/insalatlas*.json
+scripts/*_raw.json
 scripts/*.html
 **/__pycache__/
 *.pyc

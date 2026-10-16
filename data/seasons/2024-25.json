@@ -2,194 +2,138 @@
   "season": "2024/25",
   "competitions": [
     {
-      "id": 147898,
-      "name": "Serie Atlas",
+      "id": 438843,
+      "name": "Campionato mantrico",
       "season": "2024/25",
       "category": "Campionato",
       "ranking": [
         {
           "rank": 1,
-          "teamName": "Olympic Lasagna",
-          "coach": "Lucchetto",
-          "managerId": "m_lucchetto",
-          "points": 58.0,
-          "logo": "assets/teams/olympic_lasagna.png"
+          "teamName": "Scalo San Genesio",
+          "coach": "Valery",
+          "managerId": "m_valery",
+          "points": 66.0,
+          "logo": "assets/crests/royal_vanguard.svg"
         },
         {
           "rank": 2,
-          "teamName": "CarloMonte FC",
-          "coach": "Dr cholo",
-          "managerId": "m_gigicholo",
-          "points": 57.0,
-          "logo": "assets/teams/6150431_02386417.png"
+          "teamName": "Iron Hill warriors",
+          "coach": "MF",
+          "managerId": "m_mf",
+          "points": 66.0,
+          "logo": "assets/crests/royal_vanguard.svg"
         },
         {
           "rank": 3,
-          "teamName": "Scalo San Genesio",
-          "coach": "valeriodam",
-          "managerId": "m_valery",
-          "points": 57.0,
-          "logo": "assets/teams/2543640_02914103.png"
+          "teamName": "Cardinthians",
+          "coach": "Luca",
+          "managerId": "m_luca",
+          "points": 59.0,
+          "logo": "assets/crests/aegis_sentinel.svg"
         },
         {
           "rank": 4,
-          "teamName": "TorLupara FC",
-          "coach": "cursimone",
-          "managerId": "m_scurcio",
-          "points": 52.0,
-          "logo": "assets/teams/2544594_04501676.png"
+          "teamName": "Grassotthers",
+          "coach": "PeterDani",
+          "managerId": "m_peterdani",
+          "points": 51.0,
+          "logo": "assets/crests/phoenix_rising.svg"
         },
         {
           "rank": 5,
-          "teamName": "Sarviette FC",
-          "coach": "petrubik88",
-          "managerId": "m_peterdani",
+          "teamName": "Vrace FRC",
+          "coach": "Gizza",
+          "managerId": "m_gizza",
           "points": 51.0,
-          "logo": "assets/teams/4862674_03546324.png"
+          "logo": "assets/crests/ironclad_athletic.svg"
         },
         {
           "rank": 6,
-          "teamName": "A S CorradiAndBosuTeam",
-          "coach": "vannico",
-          "managerId": "m_vannico",
-          "points": 50.0,
-          "logo": "assets/crests/volt_dynamo.svg"
+          "teamName": "Tevere FC",
+          "coach": "Lucchetto",
+          "managerId": "m_lucchetto",
+          "points": 51.0,
+          "logo": "assets/crests/royal_vanguard.svg"
         },
         {
           "rank": 7,
-          "teamName": "LoTUS FC",
-          "coach": "Juliet-91",
-          "managerId": "m_avvisatina",
-          "points": 45.0,
-          "logo": "assets/crests/golden_griffin.svg"
+          "teamName": "Villereal juif",
+          "coach": "simone",
+          "managerId": "m_simone",
+          "points": 47.0,
+          "logo": "assets/crests/royal_vanguard.svg"
         },
         {
           "rank": 8,
-          "teamName": "Steven Bradbury FC",
-          "coach": "alfius91",
-          "managerId": "m_alfo",
-          "points": 42.0,
-          "logo": "assets/teams/2545500_09340839.png"
+          "teamName": "AS AV",
+          "coach": "Vale",
+          "managerId": "m_vale",
+          "points": 45.0,
+          "logo": "assets/crests/obsidian_fc.svg"
         },
         {
           "rank": 9,
-          "teamName": "Partizan Peroni",
-          "coach": "Paiden",
-          "managerId": "m_pippo",
-          "points": 37.0,
-          "logo": "assets/crests/anchor_bay.svg"
+          "teamName": "Kiwi Football Club",
+          "coach": "tazio",
+          "managerId": "m_tazio",
+          "points": 36.0,
+          "logo": "assets/crests/solaris_sc.svg"
         },
         {
           "rank": 10,
-          "teamName": "Arcore 1936",
-          "coach": "Sebbadavid",
-          "managerId": "m_sebba",
-          "points": 35.0,
-          "logo": "assets/crests/cobra_strike.svg"
-        },
-        {
-          "rank": 11,
-          "teamName": "Compagni di Merende",
-          "coach": "BartaliATLAS",
-          "managerId": "m_compagno",
-          "points": 30.0,
-          "logo": "assets/crests/starlight_rovers.svg"
-        },
-        {
-          "rank": 12,
-          "teamName": "Kiwi Football Club",
-          "coach": "tazio13",
-          "managerId": "m_tazio",
-          "points": 23.0,
-          "logo": "assets/crests/solaris_sc.svg"
+          "teamName": "ASD Cacciatori di Tibie",
+          "coach": "Ale",
+          "managerId": "m_ale",
+          "points": 27.0,
+          "logo": "assets/crests/celestial_horizon.svg"
         }
       ]
     },
     {
-      "id": 147900,
-      "name": "Coppa InsalAtlas",
-      "season": "2024/25",
-      "category": "Coppa",
-      "ranking": [
-        {
-          "rank": 1,
-          "teamName": "CarloMonte FC",
-          "coach": "Dr cholo",
-          "managerId": "m_gigicholo",
-          "points": 0.0,
-          "logo": "assets/teams/6150431_02386417.png"
-        },
-        {
-          "rank": 2,
-          "teamName": "Olympic Lasagna",
-          "coach": "Lucchetto",
-          "managerId": "m_lucchetto",
-          "points": 0.0,
-          "logo": "assets/teams/olympic_lasagna.png"
-        }
-      ]
-    },
-    {
-      "id": 778206,
-      "name": "Supercoppa InsalAtlas",
+      "id": 438842,
+      "name": "Supercoppa Mantrica",
       "season": "2024/25",
       "category": "Supercoppa",
       "ranking": [
         {
           "rank": 1,
-          "teamName": "Olympic Lasagna",
-          "coach": "Lucchetto",
-          "managerId": "m_lucchetto",
+          "teamName": "Grassotthers",
+          "coach": "PeterDani",
+          "managerId": "m_peterdani",
           "points": 0.0,
-          "logo": "assets/teams/olympic_lasagna.png"
+          "logo": "assets/crests/phoenix_rising.svg"
         },
         {
           "rank": 2,
-          "teamName": "CarloMonteFC",
-          "coach": "Dr cholo",
-          "managerId": "m_gigicholo",
+          "teamName": "Iron Hill warriors",
+          "coach": "MF",
+          "managerId": "m_mf",
           "points": 0.0,
-          "logo": "assets/crests/titan_wolves.svg"
+          "logo": "assets/crests/royal_vanguard.svg"
         }
       ]
     },
     {
-      "id": 778205,
-      "name": "Mundialito",
+      "id": 438841,
+      "name": "Final four mantrica",
       "season": "2024/25",
-      "category": "Mundialito",
+      "category": "Coppa",
       "ranking": [
         {
           "rank": 1,
-          "teamName": "StevenBradburyFC",
-          "coach": "alfius91",
-          "managerId": "m_alfo",
+          "teamName": "Vrace FRC",
+          "coach": "Gizza",
+          "managerId": "m_gizza",
           "points": 0.0,
-          "logo": "assets/teams/2545500_09340839.png"
+          "logo": "assets/crests/ironclad_athletic.svg"
         },
         {
           "rank": 2,
-          "teamName": "ASCorradiAndBosuTeam",
-          "coach": "vannico",
-          "managerId": "m_vannico",
+          "teamName": "Grassotthers",
+          "coach": "PeterDani",
+          "managerId": "m_peterdani",
           "points": 0.0,
-          "logo": "assets/crests/volt_dynamo.svg"
-        }
-      ]
-    },
-    {
-      "id": 147874,
-      "name": "Coppa dei Perdenti",
-      "season": "2024/25",
-      "category": "Perdenti",
-      "ranking": [
-        {
-          "rank": 1,
-          "teamName": "Kiwi Football Club",
-          "coach": "tazio13",
-          "managerId": "m_tazio",
-          "points": 0.0,
-          "logo": "assets/teams/7823986_09569971.png"
+          "logo": "assets/crests/phoenix_rising.svg"
         }
       ]
     }

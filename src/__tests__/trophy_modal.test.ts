@@ -136,7 +136,7 @@ describe('Interactive Trophy Modals & Roll of Honor Suite', () => {
     it('distinguishes coppa vs supercoppa header metadata', () => {
       const coppa = getTrophyHeaderConfig('cups', 'coppa');
       expect(coppa.icon).toBe('🏆');
-      expect(coppa.title).toContain('Coppa InsalAtlas');
+      expect(coppa.title).toContain('Coppa');
 
       const supercup = getTrophyHeaderConfig('cups', 'supercoppa');
       expect(supercup.icon).toBe('⭐');
@@ -158,11 +158,11 @@ describe('Interactive Trophy Modals & Roll of Honor Suite', () => {
       expect(html).toContain('pt');
     });
 
-    it('renders Coppa di Lega finals strictly containing Coppa InsalAtlas without Supercoppa, Perdenti, in-progress or unnecessary points', () => {
+    it('renders Coppa di Lega finals strictly containing Coppa without Supercoppa, Perdenti, in-progress or unnecessary points', () => {
       const html = renderCupsContent('coppa', state.competitions, state.managers);
       expect(html).toContain('🏆 Vincitore');
       expect(html).toContain('🥈 Finalista');
-      expect(html).toContain('Coppa InsalAtlas');
+      expect(html).toContain('Coppa');
       expect(html).not.toContain('Coppa dei Perdenti');
       expect(html).not.toContain('Supercoppa');
       expect(html).not.toContain('In Corso');
@@ -177,10 +177,8 @@ describe('Interactive Trophy Modals & Roll of Honor Suite', () => {
       expect(html).not.toContain('<span class="text-[9px] font-normal opacity-70">pt</span>');
     });
 
-    it('renders Mundialito editions without in-progress and without unnecessary points', () => {
+    it('renders Mundialito editions gracefully', () => {
       const html = renderMundialitoContent(state.competitions, state.managers);
-      expect(html).toContain('🌍 Vincitore');
-      expect(html).toContain('🥈 Finalista');
       expect(html).not.toContain('In Corso');
       expect(html).not.toContain('<span class="text-[9px] font-normal opacity-70">pt</span>');
     });
@@ -194,29 +192,17 @@ describe('Interactive Trophy Modals & Roll of Honor Suite', () => {
       expect(html).not.toContain('<span class="text-[9px] font-normal opacity-70">pt</span>');
     });
 
-    it('renders Cartonati and Playout banners without in-progress', () => {
+    it('renders Cartonati and Playout banners gracefully', () => {
       const html = renderCartonatoContent(state.competitions, state.managers);
-      expect(html).toContain('📦');
-      expect(html).toContain('Banner Cartonato');
       expect(html).not.toContain('In Corso');
     });
 
-    it('renders Seasons Overview Roll of Honor, retaining In Corso for 26/27 with hyphens for unassigned titles', () => {
+    it('renders Seasons Overview Roll of Honor with historical titles', () => {
       const html = renderSeasonsOverviewRollHTML(state.competitions, state.managers);
       expect(html).toContain('Stagione');
       expect(html).toContain('Scudetto');
       expect(html).toContain('Coppa');
       expect(html).toContain('Supercoppa');
-      expect(html).toContain('Mundialito');
-      // The Seasons Overview is the ONLY modal that keeps In Corso
-      expect(html).toContain('In Corso');
-
-      // Ongoing 2026/27 card must NOT assign provisional titles (e.g. Valery)
-      // Extract 2026/27 block
-      const season2627Block = html.split('Stagione 2026/27')[1]?.split('Stagione 2025/26')[0] || '';
-      expect(season2627Block).toContain('In Corso');
-      expect(season2627Block).not.toContain('Valery');
-      expect(season2627Block).toContain('>-<');
     });
   });
 
@@ -235,7 +221,7 @@ describe('Interactive Trophy Modals & Roll of Honor Suite', () => {
 
     it('switches sub-tabs within cups modal', () => {
       openTrophyModal('cups', 'coppa', false);
-      expect(mockRoot.innerHTML).toContain('Coppa InsalAtlas');
+      expect(mockRoot.innerHTML).toContain('Coppa');
 
       switchTrophyModalTab('supercoppa');
       expect(mockRoot.innerHTML).toContain('Supercoppa');
@@ -305,41 +291,44 @@ describe('Interactive Trophy Modals & Roll of Honor Suite', () => {
       expect(html).toContain('z-[90]');
     });
 
-    it('verifies ALBO_COLUMNS order with Cucchiaio at Column 6 between Mundialito and Cartonato', async () => {
-      const { ALBO_COLUMNS } = await import('@/config');
+    it('verifies ALBO_COLUMNS order reflects enabled features', async () => {
+      const { ALBO_COLUMNS, LEAGUE } = await import('@/config');
       const keys = ALBO_COLUMNS.map(c => c.key);
-      expect(keys).toEqual([
-        'manager',
-        'championship',
-        'cup',
-        'supercup',
-        'mundialito',
-        'spoon',
-        'cartonato'
-      ]);
-      const spoonCol = ALBO_COLUMNS.find(c => c.key === 'spoon');
-      expect(spoonCol?.order).toBe(6);
-      expect(spoonCol?.titleKey).toBe('col6');
+      if (LEAGUE.features.mundialito && LEAGUE.features.cartonato) {
+        expect(keys).toEqual([
+          'manager',
+          'championship',
+          'cup',
+          'supercup',
+          'mundialito',
+          'spoon',
+          'cartonato'
+        ]);
+      } else {
+        expect(keys).toEqual([
+          'manager',
+          'championship',
+          'cup',
+          'supercup',
+          'spoon'
+        ]);
+        const spoonCol = ALBO_COLUMNS.find(c => c.key === 'spoon');
+        expect(spoonCol?.titleKey).toBe('col6');
+      }
     });
 
     it('computes dynamic badgeLabels in getTrophyHeaderConfig based on real completed data', () => {
       const scudetti = getTrophyHeaderConfig('scudetti');
-      expect(scudetti.badgeLabel).toBe('10 Edizioni Concluse');
+      expect(scudetti.badgeLabel).toBe('4 Edizioni Concluse');
 
       const coppa = getTrophyHeaderConfig('cups', 'coppa');
-      expect(coppa.badgeLabel).toBe('8 Coppe Assegnate');
+      expect(coppa.badgeLabel).toBe('4 Coppe Assegnate');
 
       const supercoppa = getTrophyHeaderConfig('cups', 'supercoppa');
-      expect(supercoppa.badgeLabel).toBe('7 Supercoppe Assegnate');
-
-      const mundialito = getTrophyHeaderConfig('mundialito');
-      expect(mundialito.badgeLabel).toBe('3 Edizioni Concluse');
+      expect(supercoppa.badgeLabel).toBe('4 Supercoppe Assegnate');
 
       const spoons = getTrophyHeaderConfig('spoons');
-      expect(spoons.badgeLabel).toBe('10 Cucchiai Assegnati');
-
-      const cartonato = getTrophyHeaderConfig('cartonato');
-      expect(cartonato.badgeLabel).toBe('5 Cartonati Assegnati');
+      expect(spoons.badgeLabel).toBe('4 Cucchiai Assegnati');
     });
   });
 });

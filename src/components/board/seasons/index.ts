@@ -194,7 +194,7 @@ export function renderSeasonsArchive(): void {
   const comps = (state.competitions || []).filter(c => c.season === currentSelectedSeason);
 
   // Separate into Championship vs Other tournaments
-  const championship = comps.find(c => c.category === 'championship' || /serie\s*atlas|campionato/i.test(c.name));
+  const championship = comps.find(c => (c.category || '').toLowerCase() === 'championship' || (c.category || '').toLowerCase() === 'campionato' || /serie|campionato/i.test(c.name || ''));
   const otherTournaments = comps.filter(c => c !== championship);
 
   // Season Header Summary

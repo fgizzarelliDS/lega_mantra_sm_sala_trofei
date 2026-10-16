@@ -92,7 +92,7 @@ export function getCompletedChampionships(competitions: CompetitionRecord[]): Co
     if (c.in_progress || c.status === 'in_progress') return false;
     const cat = (c.category || '').toLowerCase();
     const name = (c.name || '').toLowerCase();
-    return cat === 'championship' || name.includes('serie') || (!c.category && !name.includes('coppa'));
+    return cat === 'championship' || cat === 'campionato' || name.includes('serie') || (!c.category && !name.includes('coppa'));
   });
 }
 

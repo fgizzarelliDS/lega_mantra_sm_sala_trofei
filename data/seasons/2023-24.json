@@ -2,194 +2,138 @@
   "season": "2023/24",
   "competitions": [
     {
-      "id": 147895,
-      "name": "Serie Atlas",
+      "id": 438840,
+      "name": "Campionato mantrico",
       "season": "2023/24",
       "category": "Campionato",
       "ranking": [
         {
           "rank": 1,
-          "teamName": "Arcore 1936",
-          "coach": "Sebbadavid",
-          "managerId": "m_sebba",
-          "points": 56.0,
-          "logo": "assets/crests/cobra_strike.svg"
+          "teamName": "Vrace FRC",
+          "coach": "Gizza",
+          "managerId": "m_gizza",
+          "points": 69.0,
+          "logo": "assets/crests/ironclad_athletic.svg"
         },
         {
           "rank": 2,
-          "teamName": "A S CorradiAndBosuTeam",
-          "coach": "vannico",
-          "managerId": "m_vannico",
-          "points": 54.0,
-          "logo": "assets/teams/2546265_001315361.png"
+          "teamName": "Cardinthians",
+          "coach": "Luca",
+          "managerId": "m_luca",
+          "points": 64.0,
+          "logo": "assets/crests/aegis_sentinel.svg"
         },
         {
           "rank": 3,
-          "teamName": "Kiwi Football Club",
-          "coach": "tazio13",
-          "managerId": "m_tazio",
-          "points": 51.0,
-          "logo": "assets/crests/solaris_sc.svg"
+          "teamName": "Tevere FC",
+          "coach": "Lucchetto",
+          "managerId": "m_lucchetto",
+          "points": 60.0,
+          "logo": "assets/crests/royal_vanguard.svg"
         },
         {
           "rank": 4,
-          "teamName": "Scalo San Genesio",
-          "coach": "valeriodam",
-          "managerId": "m_valery",
-          "points": 51.0,
-          "logo": "assets/crests/royal_vanguard.svg"
+          "teamName": "Grassotthers",
+          "coach": "PeterDani",
+          "managerId": "m_peterdani",
+          "points": 50.0,
+          "logo": "assets/crests/phoenix_rising.svg"
         },
         {
           "rank": 5,
-          "teamName": "LoTUS FC",
-          "coach": "Juliet-91",
-          "managerId": "m_avvisatina",
+          "teamName": "Pagano Meret-rici",
+          "coach": "Mauro TTC",
+          "managerId": "m_mauro_ttc",
           "points": 49.0,
-          "logo": "assets/crests/golden_griffin.svg"
-        },
-        {
-          "rank": 6,
-          "teamName": "Steven Bradbury FC",
-          "coach": "alfius91",
-          "managerId": "m_alfo",
-          "points": 48.0,
-          "logo": "assets/teams/2545500_09340839.png"
-        },
-        {
-          "rank": 7,
-          "teamName": "TorLupara FC",
-          "coach": "cursimone",
-          "managerId": "m_scurcio",
-          "points": 48.0,
-          "logo": "assets/teams/2544594_04501676.png"
-        },
-        {
-          "rank": 8,
-          "teamName": "Sarviette FC",
-          "coach": "petrubik88",
-          "managerId": "m_peterdani",
-          "points": 42.0,
-          "logo": "assets/teams/4862674_08392377.png"
-        },
-        {
-          "rank": 9,
-          "teamName": "Compagni di Merende",
-          "coach": "BartaliATLAS",
-          "managerId": "m_compagno",
-          "points": 41.0,
           "logo": "assets/crests/starlight_rovers.svg"
         },
         {
-          "rank": 10,
-          "teamName": "FC Furioso Camillo",
-          "coach": "Lucchetto",
-          "managerId": "m_lucchetto",
-          "points": 37.0,
-          "logo": "assets/crests/wildcat_city.svg"
-        },
-        {
-          "rank": 11,
-          "teamName": "Partizan Peroni",
-          "coach": "Paiden",
-          "managerId": "m_pippo",
-          "points": 36.0,
-          "logo": "assets/crests/anchor_bay.svg"
-        },
-        {
-          "rank": 12,
-          "teamName": "CarloMonte FC",
-          "coach": "Dr cholo",
-          "managerId": "m_gigicholo",
-          "points": 32.0,
-          "logo": "assets/teams/6150431_05008029.png"
-        }
-      ]
-    },
-    {
-      "id": 147896,
-      "name": "Coppa InsalAtlas",
-      "season": "2023/24",
-      "category": "Coppa",
-      "ranking": [
-        {
-          "rank": 1,
-          "teamName": "Steven Bradbury FC",
-          "coach": "alfius91",
-          "managerId": "m_alfo",
-          "points": 0.0,
-          "logo": "assets/teams/2545500_09340839.png"
-        },
-        {
-          "rank": 2,
-          "teamName": "Scalo San Genesio",
-          "coach": "valeriodam",
-          "managerId": "m_valery",
-          "points": 0.0,
+          "rank": 6,
+          "teamName": "Iron Hill warriors",
+          "coach": "MF",
+          "managerId": "m_mf",
+          "points": 44.0,
           "logo": "assets/crests/royal_vanguard.svg"
+        },
+        {
+          "rank": 7,
+          "teamName": "Atletico Bagnolet 42",
+          "coach": "simone",
+          "managerId": "m_simone",
+          "points": 42.0,
+          "logo": "assets/crests/cobra_strike.svg"
+        },
+        {
+          "rank": 8,
+          "teamName": "Squadra Rotonda",
+          "coach": "Ale",
+          "managerId": "m_ale",
+          "points": 39.0,
+          "logo": "assets/crests/ironclad_athletic.svg"
+        },
+        {
+          "rank": 9,
+          "teamName": "Scalo San Genesio",
+          "coach": "Valery",
+          "managerId": "m_valery",
+          "points": 36.0,
+          "logo": "assets/crests/royal_vanguard.svg"
+        },
+        {
+          "rank": 10,
+          "teamName": "Kiwi Football Club",
+          "coach": "tazio",
+          "managerId": "m_tazio",
+          "points": 32.0,
+          "logo": "assets/crests/solaris_sc.svg"
         }
       ]
     },
     {
-      "id": 778214,
-      "name": "Supercoppa InsalAtlas",
+      "id": 438839,
+      "name": "Supercoppa Mantrica",
       "season": "2023/24",
       "category": "Supercoppa",
       "ranking": [
         {
           "rank": 1,
-          "teamName": "StevenBradburyFC",
-          "coach": "alfius91",
-          "managerId": "m_alfo",
+          "teamName": "Cardinthians",
+          "coach": "Luca",
+          "managerId": "m_luca",
           "points": 0.0,
-          "logo": "assets/teams/2545500_09340839.png"
+          "logo": "assets/crests/aegis_sentinel.svg"
         },
         {
           "rank": 2,
-          "teamName": "Arcore1936",
-          "coach": "Sebbadavid",
-          "managerId": "m_sebba",
+          "teamName": "Pagano Meret-rici",
+          "coach": "Mauro TTC",
+          "managerId": "m_mauro_ttc",
           "points": 0.0,
-          "logo": "assets/crests/cobra_strike.svg"
+          "logo": "assets/crests/starlight_rovers.svg"
         }
       ]
     },
     {
-      "id": 147878,
-      "name": "Mundialito",
+      "id": 438838,
+      "name": "Coppa Mantrica - Final Fo",
       "season": "2023/24",
-      "category": "Mundialito",
+      "category": "Coppa",
       "ranking": [
         {
           "rank": 1,
-          "teamName": "Steven Bradbury FC",
-          "coach": "alfius91",
-          "managerId": "m_alfo",
+          "teamName": "Vrace FRC",
+          "coach": "Gizza",
+          "managerId": "m_gizza",
           "points": 0.0,
-          "logo": "assets/teams/2545500_09340839.png"
+          "logo": "assets/crests/ironclad_athletic.svg"
         },
         {
           "rank": 2,
-          "teamName": "A S CorradiAndBosuTeam",
-          "coach": "vannico",
-          "managerId": "m_vannico",
+          "teamName": "Pagano Meret-rici",
+          "coach": "Mauro TTC",
+          "managerId": "m_mauro_ttc",
           "points": 0.0,
-          "logo": "assets/teams/2546265_001315361.png"
-        }
-      ]
-    },
-    {
-      "id": 147875,
-      "name": "Coppa dei Perdenti",
-      "season": "2023/24",
-      "category": "Perdenti",
-      "ranking": [
-        {
-          "rank": 1,
-          "teamName": "CarloMonte FC",
-          "coach": "Dr cholo",
-          "managerId": "m_gigicholo",
-          "points": 0.0,
-          "logo": "assets/teams/6150431_05008029.png"
+          "logo": "assets/crests/starlight_rovers.svg"
         }
       ]
     }

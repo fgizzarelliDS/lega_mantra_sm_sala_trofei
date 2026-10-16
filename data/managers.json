@@ -1,27 +1,17 @@
 [
   {
-    "id": "m_vannico",
-    "name": "Vannico",
-    "cartonato_coaches": []
-  },
-  {
-    "id": "m_lucchetto",
-    "name": "Lucchetto",
-    "cartonato_coaches": []
-  },
-  {
-    "id": "m_alfo",
-    "name": "Alfo",
+    "id": "m_gizza",
+    "name": "Gizza",
     "cartonato_coaches": []
   },
   {
     "id": "m_peterdani",
-    "name": "Peter&Dani",
+    "name": "PeterDani & Daniele",
     "cartonato_coaches": []
   },
   {
-    "id": "m_makako",
-    "name": "Makako",
+    "id": "m_mf",
+    "name": "MF",
     "cartonato_coaches": []
   },
   {
@@ -30,82 +20,43 @@
     "cartonato_coaches": []
   },
   {
-    "id": "m_sebba",
-    "name": "Sebba",
+    "id": "m_luca",
+    "name": "Luca",
     "cartonato_coaches": []
   },
   {
-    "id": "m_gigicholo",
-    "name": "Gigi&Dr.Cholo",
-    "cartonato_coaches": [
-      "???",
-      "MAZZARRI"
-    ]
-  },
-  {
-    "id": "m_pippo",
-    "name": "Pippo",
-    "cartonato_coaches": [
-      "JURIC"
-    ]
-  },
-  {
-    "id": "m_compagno",
-    "name": "Compagno",
+    "id": "m_lucchetto",
+    "name": "Lucchetto",
     "cartonato_coaches": []
   },
   {
-    "id": "m_scurcio",
-    "name": "Scurcio",
+    "id": "m_ale",
+    "name": "Ale",
     "cartonato_coaches": []
   },
   {
-    "id": "m_avvisatina",
-    "name": "Avvisatina",
+    "id": "m_simone",
+    "name": "simone",
     "cartonato_coaches": []
   },
   {
     "id": "m_tazio",
-    "name": "Tazio",
-    "cartonato_coaches": [
-      "JURIC"
-    ]
-  },
-  {
-    "id": "m_gizzagustacito",
-    "name": "Gizza&Gustacito",
+    "name": "tazio",
     "cartonato_coaches": []
   },
   {
-    "id": "m_vannicosebbi",
-    "name": "Vannico&Sebbi",
-    "cartonato_coaches": [
-      "VENTURA"
-    ]
-  },
-  {
-    "id": "m_makakocompagno",
-    "name": "Makako&Compagno",
+    "id": "m_vale",
+    "name": "Vale",
     "cartonato_coaches": []
   },
   {
-    "id": "m_matteone",
-    "name": "Matteone",
+    "id": "m_claudio",
+    "name": "Claudio",
     "cartonato_coaches": []
   },
   {
-    "id": "m_erboro",
-    "name": "ErBoro",
-    "cartonato_coaches": []
-  },
-  {
-    "id": "m_zatte",
-    "name": "Zatte",
-    "cartonato_coaches": []
-  },
-  {
-    "id": "m_makakoleone",
-    "name": "Makako&Leone",
+    "id": "m_mauro_ttc",
+    "name": "Mauro TTC",
     "cartonato_coaches": []
   }
 ]
