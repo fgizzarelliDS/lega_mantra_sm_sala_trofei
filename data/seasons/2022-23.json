@@ -21,7 +21,7 @@
           "coach": "Ale",
           "managerId": "m_ale",
           "points": 44.0,
-          "logo": "assets/crests/ironclad_athletic.svg"
+          "logo": "assets/teams/9037916_08809669.png"
         },
         {
           "rank": 3,
@@ -29,7 +29,7 @@
           "coach": "Lucchetto",
           "managerId": "m_lucchetto",
           "points": 39.0,
-          "logo": "assets/crests/solaris_sc.svg"
+          "logo": "assets/teams/8957083_0002198815.png"
         },
         {
           "rank": 4,
@@ -37,7 +37,7 @@
           "coach": "Gizza",
           "managerId": "m_gizza",
           "points": 38.0,
-          "logo": "assets/crests/ironclad_athletic.svg"
+          "logo": "assets/teams/9081967_07405356.png"
         },
         {
           "rank": 5,
@@ -45,7 +45,7 @@
           "coach": "PeterDani",
           "managerId": "m_peterdani",
           "points": 37.0,
-          "logo": "assets/crests/phoenix_rising.svg"
+          "logo": "assets/teams/8956599_07984889.png"
         },
         {
           "rank": 6,
@@ -61,15 +61,15 @@
           "coach": "Mauro TTC",
           "managerId": "m_mauro_ttc",
           "points": 30.0,
-          "logo": "assets/crests/starlight_rovers.svg"
+          "logo": "assets/teams/9582900_06805621.png"
         },
         {
           "rank": 8,
           "teamName": "Atletico Bagnolet 42",
-          "coach": "simone",
+          "coach": "Carota",
           "managerId": "m_simone",
           "points": 21.0,
-          "logo": "assets/crests/cobra_strike.svg"
+          "logo": "assets/teams/8957094_004079837.png"
         }
       ]
     },
@@ -85,7 +85,7 @@
           "coach": "Lucchetto",
           "managerId": "m_lucchetto",
           "points": 0.0,
-          "logo": "assets/crests/solaris_sc.svg"
+          "logo": "assets/teams/8957083_0002198815.png"
         },
         {
           "rank": 2,
@@ -93,7 +93,7 @@
           "coach": "PeterDani",
           "managerId": "m_peterdani",
           "points": 0.0,
-          "logo": "assets/crests/phoenix_rising.svg"
+          "logo": "assets/teams/8956599_07984889.png"
         }
       ]
     },
@@ -109,7 +109,7 @@
           "coach": "PeterDani",
           "managerId": "m_peterdani",
           "points": 0.0,
-          "logo": "assets/crests/phoenix_rising.svg"
+          "logo": "assets/teams/8956599_07984889.png"
         },
         {
           "rank": 2,

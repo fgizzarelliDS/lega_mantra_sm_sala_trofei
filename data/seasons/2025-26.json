@@ -13,7 +13,7 @@
           "coach": "Gizza",
           "managerId": "m_gizza",
           "points": 0.0,
-          "logo": "assets/crests/ironclad_athletic.svg"
+          "logo": "assets/teams/9081967_07405356.png"
         },
         {
           "rank": 2,
@@ -34,10 +34,10 @@
         {
           "rank": 1,
           "teamName": "Grassotthers",
-          "coach": "PeterDani & Daniele",
+          "coach": "PeterDani",
           "managerId": "m_peterdani",
           "points": 0.0,
-          "logo": "assets/crests/phoenix_rising.svg"
+          "logo": "assets/teams/8956599_07229128.png"
         },
         {
           "rank": 2,
@@ -58,10 +58,10 @@
         {
           "rank": 1,
           "teamName": "Grassotthers",
-          "coach": "PeterDani & Daniele",
+          "coach": "PeterDani",
           "managerId": "m_peterdani",
           "points": 46.0,
-          "logo": "assets/crests/phoenix_rising.svg"
+          "logo": "assets/teams/8956599_07229128.png"
         },
         {
           "rank": 2,
@@ -69,12 +69,12 @@
           "coach": "Gizza",
           "managerId": "m_gizza",
           "points": 46.0,
-          "logo": "assets/crests/ironclad_athletic.svg"
+          "logo": "assets/teams/9081967_07405356.png"
         },
         {
           "rank": 3,
           "teamName": "Villereal juif",
-          "coach": "simone",
+          "coach": "Carota",
           "managerId": "m_simone",
           "points": 41.0,
           "logo": "assets/crests/royal_vanguard.svg"
@@ -85,7 +85,7 @@
           "coach": "Valery",
           "managerId": "m_valery",
           "points": 38.0,
-          "logo": "assets/crests/royal_vanguard.svg"
+          "logo": "assets/teams/10945839_08045816.png"
         },
         {
           "rank": 5,
@@ -93,7 +93,7 @@
           "coach": "tazio",
           "managerId": "m_tazio",
           "points": 37.0,
-          "logo": "assets/crests/solaris_sc.svg"
+          "logo": "assets/teams/9435540_08112345.png"
         },
         {
           "rank": 6,
@@ -109,7 +109,7 @@
           "coach": "Lucchetto",
           "managerId": "m_lucchetto",
           "points": 36.0,
-          "logo": "assets/crests/royal_vanguard.svg"
+          "logo": "assets/teams/8957083_03150402.png"
         },
         {
           "rank": 8,
@@ -117,7 +117,7 @@
           "coach": "Luca",
           "managerId": "m_luca",
           "points": 35.0,
-          "logo": "assets/crests/aegis_sentinel.svg"
+          "logo": "assets/teams/10713886_04772701.png"
         },
         {
           "rank": 9,

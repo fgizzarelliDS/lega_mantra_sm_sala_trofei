@@ -19,9 +19,10 @@ describe('All-Time League Records Engine', () => {
       expect(getSeasonMatchdays('2017/18', 8)).toBe(35);
     });
 
-    it('returns 36 matchdays (4 rounds) for 10-team seasons', () => {
+    it('returns 36 matchdays (4 rounds) for 10-team seasons and 27 for 2025/26', () => {
       expect(getSeasonMatchdays('2018/19', 10)).toBe(36);
       expect(getSeasonMatchdays('2019/20', 10)).toBe(36);
+      expect(getSeasonMatchdays('2025/26', 10)).toBe(27);
     });
 
     it('returns 33 matchdays (3 rounds) for 12-team seasons', () => {
@@ -64,9 +65,10 @@ describe('All-Time League Records Engine', () => {
       const records = computeAllLeagueRecords(managers, competitions);
       const lowScudetto = records.find(r => r.id === 'lowest_points_champion');
       expect(lowScudetto).toBeDefined();
-      expect(lowScudetto!.primaryHolder.managerName).toBe('PeterDani & Daniele');
+      expect(lowScudetto!.primaryHolder.managerName).toBe('PeterDani');
       expect(lowScudetto!.primaryHolder.value).toBe(46.0);
       expect(lowScudetto!.primaryHolder.season).toBe('2025/26');
+      expect(lowScudetto!.primaryHolder.normalizedDetail).toBe('1.70 pt/g · 27 giornate');
     });
 
     it('identifies tazio as highest points wooden spoon (32.0 pt in 2023/24)', () => {
@@ -160,9 +162,27 @@ describe('All-Time League Records Engine', () => {
       expect(droughtRec!.primaryHolders[0].value).toBe(4);
     });
 
-    it('computes official league records across active categories', () => {
+    it('computes official league records across active categories (including debutant records)', () => {
       const records = computeAllLeagueRecords(managers, competitions);
       expect(records.length).toBeGreaterThanOrEqual(20);
+
+      const ppgRec = records.find(r => r.id === 'debut_best_ppg');
+      if (ppgRec) {
+        expect(ppgRec.category).toBe('points');
+        expect(ppgRec.primaryHolder).toBeDefined();
+      }
+
+      const rankRec = records.find(r => r.id === 'debut_best_rank');
+      if (rankRec) {
+        expect(rankRec.category).toBe('titles');
+        expect(rankRec.primaryHolder).toBeDefined();
+      }
+
+      const disasterRec = records.find(r => r.id === 'debut_disaster');
+      if (disasterRec) {
+        expect(disasterRec.category).toBe('banter');
+        expect(disasterRec.primaryHolder).toBeDefined();
+      }
     });
 
     it('resolves pertinent crests and team names for both single-season and career records', async () => {
@@ -194,11 +214,11 @@ describe('All-Time League Records Engine', () => {
       expect(cupsRec!.watermark).toBe('🏆');
     });
 
-    it('identifies tazio as worst career PPG', () => {
+    it('identifies Ale as worst career PPG', () => {
       const records = computeAllLeagueRecords(managers, competitions);
       const worstPpgRec = records.find(r => r.id === 'career_worst_ppg');
       expect(worstPpgRec).toBeDefined();
-      expect(worstPpgRec!.primaryHolder.managerName).toBe('tazio');
+      expect(worstPpgRec!.primaryHolder.managerName).toBe('Ale');
       expect(worstPpgRec!.watermark).toBe('📉');
     });
 

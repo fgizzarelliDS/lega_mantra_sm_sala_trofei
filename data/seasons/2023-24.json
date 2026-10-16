@@ -13,7 +13,7 @@
           "coach": "Gizza",
           "managerId": "m_gizza",
           "points": 69.0,
-          "logo": "assets/crests/ironclad_athletic.svg"
+          "logo": "assets/teams/9081967_07405356.png"
         },
         {
           "rank": 2,
@@ -21,7 +21,7 @@
           "coach": "Luca",
           "managerId": "m_luca",
           "points": 64.0,
-          "logo": "assets/crests/aegis_sentinel.svg"
+          "logo": "assets/teams/10713886_03993221.png"
         },
         {
           "rank": 3,
@@ -29,7 +29,7 @@
           "coach": "Lucchetto",
           "managerId": "m_lucchetto",
           "points": 60.0,
-          "logo": "assets/crests/royal_vanguard.svg"
+          "logo": "assets/teams/8957083_03154985.png"
         },
         {
           "rank": 4,
@@ -37,7 +37,7 @@
           "coach": "PeterDani",
           "managerId": "m_peterdani",
           "points": 50.0,
-          "logo": "assets/crests/phoenix_rising.svg"
+          "logo": "assets/teams/8956599_01898654.png"
         },
         {
           "rank": 5,
@@ -45,7 +45,7 @@
           "coach": "Mauro TTC",
           "managerId": "m_mauro_ttc",
           "points": 49.0,
-          "logo": "assets/crests/starlight_rovers.svg"
+          "logo": "assets/teams/9582900_03171031.png"
         },
         {
           "rank": 6,
@@ -58,10 +58,10 @@
         {
           "rank": 7,
           "teamName": "Atletico Bagnolet 42",
-          "coach": "simone",
+          "coach": "Carota",
           "managerId": "m_simone",
           "points": 42.0,
-          "logo": "assets/crests/cobra_strike.svg"
+          "logo": "assets/teams/8957094_05627445.png"
         },
         {
           "rank": 8,
@@ -69,7 +69,7 @@
           "coach": "Ale",
           "managerId": "m_ale",
           "points": 39.0,
-          "logo": "assets/crests/ironclad_athletic.svg"
+          "logo": "assets/teams/9037916_005261713.png"
         },
         {
           "rank": 9,
@@ -77,7 +77,7 @@
           "coach": "Valery",
           "managerId": "m_valery",
           "points": 36.0,
-          "logo": "assets/crests/royal_vanguard.svg"
+          "logo": "assets/teams/10945839_092068.png"
         },
         {
           "rank": 10,
@@ -101,7 +101,7 @@
           "coach": "Luca",
           "managerId": "m_luca",
           "points": 0.0,
-          "logo": "assets/crests/aegis_sentinel.svg"
+          "logo": "assets/teams/10713886_03993221.png"
         },
         {
           "rank": 2,
@@ -109,7 +109,7 @@
           "coach": "Mauro TTC",
           "managerId": "m_mauro_ttc",
           "points": 0.0,
-          "logo": "assets/crests/starlight_rovers.svg"
+          "logo": "assets/teams/9582900_03171031.png"
         }
       ]
     },
@@ -125,7 +125,7 @@
           "coach": "Gizza",
           "managerId": "m_gizza",
           "points": 0.0,
-          "logo": "assets/crests/ironclad_athletic.svg"
+          "logo": "assets/teams/9081967_07405356.png"
         },
         {
           "rank": 2,
@@ -133,7 +133,7 @@
           "coach": "Mauro TTC",
           "managerId": "m_mauro_ttc",
           "points": 0.0,
-          "logo": "assets/crests/starlight_rovers.svg"
+          "logo": "assets/teams/9582900_03171031.png"
         }
       ]
     }

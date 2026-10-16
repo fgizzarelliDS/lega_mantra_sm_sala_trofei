@@ -1,96 +1,12 @@
-import type { HeadToHeadStats } from '@/types';
-import { formatScore } from '@/score';
+import {
+  computeH2HAxes,
+  type H2HAxisData,
+  RADAR_CANONICAL_AXES,
+  type RadarAxisMetadata
+} from '@/analytics/radarAxes';
 
-export interface H2HAxisData {
-  key: string;
-  label: string;
-  shortTitle: string;
-  acronym: string;
-  valA: number; // 0..100
-  valB: number; // 0..100
-  rawA: string;
-  rawB: string;
-}
-
-/**
- * Computes the 6 normalized axes for comparative visualization
- */
-export function computeH2HAxes(stats: HeadToHeadStats, maxLeagueScore = 40): H2HAxisData[] {
-  const { metricsA, metricsB } = stats;
-
-  const benchmarkScore = Math.max(metricsA.score, metricsB.score, maxLeagueScore, 10);
-  const prestigeValA = Math.min(100, Math.max(0, Math.round((metricsA.score / benchmarkScore) * 100)));
-  const prestigeValB = Math.min(100, Math.max(0, Math.round((metricsB.score / benchmarkScore) * 100)));
-
-  const stabilityValA = Math.min(100, Math.max(0, Math.round(Math.max(0, 100 - metricsA.stdDevRank * 18))));
-  const stabilityValB = Math.min(100, Math.max(0, Math.round(Math.max(0, 100 - metricsB.stdDevRank * 18))));
-
-  const ntiValA = Math.min(100, Math.max(0, Math.round(50 + metricsA.nti * 50)));
-  const ntiValB = Math.min(100, Math.max(0, Math.round(50 + metricsB.nti * 50)));
-
-  return [
-    {
-      key: 'prestige',
-      label: 'Prestigio',
-      shortTitle: 'PRESTIGIO',
-      acronym: 'PT',
-      valA: prestigeValA,
-      valB: prestigeValB,
-      rawA: `${formatScore(metricsA.score)} PT`,
-      rawB: `${formatScore(metricsB.score)} PT`
-    },
-    {
-      key: 'gci',
-      label: 'Freddezza (GCI)',
-      shortTitle: 'FREDDEZZA',
-      acronym: 'GCI',
-      valA: Math.min(100, Math.max(0, Math.round(metricsA.gci))),
-      valB: Math.min(100, Math.max(0, Math.round(metricsB.gci))),
-      rawA: `${metricsA.clutchLabel} (${Math.round(metricsA.gci)})`,
-      rawB: `${metricsB.clutchLabel} (${Math.round(metricsB.gci)})`
-    },
-    {
-      key: 'ki',
-      label: 'Killer Instinct',
-      shortTitle: 'KILLER INST.',
-      acronym: 'KI',
-      valA: Math.min(100, Math.max(0, Math.round(metricsA.kiPct))),
-      valB: Math.min(100, Math.max(0, Math.round(metricsB.kiPct))),
-      rawA: `${metricsA.kiPct}%`,
-      rawB: `${metricsB.kiPct}%`
-    },
-    {
-      key: 'cr',
-      label: 'Conversione Coppe',
-      shortTitle: 'CONV. COPPE',
-      acronym: 'FINALI',
-      valA: Math.min(100, Math.max(0, Math.round(metricsA.crPct))),
-      valB: Math.min(100, Math.max(0, Math.round(metricsB.crPct))),
-      rawA: `${metricsA.crPct}%`,
-      rawB: `${metricsB.crPct}%`
-    },
-    {
-      key: 'stability',
-      label: 'Stabilità Classifica',
-      shortTitle: 'STABILITÀ',
-      acronym: 'RANK',
-      valA: stabilityValA,
-      valB: stabilityValB,
-      rawA: `${metricsA.stabilityCategory}`,
-      rawB: `${metricsB.stabilityCategory}`
-    },
-    {
-      key: 'nti',
-      label: 'Sicurezza (Anti-Baratro)',
-      shortTitle: 'RISCHIO CODA',
-      acronym: 'NTI',
-      valA: ntiValA,
-      valB: ntiValB,
-      rawA: `${metricsA.polarityLabel}`,
-      rawB: `${metricsB.polarityLabel}`
-    }
-  ];
-}
+export { computeH2HAxes, RADAR_CANONICAL_AXES };
+export type { H2HAxisData, RadarAxisMetadata };
 
 /**
  * Mapping of axis keys to multi-line label configurations to prevent text clipping
@@ -110,13 +26,15 @@ const AXIS_LABEL_LINES: Record<string, [string, string?]> = {
 export function renderH2HRadarSVG(
   axes: H2HAxisData[],
   nameA: string,
-  nameB: string
+  nameB: string,
+  width = 400,
+  height = 340
 ): string {
-  const width = 376;
-  const height = 290;
+  const isStory = width >= 700;
+  const isLarge = width >= 500;
   const cx = width / 2;
-  const cy = height / 2 + 5;
-  const rMax = 82;
+  const cy = height / 2 + (isStory ? 10 : isLarge ? 8 : 4);
+  const rMax = Math.round(Math.min(width, height) * (isStory ? 0.38 : 0.37));
   const count = axes.length;
 
   // Compute angle for each axis (0 is top)
@@ -153,8 +71,8 @@ export function renderH2HRadarSVG(
       const markerY = cy - rMax * lvl;
       return `
         <text x="${(cx + 4).toFixed(1)}" y="${(markerY + 3).toFixed(1)}"
-              text-anchor="start" fill="currentColor" opacity="0.45"
-              font-size="7.5" font-weight="700">
+              text-anchor="start" fill="currentColor" opacity="0.55"
+              font-size="${isStory ? '13' : isLarge ? '10' : '8.5'}" font-weight="700">
           ${Math.round(lvl * 100)}%
         </text>
       `;
@@ -165,7 +83,7 @@ export function renderH2HRadarSVG(
   const labels = axes
     .map((axis, i) => {
       const angle = getAngle(i);
-      const rLabel = rMax + 20;
+      const rLabel = rMax + (isStory ? 38 : isLarge ? 32 : 22);
       const x = cx + rLabel * Math.cos(angle);
       const y = cy + rLabel * Math.sin(angle);
 
@@ -177,6 +95,7 @@ export function renderH2HRadarSVG(
       else if (cos < -0.35) textAnchor = 'end';
 
       const lines = AXIS_LABEL_LINES[axis.key] || [axis.label];
+      const fontSize = isStory ? '18' : isLarge ? '13.5' : '11.5';
 
       if (lines.length === 1) {
         let dominantBaseline = 'middle';
@@ -186,21 +105,21 @@ export function renderH2HRadarSVG(
         return `
           <text x="${x.toFixed(1)}" y="${y.toFixed(1)}"
                 text-anchor="${textAnchor}" dominant-baseline="${dominantBaseline}"
-                fill="currentColor" font-size="9" font-weight="700" opacity="0.9">
+                fill="currentColor" font-size="${fontSize}" font-weight="800" opacity="0.95">
             ${lines[0]}
           </text>
         `;
       }
 
       // 2-line rendering with baseline adjustment
-      let yStart = y - 5;
-      if (sin < -0.4) yStart = y - 7;
+      let yStart = y - (isStory ? 10 : isLarge ? 7 : 5);
+      if (sin < -0.4) yStart = y - (isStory ? 14 : isLarge ? 10 : 7);
       else if (sin > 0.4) yStart = y;
 
       return `
         <text x="${x.toFixed(1)}" y="${yStart.toFixed(1)}"
               text-anchor="${textAnchor}"
-              fill="currentColor" font-size="9" font-weight="700" opacity="0.9">
+              fill="currentColor" font-size="${fontSize}" font-weight="800" opacity="0.95">
           <tspan x="${x.toFixed(1)}" dy="0">${lines[0]}</tspan>
           <tspan x="${x.toFixed(1)}" dy="1.15em">${lines[1]}</tspan>
         </text>
@@ -232,33 +151,40 @@ export function renderH2HRadarSVG(
   });
   const pointsB = coordsB.map(p => `${p.x.toFixed(1)},${p.y.toFixed(1)}`).join(' ');
 
+  const dotRadius = isStory ? '5.5' : isLarge ? '4.5' : '3.8';
+  const strokeWidth = isStory ? '3.5' : isLarge ? '2.8' : '2.2';
+
   // Circles on vertices
   const dotsA = coordsA
     .map(
-      p => `<circle cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="3" fill="var(--h2h-contender-a, #be123c)" stroke="#ffffff" stroke-width="1.2" style="fill: var(--h2h-contender-a, #be123c);" />`
+      p => `<circle cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="${dotRadius}" fill="var(--h2h-contender-a, #be123c)" stroke="#ffffff" stroke-width="1.3" style="fill: var(--h2h-contender-a, #be123c);" />`
     )
     .join('');
 
   const dotsB = coordsB
     .map(
-      p => `<circle cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="3" fill="var(--h2h-contender-b, #0284c7)" stroke="#ffffff" stroke-width="1.2" style="fill: var(--h2h-contender-b, #0284c7);" />`
+      p => `<circle cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="${dotRadius}" fill="var(--h2h-contender-b, #0284c7)" stroke="#ffffff" stroke-width="1.3" style="fill: var(--h2h-contender-b, #0284c7);" />`
     )
     .join('');
 
+  const containerMaxWidth = isStory ? 'max-w-[860px]' : isLarge ? 'max-w-[620px]' : 'max-w-[440px]';
+
   return `
-    <div class="flex flex-col items-center">
-      <svg viewBox="0 0 ${width} ${height}" class="w-full max-w-[360px] h-auto overflow-visible text-[var(--text-main)] select-none">
+    <div class="w-full flex flex-col items-center">
+      <svg width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" class="w-full ${containerMaxWidth} h-auto overflow-visible text-[var(--text-main)] select-none" style="width: 100%; max-width: ${isStory ? `${width}px` : isLarge ? '620px' : '440px'}; height: auto; color: var(--text-main, #f8fafc);">
         <!-- Background Grid -->
         ${gridPolygons}
         ${spokes}
         ${scaleMarkers}
 
         <!-- Manager B Polygon -->
-        <polygon points="${pointsB}" fill="var(--h2h-contender-b, #0284c7)" fill-opacity="0.28" stroke="var(--h2h-contender-b, #0284c7)" stroke-width="2" style="fill: var(--h2h-contender-b, #0284c7); stroke: var(--h2h-contender-b, #0284c7);" />
+        ${nameB ? `
+        <polygon points="${pointsB}" fill="var(--h2h-contender-b, #0284c7)" fill-opacity="0.28" stroke="var(--h2h-contender-b, #0284c7)" stroke-width="${strokeWidth}" style="fill: var(--h2h-contender-b, #0284c7); stroke: var(--h2h-contender-b, #0284c7);" />
         ${dotsB}
+        ` : ''}
 
         <!-- Manager A Polygon -->
-        <polygon points="${pointsA}" fill="var(--h2h-contender-a, #be123c)" fill-opacity="0.28" stroke="var(--h2h-contender-a, #be123c)" stroke-width="2" style="fill: var(--h2h-contender-a, #be123c); stroke: var(--h2h-contender-a, #be123c);" />
+        <polygon points="${pointsA}" fill="var(--h2h-contender-a, #be123c)" fill-opacity="0.28" stroke="var(--h2h-contender-a, #be123c)" stroke-width="${strokeWidth}" style="fill: var(--h2h-contender-a, #be123c); stroke: var(--h2h-contender-a, #be123c);" />
         ${dotsA}
 
         <!-- Axis Labels -->
@@ -271,10 +197,12 @@ export function renderH2HRadarSVG(
           <span class="w-2.5 h-2.5 rounded-full inline-block" style="background-color: var(--h2h-contender-a);"></span>
           ${nameA}
         </span>
+        ${nameB ? `
         <span class="flex items-center gap-1.5" style="color: var(--h2h-contender-b);">
           <span class="w-2.5 h-2.5 rounded-full inline-block" style="background-color: var(--h2h-contender-b);"></span>
           ${nameB}
         </span>
+        ` : ''}
       </div>
 
       <!-- Radar Scale Note -->

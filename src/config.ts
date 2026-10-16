@@ -13,7 +13,7 @@ export const LEAGUE: LeagueProfile = {
   siteUrl: 'https://fgizzarellids.github.io/lega_mantra_sm_sala_trofei/',
   filePrefix: 'se55o_mantrico',
   storagePrefix: 'se55o_mantrico',
-  defaultTheme: 'gazzetta',
+  defaultTheme: 'gala',
   features: {
     spoon: true,
     cup: true,

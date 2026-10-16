@@ -8,7 +8,8 @@ describe('League Database Integrity (Se55o Mantrico)', () => {
     expect(dataJson.leagueData.length).toBe(12);
 
     expect(Array.isArray(dataJson.competitions)).toBe(true);
-    expect(dataJson.competitions.length).toBe(12);
+    expect(dataJson.competitions.length).toBe(15);
+    expect(dataJson.competitions.filter((c: { in_progress?: boolean }) => !c.in_progress).length).toBe(12);
   });
 
   it('ensures all managers have 100% consistency between top-level trophies and history achievements', () => {
@@ -37,15 +38,16 @@ describe('League Database Integrity (Se55o Mantrico)', () => {
     });
   });
 
-  it('ensures Gizza has strictly 1 Scudetto, 2 Coppe di Lega, 1 Supercoppa, and 4 completed seasons', () => {
+  it('ensures Gizza has strictly 1 Scudetto, 2 Coppe di Lega, 1 Supercoppa, and 4 completed seasons (5 total)', () => {
     const gizza = dataJson.leagueData.find((m: { id: string }) => m.id === 'm_gizza');
     expect(gizza).toBeDefined();
     expect(gizza?.gold).toBe(1);
     expect(gizza?.silver).toBe(1);
     expect(gizza?.cup_gold).toBe(2);
     expect(gizza?.supercup).toBe(1);
-    expect(gizza?.years).toBe(4);
-    expect(gizza?.history.length).toBe(4);
+    expect(gizza?.years).toBe(5);
+    expect(gizza?.history.length).toBe(5);
+    expect(gizza?.history.filter((s: { in_progress?: boolean }) => !s.in_progress).length).toBe(4);
 
     // Verify season 2023/24 championship gold
     const s2324 = gizza?.history.find((s: { season: string }) => s.season === '2023/24');
@@ -54,32 +56,36 @@ describe('League Database Integrity (Se55o Mantrico)', () => {
     expect(s2324?.points).toBe(69.0);
   });
 
-  it('ensures PeterDani & Daniele has 1 Scudetto, 2 Coppe di Lega, 1 Supercoppa across 4 completed seasons', () => {
+  it('ensures PeterDani has 1 Scudetto, 2 Coppe di Lega, 1 Supercoppa across 4 completed seasons (5 total)', () => {
     const peterdani = dataJson.leagueData.find((m: { id: string }) => m.id === 'm_peterdani');
     expect(peterdani).toBeDefined();
+    expect(peterdani?.name).toBe('PeterDani');
     expect(peterdani?.gold).toBe(1);
     expect(peterdani?.cup_gold).toBe(2);
     expect(peterdani?.supercup).toBe(1);
-    expect(peterdani?.years).toBe(4);
-    expect(peterdani?.history.length).toBe(4);
+    expect(peterdani?.years).toBe(5);
+    expect(peterdani?.history.length).toBe(5);
+    expect(peterdani?.history.filter((s: { in_progress?: boolean }) => !s.in_progress).length).toBe(4);
   });
 
-  it('ensures MF has 1 Scudetto and 1 Supercoppa silver from inaugural 2022/23 season', () => {
+  it('ensures MF has 1 Scudetto and 1 Supercoppa silver from inaugural 2022/23 season across 5 total seasons', () => {
     const mf = dataJson.leagueData.find((m: { id: string }) => m.id === 'm_mf');
     expect(mf).toBeDefined();
     expect(mf?.gold).toBe(1);
     expect(mf?.supercup_silver).toBe(1);
-    expect(mf?.years).toBe(4);
+    expect(mf?.years).toBe(5);
+    expect(mf?.history.filter((s: { in_progress?: boolean }) => !s.in_progress).length).toBe(4);
     const s2223 = mf?.history.find((s: { season: string }) => s.season === '2022/23');
     expect(s2223?.rank).toBe(1);
     expect(s2223?.points).toBe(65.0);
   });
 
-  it('ensures Valery has 1 Scudetto across 3 completed seasons', () => {
+  it('ensures Valery has 1 Scudetto across 3 completed seasons (4 total)', () => {
     const valery = dataJson.leagueData.find((m: { id: string }) => m.id === 'm_valery');
     expect(valery).toBeDefined();
     expect(valery?.gold).toBe(1);
-    expect(valery?.years).toBe(3);
+    expect(valery?.years).toBe(4);
+    expect(valery?.history.filter((s: { in_progress?: boolean }) => !s.in_progress).length).toBe(3);
   });
 
   it('ensures all 4 wooden spoons are correctly distributed across historical seasons', () => {
