@@ -11,6 +11,7 @@ import {
   resetDefaultTitles,
   resetOfficialData
 } from '@/storage';
+import { state } from '@/state';
 import {
   openProfileModal,
   closeProfileModal,
@@ -353,6 +354,11 @@ export async function initApp(): Promise<void> {
   initModalMounts();
   initModalListeners();
   initResponsiveDisplayMode();
+  document.body.className = `theme-${state.currentTheme} antialiased selection:bg-amber-500 selection:text-white min-h-screen pb-16`;
+  const themeSelect = document.getElementById('theme-select') as HTMLSelectElement | null;
+  if (themeSelect) {
+    themeSelect.value = state.currentTheme;
+  }
   await loadLeagueData();
   applyTitlesToDOM();
   renderBoard();

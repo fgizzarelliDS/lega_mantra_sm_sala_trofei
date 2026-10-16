@@ -1,6 +1,6 @@
 import { ThemeKey, TitlesConfig } from '@/types';
 import { state } from '@/state';
-import { verifyAdminPassword } from '@/config';
+import { verifyAdminPassword, LEAGUE } from '@/config';
 import { saveTitles } from '@/storage';
 import { renderBoard } from '@/main';
 
@@ -11,6 +11,10 @@ import { renderBoard } from '@/main';
 export function changeTheme(theme: ThemeKey): void {
   state.currentTheme = theme;
   document.body.className = `theme-${theme} antialiased selection:bg-amber-500 selection:text-white min-h-screen pb-16`;
+  const select = document.getElementById('theme-select') as HTMLSelectElement | null;
+  if (select && select.value !== theme) {
+    select.value = theme;
+  }
   renderBoard();
   showToast(`Palette impostata su: ${theme.toUpperCase()}`, 'info');
 }
@@ -189,11 +193,35 @@ export function applyTitlesToDOM(titles: TitlesConfig = state.titles): void {
     'th-col-4': titles.col4,
     'th-col-5': titles.col5,
     'th-col-6': titles.col6,
-    'th-col-7': titles.col7
+    'th-col-7': titles.col7,
+    'legend-cup-title': titles.col3 ? `🏆 ${titles.col3}` : undefined,
+    'legend-supercup-title': titles.col4 ? `⭐ ${titles.col4}` : undefined,
+    'legend-spoon-title': titles.col6 ? `🥄 ${titles.col6}` : undefined
   };
 
   for (const [id, val] of Object.entries(map)) {
     const el = document.getElementById(id);
     if (el && val !== undefined) el.textContent = val;
   }
+
+  applyFeatureFlagsToDOM();
+}
+
+/**
+ * Dynamically toggles visibility of feature-flagged DOM elements based on LEAGUE.features
+ */
+export function applyFeatureFlagsToDOM(): void {
+  if (typeof document === 'undefined' || typeof document.querySelectorAll !== 'function') {
+    return;
+  }
+  document.querySelectorAll<HTMLElement>('[data-feature]').forEach(el => {
+    const feat = el.dataset?.feature as keyof typeof LEAGUE.features;
+    if (feat && feat in LEAGUE.features) {
+      const isEnabled = LEAGUE.features[feat];
+      el.style.display = isEnabled ? '' : 'none';
+      if (el instanceof HTMLOptionElement) {
+        el.hidden = !isEnabled;
+      }
+    }
+  });
 }
