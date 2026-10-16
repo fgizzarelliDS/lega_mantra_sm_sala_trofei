@@ -1,63 +1,92 @@
-# InsalAtlas • Sala Trofei & Analytics Hub
+# Se55o Mantrico • Sala Trofei & Analytics Hub
 
-[![Deploy to GitHub Pages](https://github.com/fgizzarelliDS/insalatlas_sala_trofei/actions/workflows/deploy.yml/badge.svg)](https://github.com/fgizzarelliDS/insalatlas_sala_trofei/actions/workflows/deploy.yml)
-[![Continuous Integration](https://github.com/fgizzarelliDS/insalatlas_sala_trofei/actions/workflows/ci.yml/badge.svg)](https://github.com/fgizzarelliDS/insalatlas_sala_trofei/actions/workflows/ci.yml)
+[![Deploy to GitHub Pages](https://github.com/fgizzarelliDS/lega_mantra_sm_sala_trofei/actions/workflows/deploy.yml/badge.svg)](https://github.com/fgizzarelliDS/lega_mantra_sm_sala_trofei/actions/workflows/deploy.yml)
+[![Continuous Integration](https://github.com/fgizzarelliDS/lega_mantra_sm_sala_trofei/actions/workflows/ci.yml/badge.svg)](https://github.com/fgizzarelliDS/lega_mantra_sm_sala_trofei/actions/workflows/ci.yml)
 [![Version: 1.5.0](https://img.shields.io/badge/version-1.5.0-emerald.svg)](package.json)
 [![TypeScript Strict](https://img.shields.io/badge/TypeScript-5.x_Strict-blue.svg)](https://www.typescriptlang.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-> Albo d'oro interattivo, motore league-agnostic, analisi econometrica di competitività, dinamica storica, record all-time, H2H e schede manager per leghe Fantacalcio.
+> Albo d'oro interattivo, motore league-agnostic, analisi econometrica di competitività, dinamica storica, record all-time, H2H e schede manager per la lega Fantacalcio **Se55o Mantrico**.
 
 ---
 
 ## Panoramica
 
-**InsalAtlas Sala Trofei** evolve il classico albo d'oro statico in un hub storico e di analisi per leghe Fantacalcio.
+**Se55o Mantrico Sala Trofei** evolve il classico albo d'oro statico in un hub storico e analitico completo per la lega Fantacalcio Mantra **Se55o Mantrico** (fondata nella stagione 2022/23).
 
-L'applicazione offre un'interfaccia interattiva per desktop e mobile:
+L'applicazione offre un'interfaccia interattiva desktop e mobile ad alte prestazioni:
 
-- **Architettura League-Agnostic**: Configurazione centralizzata (`src/config.ts`), colonne del tabellone dinamiche con griglia CSS reattiva, isolamento multi-tenant in local storage e supporto chiavi in mano per leghe arbitrarie (cfr. `specs/13-second-league-setup-guide.md`).
-- **Albo d'Oro Storico Decennale**: Bacheca trofei consolidata, rating storico e schede manager ad alta risoluzione (HD) condivisibili.
-- **Bacheca Record Storici (Hall of Fame & Primati)**: 25 record certificati su 5 categorie storiche (Punti & Podi, Dominio & Coppe, Rivalità H2H, Strisce & Fedeltà, Disonori & Curiosità) con navigazione contestuale duale (scheda manager e archivio classifica di stagione), gestione ex-aequo ed export Poster HD all-in-one.
-- **Head-to-Head (H2H) & Nemesis Matrix**: Motore di confronto diretto 1vs1, grafici radar a 5 assi, barre duello con preservazione dello scroll, tabellino annate a 3 colonne ed esportazione ad alta definizione per WhatsApp.
-- **Archivio Stagioni & Classifiche**: Consultazione cronologica delle singole annate con classifiche ufficiali e finaliste delle coppe.
-- **Dinamica Storica & Cronologia (Tab 4)**: Analisi longitudinale delle carriere (piazzamento medio storico, fasce di rendimento a 4 livelli, baricentro e oscillazione) ed evoluzione dell'equilibrio competitivo stagionale (compattezza, step gap e verdetti chiave).
-- **Gestione Stagioni In Corso & Debuttanti**: Isolamento delle annate attive dalle valutazioni consolidate di carriera per non penalizzare l'efficienza dei veterani e gestione asintotica dei debuttanti.
-- **Vector Crest**: Catalogo di stemmi vettoriali ad alta definizione (`public/assets/crests/`) per rappresentare ogni squadra priva di logo personalizzato.
-- **Econometria & Rischio**: Motore di analisi competitiva basato su teoria economica e modellazione del rischio.
-- **Live Application**: [fgizzarellids.github.io/insalatlas_sala_trofei](https://fgizzarellids.github.io/insalatlas_sala_trofei/)
-- **Database Ufficiale**: `public/data.json`
+- **Architettura League-Agnostic**: Configurazione centralizzata (`src/config.ts`), colonne del tabellone reattive (layout a 5 colonne: Manager, Scudetto, Coppa di Lega, Supercoppa, Cucchiaio di Legno), isolamento multi-tenant in local storage.
+- **Albo d'Oro & Palmarès Storico**: 4 stagioni complete archiviate (2022/23 a 8 squadre, 2023/24 – 2025/26 a 10 squadre), 12 manager storici, rating calcolato e schede manager ad alta risoluzione (HD) condivisibili via WhatsApp.
+- **Bacheca Record Storici (Hall of Fame & Primati)**: 25 record all-time calcolati dinamicamente sulle 4 stagioni (Punti & Podi, Dominio & Coppe, Rivalità H2H, Strisce & Fedeltà, Disonori & Curiosità) con navigazione contestuale ed export Poster HD.
+- **Head-to-Head (H2H) & Nemesis Matrix**: Motore di confronto diretto 1vs1 tra tutti i manager, grafici radar pentagonali a 5 assi, barre duello con preservazione dello scroll, tabellino storico annate ed esportazione ad alta definizione.
+- **Archivio Stagioni & Classifiche**: Consultazione cronologica delle singole annate con classifiche complete, punteggi, podi e finaliste delle coppe.
+- **Dinamica Storica & Cronologia (Tab 4)**: Analisi longitudinale delle carriere (piazzamento medio storico, fasce di rendimento a 4 livelli, baricentro e oscillazione) ed evoluzione dell'equilibrio competitivo stagionale.
+- **Econometria & Teoria del Rischio**: Indici di disuguaglianza (Gini bivariato, HHI, Concentrazione Top-3, Entropia Relativa), cinismo dei podi (Killer Instinct, Finals Conversion Rate) e modellazione di coda (Bayesian Feast-or-Famine, Net Tail Index).
+- **Branding & Crest Dedicati**: Emblema araldico monogramma "SM" oro antico e catalogo stemmi vettoriali per ogni franchigia.
+- **Live Application**: [fgizzarellids.github.io/lega_mantra_sm_sala_trofei](https://fgizzarellids.github.io/lega_mantra_sm_sala_trofei/)
+- **Database Ufficiale**: `public/data.json` (compilato dai file sorgente in `data/`)
 
-![InsalAtlas Sala Trofei](public/preview.png)
+![Se55o Mantrico Sala Trofei](public/preview.png)
+
+---
+
+## Manutenzione & Sincronizzazione con l'Upstream
+
+Questo repository è una derivazione league-agnostic del motore **[InsalAtlas Sala Trofei](https://github.com/fgizzarelliDS/insalatlas_sala_trofei)** (upstream). 
+Tutte le migliorie al motore analitico, alle componenti UI, all'accessibilità e alle ottimizzazioni prestazionali possono essere importate in sicurezza senza sovrascrivere i dati e le configurazioni specifiche di Se55o Mantrico.
+
+### Architettura di Protezione (`merge=ours`)
+
+Il file [`.gitattributes`](.gitattributes) protegge i file proprietari di Se55o Mantrico assegnando loro il driver `merge=ours`:
+- `data/**` (database modulare stagioni, manager, titoli, alias)
+- `public/data.json` (database consolidato compilato)
+- `src/config.ts` (titolo lega, brand, colonne, pesi trofei)
+- `src/__tests__/league.integrity.test.ts` (test di integrità del database di Se55o Mantrico)
+- `index.html` (metatag OpenGraph, favicon e titolo finestra)
+- `README.md` (documentazione specifica della lega)
+
+> [!IMPORTANT]
+> **Configurazione One-Time del Driver Git:**
+> Affinché Git rispetti l'attributo `merge=ours` durante i comandi di merge, è necessario registrare il driver una volta nel proprio ambiente locale:
+> ```bash
+> git config merge.ours.driver true
+> ```
+
+### Procedura di Aggiornamento dall'Upstream
+
+Per sincronizzare il codice con le nuove feature dell'upstream:
+
+```bash
+# 1. Configura il remote upstream se non presente
+git remote add upstream https://github.com/fgizzarelliDS/insalatlas_sala_trofei.git
+
+# 2. Scarica le ultime modifiche dall'upstream
+git fetch upstream
+
+# 3. Unisci i miglioramenti del motore (i file in .gitattributes rimarranno intatti)
+git merge upstream/main
+
+# 4. Verifica validità schema e test suite
+npm run validate:data
+npm test
+npm run type-check
+npm run build
+
+# 5. Pubblica su GitHub Pages
+git push origin main
+```
 
 ---
 
 ## Documentazione Tecnica Modulare
 
-La documentazione del progetto è suddivisa in guide tematiche dedicate in [`docs/`](docs/):
+La documentazione approfondita del motore è consultabile in [`docs/`](docs/):
 
-### 1. [Architettura & Invarianti Tecniche](docs/01-architecture-invariants.md)
-
-Struttura a **7 colonne native** (`.albo-grid-row`), il motore di theming basato su Custom Properties CSS (Gala, Serie A, Gazzetta, Studio) e la pipeline di build con Vite.
-
-### 2. [Funzionalità & Esperienza Utente](docs/02-features-and-ui.md)
-
-Guida ai moduli applicativi: albo d'oro interattivo con ordinamento multi-criterio, archivio cronologico delle stagioni e coppe, dinamica storica a doppia prospettiva (Manager vs. Stagioni), motore di fallback per stemmi vettoriali (`src/crests.ts`), rendering off-screen nativo in HD tramite `html-to-image`, copia istantanea negli appunti, condivisione WhatsApp e modalità modifica.
-
-### 3. [Econometria, Cinismo & Modelli di Rischio](docs/03-analytics-and-econometrics.md)
-
-Approfondimento matematico del modulo analitico:
-
-- **Silverware Prestige Index (SPI)**: Ponderazione asimmetrica per difficoltà di torneo.
-- **Macro-Parità di Lega**: Indici di Gini bivariati ($G_{\text{prestige}}$, $G_{\text{rating}}$), Concentrazione Top-3 ($CR_3$), Herfindahl-Hirschman Index ($\text{HHI}$) e Normalized Relative Entropy ($H_{\text{rel}}$).
-- **Cinismo & Podi**: Frequenza podio ($PR$), Killer Instinct ($KI$) e Finals Conversion Rate.
-- **Modellazione di Coda (Tail Risk)**: Feast-or-Famine Bayesiano ($\widetilde{FF}$), Net Tail Skew ($NTS$) e indice unificato Net Tail Index ($NTI$).
-- **Tassonomia degli Archetipi**: Waterfall deterministico per la classificazione comportamentale dei manager.
-- **Dinamica Storica, Stagioni In Corso & Debuttanti**: Metriche di baricentro, oscillazione posizioni ($\sigma_{\text{rank}}$), parità stagionale e neutralizzazione delle annate non concluse.
-
-### 4. [Data Schema & Validazione CI/CD](docs/04-data-schema-and-ci.md)
-
-Specifiche del contratto dati `public/data.json`, pipeline di compilazione (`scripts/build_data.py`), validazione CI/CD (`scripts/validate.py`) e GitHub Actions.
+1. **[Architettura & Invarianti Tecniche](docs/01-architecture-invariants.md)**: Configurazione colonne reattive, palette colori, design token e pipeline Vite.
+2. **[Funzionalità & Esperienza Utente](docs/02-features-and-ui.md)**: Tabellone palmarès, schede manager HD, H2H, share WhatsApp e navigazione archivio.
+3. **[Econometria, Cinismo & Modelli di Rischio](docs/03-analytics-and-econometrics.md)**: Modelli matematici formali: SPI, Gini, HHI, Killer Instinct, Feast-or-Famine Bayesiano e tassonomia degli archetipi.
+4. **[Data Schema & Validazione CI/CD](docs/04-data-schema-and-ci.md)**: Schema contrattuale `data.json`, script di build (`build_data.py`) e validatore di integrità (`validate.py`).
 
 ---
 
@@ -65,26 +94,26 @@ Specifiche del contratto dati `public/data.json`, pipeline di compilazione (`scr
 
 ```bash
 # 1. Clona il repository
-git clone https://github.com/fgizzarellids/insalatlas_sala_trofei.git
-cd insalatlas_sala_trofei
+git clone https://github.com/fgizzarelliDS/lega_mantra_sm_sala_trofei.git
+cd lega_mantra_sm_sala_trofei
 
 # 2. Installa le dipendenze
 npm install
 
-# 3. Compila e valida il database JSON
-npm run build:data     # compila da sorgenti raw a public/data.json
-npm run validate:data  # valida la conformità allo schema JSON
+# 3. Abilita il driver git merge per proteggere i dati locali
+git config merge.ours.driver true
 
-# 4. Esegui la suite di test unitari
-npm run test
+# 4. Compila e valida il database
+npm run build:data     # genera public/data.json da data/
+npm run validate:data  # certifica schema e coerenza relazionale
 
-# 5. Avvia il server di sviluppo locale
+# 5. Esegui la suite di test (14 suite, 289 test)
+npm test
+
+# 6. Avvia il server di sviluppo locale
 npm run dev
 
-# 6. Type-checking TypeScript e build di produzione
+# 7. Type-checking e build di produzione
 npm run type-check
 npm run build
-
-# oppure per preview del bundle di produzione in locale
-npm run preview --host
 ```

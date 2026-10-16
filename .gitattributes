@@ -1,0 +1,9 @@
+# League-specific database and configuration files
+# When pulling/merging from upstream, git will preserve the local (ours) version
+data/** merge=ours
+public/data.json merge=ours
+src/config.ts merge=ours
+src/__tests__/league.integrity.test.ts merge=ours
+index.html merge=ours
+public/manifest.json merge=ours
+README.md merge=ours
