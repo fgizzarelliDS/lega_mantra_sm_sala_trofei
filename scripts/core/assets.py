@@ -49,17 +49,27 @@ def download_asset_locally(url: str, subfolder: str, root_dir: Optional[str] = N
     os.makedirs(target_dir, exist_ok=True)
     target_path = os.path.join(target_dir, filename)
 
+    public_dir = os.path.join(root_dir, "public", "assets", subfolder)
+    os.makedirs(public_dir, exist_ok=True)
+    public_target_path = os.path.join(public_dir, filename)
+
     if not os.path.exists(target_path) or os.path.getsize(target_path) == 0:
         try:
             import urllib.request
             req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
             with urllib.request.urlopen(req, timeout=10) as response, open(target_path, "wb") as out_file:
-                out_file.write(response.read())
+                content = response.read()
+                out_file.write(content)
+                with open(public_target_path, "wb") as p_out:
+                    p_out.write(content)
         except Exception as e:
             warn(f"Failed to download asset {url}: {e}")
             return url
+    elif not os.path.exists(public_target_path):
+        import shutil
+        shutil.copy2(target_path, public_target_path)
 
-    return f"scripts/archive/{subfolder}/{filename}"
+    return f"assets/{subfolder}/{filename}"
 
 def resolve_team_crest(team_name: str, raw_logo: Optional[str] = None, root_dir: Optional[str] = None) -> str:
     """Resolves local team crest path or deterministic SVG fallback."""
@@ -72,6 +82,10 @@ def resolve_team_crest(team_name: str, raw_logo: Optional[str] = None, root_dir:
             download_asset_locally(raw_logo, "teams", root_dir)
             filename = raw_logo.split("?")[0].split("/")[-1]
             public_path = os.path.join(root_dir, "public", "assets", "teams", filename)
+            archive_path = os.path.join(root_dir, "scripts", "archive", "teams", filename)
+            if not os.path.exists(public_path) and os.path.exists(archive_path):
+                import shutil
+                shutil.copy2(archive_path, public_path)
             if os.path.exists(public_path):
                 return f"assets/teams/{filename}"
 

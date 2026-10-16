@@ -3,7 +3,7 @@
     {
       "id": "m_gizza",
       "name": "Gizza",
-      "years": 4,
+      "years": 5,
       "gold": 1,
       "silver": 1,
       "bronze": 0,
@@ -18,6 +18,15 @@
       "coach_banners": [],
       "cartonato_coaches": [],
       "history": [
+        {
+          "season": "2026/27",
+          "team": "Vrace FRC",
+          "rank": 4,
+          "points": 0.0,
+          "competitionId": 679593,
+          "achievements": [],
+          "in_progress": true
+        },
         {
           "season": "2025/26",
           "team": "Vrace FRC",
@@ -92,8 +101,8 @@
     },
     {
       "id": "m_peterdani",
-      "name": "PeterDani & Daniele",
-      "years": 4,
+      "name": "PeterDani",
+      "years": 5,
       "gold": 1,
       "silver": 0,
       "bronze": 0,
@@ -108,6 +117,15 @@
       "coach_banners": [],
       "cartonato_coaches": [],
       "history": [
+        {
+          "season": "2026/27",
+          "team": "Grassotthers",
+          "rank": 6,
+          "points": 0.0,
+          "competitionId": 679593,
+          "achievements": [],
+          "in_progress": true
+        },
         {
           "season": "2025/26",
           "team": "Grassotthers",
@@ -190,7 +208,7 @@
     {
       "id": "m_mf",
       "name": "MF",
-      "years": 4,
+      "years": 5,
       "gold": 1,
       "silver": 1,
       "bronze": 0,
@@ -205,6 +223,15 @@
       "coach_banners": [],
       "cartonato_coaches": [],
       "history": [
+        {
+          "season": "2026/27",
+          "team": "Iron Hill warriors",
+          "rank": 2,
+          "points": 0.0,
+          "competitionId": 679593,
+          "achievements": [],
+          "in_progress": true
+        },
         {
           "season": "2025/26",
           "team": "Iron Hill warriors",
@@ -272,7 +299,7 @@
     {
       "id": "m_valery",
       "name": "Valery",
-      "years": 3,
+      "years": 4,
       "gold": 1,
       "silver": 0,
       "bronze": 0,
@@ -287,6 +314,15 @@
       "coach_banners": [],
       "cartonato_coaches": [],
       "history": [
+        {
+          "season": "2026/27",
+          "team": "Scalo San Genesio",
+          "rank": 3,
+          "points": 0.0,
+          "competitionId": 679593,
+          "achievements": [],
+          "in_progress": true
+        },
         {
           "season": "2025/26",
           "team": "Scalo San Genesio",
@@ -324,7 +360,7 @@
     {
       "id": "m_luca",
       "name": "Luca",
-      "years": 3,
+      "years": 4,
       "gold": 0,
       "silver": 1,
       "bronze": 1,
@@ -339,6 +375,15 @@
       "coach_banners": [],
       "cartonato_coaches": [],
       "history": [
+        {
+          "season": "2026/27",
+          "team": "Cardinthians",
+          "rank": 8,
+          "points": 0.0,
+          "competitionId": 679593,
+          "achievements": [],
+          "in_progress": true
+        },
         {
           "season": "2025/26",
           "team": "Cardinthians",
@@ -391,7 +436,7 @@
     {
       "id": "m_lucchetto",
       "name": "Lucchetto",
-      "years": 4,
+      "years": 5,
       "gold": 0,
       "silver": 0,
       "bronze": 2,
@@ -406,6 +451,15 @@
       "coach_banners": [],
       "cartonato_coaches": [],
       "history": [
+        {
+          "season": "2026/27",
+          "team": "Tevere FC",
+          "rank": 10,
+          "points": 0.0,
+          "competitionId": 679593,
+          "achievements": [],
+          "in_progress": true
+        },
         {
           "season": "2025/26",
           "team": "Tevere FC",
@@ -525,8 +579,8 @@
     },
     {
       "id": "m_simone",
-      "name": "simone",
-      "years": 4,
+      "name": "Carota",
+      "years": 5,
       "gold": 0,
       "silver": 0,
       "bronze": 1,
@@ -541,6 +595,15 @@
       "coach_banners": [],
       "cartonato_coaches": [],
       "history": [
+        {
+          "season": "2026/27",
+          "team": "Villereal juif",
+          "rank": 9,
+          "points": 0.0,
+          "competitionId": 679593,
+          "achievements": [],
+          "in_progress": true
+        },
         {
           "season": "2025/26",
           "team": "Villereal juif",
@@ -594,7 +657,7 @@
     {
       "id": "m_tazio",
       "name": "tazio",
-      "years": 4,
+      "years": 5,
       "gold": 0,
       "silver": 0,
       "bronze": 0,
@@ -609,6 +672,15 @@
       "coach_banners": [],
       "cartonato_coaches": [],
       "history": [
+        {
+          "season": "2026/27",
+          "team": "Kiwi Football Club",
+          "rank": 1,
+          "points": 0.0,
+          "competitionId": 679593,
+          "achievements": [],
+          "in_progress": true
+        },
         {
           "season": "2025/26",
           "team": "Kiwi Football Club",
@@ -654,7 +726,7 @@
     {
       "id": "m_vale",
       "name": "Vale",
-      "years": 2,
+      "years": 3,
       "gold": 0,
       "silver": 0,
       "bronze": 0,
@@ -669,6 +741,15 @@
       "coach_banners": [],
       "cartonato_coaches": [],
       "history": [
+        {
+          "season": "2026/27",
+          "team": "AS AV",
+          "rank": 7,
+          "points": 0.0,
+          "competitionId": 679593,
+          "achievements": [],
+          "in_progress": true
+        },
         {
           "season": "2025/26",
           "team": "AS AV",
@@ -705,7 +786,7 @@
     {
       "id": "m_claudio",
       "name": "Claudio",
-      "years": 1,
+      "years": 2,
       "gold": 0,
       "silver": 0,
       "bronze": 0,
@@ -720,6 +801,15 @@
       "coach_banners": [],
       "cartonato_coaches": [],
       "history": [
+        {
+          "season": "2026/27",
+          "team": "Champel United",
+          "rank": 5,
+          "points": 0.0,
+          "competitionId": 679593,
+          "achievements": [],
+          "in_progress": true
+        },
         {
           "season": "2025/26",
           "team": "Champel United",
@@ -792,6 +882,114 @@
   ],
   "competitions": [
     {
+      "id": 679593,
+      "name": "Campionato Mantrico",
+      "season": "2026/27",
+      "category": "Campionato",
+      "in_progress": true,
+      "status": "in_progress",
+      "ranking": [
+        {
+          "rank": 1,
+          "teamName": "Kiwi Football Club",
+          "coach": "tazio",
+          "managerId": "m_tazio",
+          "points": 0.0,
+          "logo": "assets/teams/9435540_08112345.png"
+        },
+        {
+          "rank": 2,
+          "teamName": "Iron Hill warriors",
+          "coach": "MF",
+          "managerId": "m_mf",
+          "points": 0.0,
+          "logo": "assets/crests/royal_vanguard.svg"
+        },
+        {
+          "rank": 3,
+          "teamName": "Scalo San Genesio",
+          "coach": "Valery",
+          "managerId": "m_valery",
+          "points": 0.0,
+          "logo": "assets/teams/10945839_08045816.png"
+        },
+        {
+          "rank": 4,
+          "teamName": "Vrace FRC",
+          "coach": "Gizza",
+          "managerId": "m_gizza",
+          "points": 0.0,
+          "logo": "assets/teams/9081967_07405356.png"
+        },
+        {
+          "rank": 5,
+          "teamName": "Champel United",
+          "coach": "Claudio",
+          "managerId": "m_claudio",
+          "points": 0.0,
+          "logo": "assets/crests/obsidian_fc.svg"
+        },
+        {
+          "rank": 6,
+          "teamName": "Grassotthers",
+          "coach": "PeterDani",
+          "managerId": "m_peterdani",
+          "points": 0.0,
+          "logo": "assets/teams/8956599_07229128.png"
+        },
+        {
+          "rank": 7,
+          "teamName": "AS AV",
+          "coach": "Vale",
+          "managerId": "m_vale",
+          "points": 0.0,
+          "logo": "assets/crests/obsidian_fc.svg"
+        },
+        {
+          "rank": 8,
+          "teamName": "Cardinthians",
+          "coach": "Luca",
+          "managerId": "m_luca",
+          "points": 0.0,
+          "logo": "assets/teams/10713886_04772701.png"
+        },
+        {
+          "rank": 9,
+          "teamName": "Villereal juif",
+          "coach": "Carota",
+          "managerId": "m_simone",
+          "points": 0.0,
+          "logo": "assets/crests/royal_vanguard.svg"
+        },
+        {
+          "rank": 10,
+          "teamName": "Tevere FC",
+          "coach": "Lucchetto",
+          "managerId": "m_lucchetto",
+          "points": 0.0,
+          "logo": "assets/teams/8957083_03150402.png"
+        }
+      ]
+    },
+    {
+      "id": 679594,
+      "name": "Coppa Mantrica",
+      "season": "2026/27",
+      "category": "Coppa",
+      "in_progress": true,
+      "status": "in_progress",
+      "ranking": []
+    },
+    {
+      "id": 679595,
+      "name": "Supercoppa Mantrica",
+      "season": "2026/27",
+      "category": "Supercoppa",
+      "in_progress": true,
+      "status": "in_progress",
+      "ranking": []
+    },
+    {
       "id": 622266,
       "name": "Supercoppa mantrica",
       "season": "2025/26",
@@ -803,7 +1001,7 @@
           "coach": "Gizza",
           "managerId": "m_gizza",
           "points": 0.0,
-          "logo": "assets/crests/ironclad_athletic.svg"
+          "logo": "assets/teams/9081967_07405356.png"
         },
         {
           "rank": 2,
@@ -824,10 +1022,10 @@
         {
           "rank": 1,
           "teamName": "Grassotthers",
-          "coach": "PeterDani & Daniele",
+          "coach": "PeterDani",
           "managerId": "m_peterdani",
           "points": 0.0,
-          "logo": "assets/crests/phoenix_rising.svg"
+          "logo": "assets/teams/8956599_07229128.png"
         },
         {
           "rank": 2,
@@ -848,10 +1046,10 @@
         {
           "rank": 1,
           "teamName": "Grassotthers",
-          "coach": "PeterDani & Daniele",
+          "coach": "PeterDani",
           "managerId": "m_peterdani",
           "points": 46.0,
-          "logo": "assets/crests/phoenix_rising.svg"
+          "logo": "assets/teams/8956599_07229128.png"
         },
         {
           "rank": 2,
@@ -859,12 +1057,12 @@
           "coach": "Gizza",
           "managerId": "m_gizza",
           "points": 46.0,
-          "logo": "assets/crests/ironclad_athletic.svg"
+          "logo": "assets/teams/9081967_07405356.png"
         },
         {
           "rank": 3,
           "teamName": "Villereal juif",
-          "coach": "simone",
+          "coach": "Carota",
           "managerId": "m_simone",
           "points": 41.0,
           "logo": "assets/crests/royal_vanguard.svg"
@@ -875,7 +1073,7 @@
           "coach": "Valery",
           "managerId": "m_valery",
           "points": 38.0,
-          "logo": "assets/crests/royal_vanguard.svg"
+          "logo": "assets/teams/10945839_08045816.png"
         },
         {
           "rank": 5,
@@ -883,7 +1081,7 @@
           "coach": "tazio",
           "managerId": "m_tazio",
           "points": 37.0,
-          "logo": "assets/crests/solaris_sc.svg"
+          "logo": "assets/teams/9435540_08112345.png"
         },
         {
           "rank": 6,
@@ -899,7 +1097,7 @@
           "coach": "Lucchetto",
           "managerId": "m_lucchetto",
           "points": 36.0,
-          "logo": "assets/crests/royal_vanguard.svg"
+          "logo": "assets/teams/8957083_03150402.png"
         },
         {
           "rank": 8,
@@ -907,7 +1105,7 @@
           "coach": "Luca",
           "managerId": "m_luca",
           "points": 35.0,
-          "logo": "assets/crests/aegis_sentinel.svg"
+          "logo": "assets/teams/10713886_04772701.png"
         },
         {
           "rank": 9,
@@ -939,7 +1137,7 @@
           "coach": "Valery",
           "managerId": "m_valery",
           "points": 66.0,
-          "logo": "assets/crests/royal_vanguard.svg"
+          "logo": "assets/teams/10945839_05343474.png"
         },
         {
           "rank": 2,
@@ -955,7 +1153,7 @@
           "coach": "Luca",
           "managerId": "m_luca",
           "points": 59.0,
-          "logo": "assets/crests/aegis_sentinel.svg"
+          "logo": "assets/teams/10713886_07401806.png"
         },
         {
           "rank": 4,
@@ -963,7 +1161,7 @@
           "coach": "PeterDani",
           "managerId": "m_peterdani",
           "points": 51.0,
-          "logo": "assets/crests/phoenix_rising.svg"
+          "logo": "assets/teams/8956599_06094813.png"
         },
         {
           "rank": 5,
@@ -971,7 +1169,7 @@
           "coach": "Gizza",
           "managerId": "m_gizza",
           "points": 51.0,
-          "logo": "assets/crests/ironclad_athletic.svg"
+          "logo": "assets/teams/9081967_07405356.png"
         },
         {
           "rank": 6,
@@ -979,12 +1177,12 @@
           "coach": "Lucchetto",
           "managerId": "m_lucchetto",
           "points": 51.0,
-          "logo": "assets/crests/royal_vanguard.svg"
+          "logo": "assets/teams/8957083_04924926.png"
         },
         {
           "rank": 7,
           "teamName": "Villereal juif",
-          "coach": "simone",
+          "coach": "Carota",
           "managerId": "m_simone",
           "points": 47.0,
           "logo": "assets/crests/royal_vanguard.svg"
@@ -995,7 +1193,7 @@
           "coach": "Vale",
           "managerId": "m_vale",
           "points": 45.0,
-          "logo": "assets/crests/obsidian_fc.svg"
+          "logo": "assets/teams/13357959_05857229.png"
         },
         {
           "rank": 9,
@@ -1011,7 +1209,7 @@
           "coach": "Ale",
           "managerId": "m_ale",
           "points": 27.0,
-          "logo": "assets/crests/celestial_horizon.svg"
+          "logo": "assets/teams/9037916_07208422.png"
         }
       ]
     },
@@ -1027,7 +1225,7 @@
           "coach": "PeterDani",
           "managerId": "m_peterdani",
           "points": 0.0,
-          "logo": "assets/crests/phoenix_rising.svg"
+          "logo": "assets/teams/8956599_06094813.png"
         },
         {
           "rank": 2,
@@ -1051,7 +1249,7 @@
           "coach": "Gizza",
           "managerId": "m_gizza",
           "points": 0.0,
-          "logo": "assets/crests/ironclad_athletic.svg"
+          "logo": "assets/teams/9081967_07405356.png"
         },
         {
           "rank": 2,
@@ -1059,7 +1257,7 @@
           "coach": "PeterDani",
           "managerId": "m_peterdani",
           "points": 0.0,
-          "logo": "assets/crests/phoenix_rising.svg"
+          "logo": "assets/teams/8956599_06094813.png"
         }
       ]
     },
@@ -1075,7 +1273,7 @@
           "coach": "Gizza",
           "managerId": "m_gizza",
           "points": 69.0,
-          "logo": "assets/crests/ironclad_athletic.svg"
+          "logo": "assets/teams/9081967_07405356.png"
         },
         {
           "rank": 2,
@@ -1083,7 +1281,7 @@
           "coach": "Luca",
           "managerId": "m_luca",
           "points": 64.0,
-          "logo": "assets/crests/aegis_sentinel.svg"
+          "logo": "assets/teams/10713886_03993221.png"
         },
         {
           "rank": 3,
@@ -1091,7 +1289,7 @@
           "coach": "Lucchetto",
           "managerId": "m_lucchetto",
           "points": 60.0,
-          "logo": "assets/crests/royal_vanguard.svg"
+          "logo": "assets/teams/8957083_03154985.png"
         },
         {
           "rank": 4,
@@ -1099,7 +1297,7 @@
           "coach": "PeterDani",
           "managerId": "m_peterdani",
           "points": 50.0,
-          "logo": "assets/crests/phoenix_rising.svg"
+          "logo": "assets/teams/8956599_01898654.png"
         },
         {
           "rank": 5,
@@ -1107,7 +1305,7 @@
           "coach": "Mauro TTC",
           "managerId": "m_mauro_ttc",
           "points": 49.0,
-          "logo": "assets/crests/starlight_rovers.svg"
+          "logo": "assets/teams/9582900_03171031.png"
         },
         {
           "rank": 6,
@@ -1120,10 +1318,10 @@
         {
           "rank": 7,
           "teamName": "Atletico Bagnolet 42",
-          "coach": "simone",
+          "coach": "Carota",
           "managerId": "m_simone",
           "points": 42.0,
-          "logo": "assets/crests/cobra_strike.svg"
+          "logo": "assets/teams/8957094_05627445.png"
         },
         {
           "rank": 8,
@@ -1131,7 +1329,7 @@
           "coach": "Ale",
           "managerId": "m_ale",
           "points": 39.0,
-          "logo": "assets/crests/ironclad_athletic.svg"
+          "logo": "assets/teams/9037916_005261713.png"
         },
         {
           "rank": 9,
@@ -1139,7 +1337,7 @@
           "coach": "Valery",
           "managerId": "m_valery",
           "points": 36.0,
-          "logo": "assets/crests/royal_vanguard.svg"
+          "logo": "assets/teams/10945839_092068.png"
         },
         {
           "rank": 10,
@@ -1163,7 +1361,7 @@
           "coach": "Luca",
           "managerId": "m_luca",
           "points": 0.0,
-          "logo": "assets/crests/aegis_sentinel.svg"
+          "logo": "assets/teams/10713886_03993221.png"
         },
         {
           "rank": 2,
@@ -1171,7 +1369,7 @@
           "coach": "Mauro TTC",
           "managerId": "m_mauro_ttc",
           "points": 0.0,
-          "logo": "assets/crests/starlight_rovers.svg"
+          "logo": "assets/teams/9582900_03171031.png"
         }
       ]
     },
@@ -1187,7 +1385,7 @@
           "coach": "Gizza",
           "managerId": "m_gizza",
           "points": 0.0,
-          "logo": "assets/crests/ironclad_athletic.svg"
+          "logo": "assets/teams/9081967_07405356.png"
         },
         {
           "rank": 2,
@@ -1195,7 +1393,7 @@
           "coach": "Mauro TTC",
           "managerId": "m_mauro_ttc",
           "points": 0.0,
-          "logo": "assets/crests/starlight_rovers.svg"
+          "logo": "assets/teams/9582900_03171031.png"
         }
       ]
     },
@@ -1219,7 +1417,7 @@
           "coach": "Ale",
           "managerId": "m_ale",
           "points": 44.0,
-          "logo": "assets/crests/ironclad_athletic.svg"
+          "logo": "assets/teams/9037916_08809669.png"
         },
         {
           "rank": 3,
@@ -1227,7 +1425,7 @@
           "coach": "Lucchetto",
           "managerId": "m_lucchetto",
           "points": 39.0,
-          "logo": "assets/crests/solaris_sc.svg"
+          "logo": "assets/teams/8957083_0002198815.png"
         },
         {
           "rank": 4,
@@ -1235,7 +1433,7 @@
           "coach": "Gizza",
           "managerId": "m_gizza",
           "points": 38.0,
-          "logo": "assets/crests/ironclad_athletic.svg"
+          "logo": "assets/teams/9081967_07405356.png"
         },
         {
           "rank": 5,
@@ -1243,7 +1441,7 @@
           "coach": "PeterDani",
           "managerId": "m_peterdani",
           "points": 37.0,
-          "logo": "assets/crests/phoenix_rising.svg"
+          "logo": "assets/teams/8956599_07984889.png"
         },
         {
           "rank": 6,
@@ -1259,15 +1457,15 @@
           "coach": "Mauro TTC",
           "managerId": "m_mauro_ttc",
           "points": 30.0,
-          "logo": "assets/crests/starlight_rovers.svg"
+          "logo": "assets/teams/9582900_06805621.png"
         },
         {
           "rank": 8,
           "teamName": "Atletico Bagnolet 42",
-          "coach": "simone",
+          "coach": "Carota",
           "managerId": "m_simone",
           "points": 21.0,
-          "logo": "assets/crests/cobra_strike.svg"
+          "logo": "assets/teams/8957094_004079837.png"
         }
       ]
     },
@@ -1283,7 +1481,7 @@
           "coach": "Lucchetto",
           "managerId": "m_lucchetto",
           "points": 0.0,
-          "logo": "assets/crests/solaris_sc.svg"
+          "logo": "assets/teams/8957083_0002198815.png"
         },
         {
           "rank": 2,
@@ -1291,7 +1489,7 @@
           "coach": "PeterDani",
           "managerId": "m_peterdani",
           "points": 0.0,
-          "logo": "assets/crests/phoenix_rising.svg"
+          "logo": "assets/teams/8956599_07984889.png"
         }
       ]
     },
@@ -1307,7 +1505,7 @@
           "coach": "PeterDani",
           "managerId": "m_peterdani",
           "points": 0.0,
-          "logo": "assets/crests/phoenix_rising.svg"
+          "logo": "assets/teams/8956599_07984889.png"
         },
         {
           "rank": 2,

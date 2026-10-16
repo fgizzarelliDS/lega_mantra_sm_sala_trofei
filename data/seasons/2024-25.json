@@ -13,7 +13,7 @@
           "coach": "Valery",
           "managerId": "m_valery",
           "points": 66.0,
-          "logo": "assets/crests/royal_vanguard.svg"
+          "logo": "assets/teams/10945839_05343474.png"
         },
         {
           "rank": 2,
@@ -29,7 +29,7 @@
           "coach": "Luca",
           "managerId": "m_luca",
           "points": 59.0,
-          "logo": "assets/crests/aegis_sentinel.svg"
+          "logo": "assets/teams/10713886_07401806.png"
         },
         {
           "rank": 4,
@@ -37,7 +37,7 @@
           "coach": "PeterDani",
           "managerId": "m_peterdani",
           "points": 51.0,
-          "logo": "assets/crests/phoenix_rising.svg"
+          "logo": "assets/teams/8956599_06094813.png"
         },
         {
           "rank": 5,
@@ -45,7 +45,7 @@
           "coach": "Gizza",
           "managerId": "m_gizza",
           "points": 51.0,
-          "logo": "assets/crests/ironclad_athletic.svg"
+          "logo": "assets/teams/9081967_07405356.png"
         },
         {
           "rank": 6,
@@ -53,12 +53,12 @@
           "coach": "Lucchetto",
           "managerId": "m_lucchetto",
           "points": 51.0,
-          "logo": "assets/crests/royal_vanguard.svg"
+          "logo": "assets/teams/8957083_04924926.png"
         },
         {
           "rank": 7,
           "teamName": "Villereal juif",
-          "coach": "simone",
+          "coach": "Carota",
           "managerId": "m_simone",
           "points": 47.0,
           "logo": "assets/crests/royal_vanguard.svg"
@@ -69,7 +69,7 @@
           "coach": "Vale",
           "managerId": "m_vale",
           "points": 45.0,
-          "logo": "assets/crests/obsidian_fc.svg"
+          "logo": "assets/teams/13357959_05857229.png"
         },
         {
           "rank": 9,
@@ -85,7 +85,7 @@
           "coach": "Ale",
           "managerId": "m_ale",
           "points": 27.0,
-          "logo": "assets/crests/celestial_horizon.svg"
+          "logo": "assets/teams/9037916_07208422.png"
         }
       ]
     },
@@ -101,7 +101,7 @@
           "coach": "PeterDani",
           "managerId": "m_peterdani",
           "points": 0.0,
-          "logo": "assets/crests/phoenix_rising.svg"
+          "logo": "assets/teams/8956599_06094813.png"
         },
         {
           "rank": 2,
@@ -125,7 +125,7 @@
           "coach": "Gizza",
           "managerId": "m_gizza",
           "points": 0.0,
-          "logo": "assets/crests/ironclad_athletic.svg"
+          "logo": "assets/teams/9081967_07405356.png"
         },
         {
           "rank": 2,
@@ -133,7 +133,7 @@
           "coach": "PeterDani",
           "managerId": "m_peterdani",
           "points": 0.0,
-          "logo": "assets/crests/phoenix_rising.svg"
+          "logo": "assets/teams/8956599_06094813.png"
         }
       ]
     }

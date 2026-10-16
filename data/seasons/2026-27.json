@@ -1,0 +1,114 @@
+{
+  "season": "2026/27",
+  "in_progress": true,
+  "competitions": [
+    {
+      "id": 679593,
+      "name": "Campionato Mantrico",
+      "season": "2026/27",
+      "category": "Campionato",
+      "in_progress": true,
+      "status": "in_progress",
+      "ranking": [
+        {
+          "rank": 1,
+          "teamName": "Kiwi Football Club",
+          "coach": "tazio",
+          "managerId": "m_tazio",
+          "points": 0.0,
+          "logo": "assets/teams/9435540_08112345.png"
+        },
+        {
+          "rank": 2,
+          "teamName": "Iron Hill warriors",
+          "coach": "MF",
+          "managerId": "m_mf",
+          "points": 0.0,
+          "logo": "assets/crests/royal_vanguard.svg"
+        },
+        {
+          "rank": 3,
+          "teamName": "Scalo San Genesio",
+          "coach": "Valery",
+          "managerId": "m_valery",
+          "points": 0.0,
+          "logo": "assets/teams/10945839_08045816.png"
+        },
+        {
+          "rank": 4,
+          "teamName": "Vrace FRC",
+          "coach": "Gizza",
+          "managerId": "m_gizza",
+          "points": 0.0,
+          "logo": "assets/teams/9081967_07405356.png"
+        },
+        {
+          "rank": 5,
+          "teamName": "Champel United",
+          "coach": "Claudio",
+          "managerId": "m_claudio",
+          "points": 0.0,
+          "logo": "assets/crests/obsidian_fc.svg"
+        },
+        {
+          "rank": 6,
+          "teamName": "Grassotthers",
+          "coach": "PeterDani",
+          "managerId": "m_peterdani",
+          "points": 0.0,
+          "logo": "assets/teams/8956599_07229128.png"
+        },
+        {
+          "rank": 7,
+          "teamName": "AS AV",
+          "coach": "Vale",
+          "managerId": "m_vale",
+          "points": 0.0,
+          "logo": "assets/crests/obsidian_fc.svg"
+        },
+        {
+          "rank": 8,
+          "teamName": "Cardinthians",
+          "coach": "Luca",
+          "managerId": "m_luca",
+          "points": 0.0,
+          "logo": "assets/teams/10713886_04772701.png"
+        },
+        {
+          "rank": 9,
+          "teamName": "Villereal juif",
+          "coach": "Carota",
+          "managerId": "m_simone",
+          "points": 0.0,
+          "logo": "assets/crests/royal_vanguard.svg"
+        },
+        {
+          "rank": 10,
+          "teamName": "Tevere FC",
+          "coach": "Lucchetto",
+          "managerId": "m_lucchetto",
+          "points": 0.0,
+          "logo": "assets/teams/8957083_03150402.png"
+        }
+      ]
+    },
+    {
+      "id": 679594,
+      "name": "Coppa Mantrica",
+      "season": "2026/27",
+      "category": "Coppa",
+      "in_progress": true,
+      "status": "in_progress",
+      "ranking": []
+    },
+    {
+      "id": 679595,
+      "name": "Supercoppa Mantrica",
+      "season": "2026/27",
+      "category": "Supercoppa",
+      "in_progress": true,
+      "status": "in_progress",
+      "ranking": []
+    }
+  ]
+}

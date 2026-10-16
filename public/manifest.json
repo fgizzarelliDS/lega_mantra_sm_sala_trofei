@@ -7,8 +7,11 @@
   "display": "standalone",
   "orientation": "any",
   "background_color": "#090d16",
-  "theme_color": "#be123c",
-  "categories": ["sports", "entertainment"],
+  "theme_color": "#090d16",
+  "categories": [
+    "sports",
+    "entertainment"
+  ],
   "icons": [
     {
       "src": "favicon-64x64.png",

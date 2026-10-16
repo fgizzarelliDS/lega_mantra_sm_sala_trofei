@@ -14,6 +14,9 @@ export function getSeasonMatchdays(season: string, teamCount?: number): number {
   if (teamCount === 8 || season.includes('16/17') || season.includes('17/18')) {
     return 35;
   }
+  if (teamCount === 10 && (season.includes('25/26') || season.includes('2025/26'))) {
+    return 27;
+  }
   if (teamCount === 10 || season.includes('18/19') || season.includes('19/20')) {
     return 36;
   }

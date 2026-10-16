@@ -47,7 +47,7 @@ describe('Fantacalcio Parser & Entity Resolution Engine', () => {
     it('suggests the next chronological season', () => {
       const nextSeason = getSuggestedNextSeason(state.competitions);
       expect(nextSeason).toMatch(/^\d{4}\/\d{2}$/);
-      expect(nextSeason).toBe('2026/27');
+      expect(nextSeason).toBe('2027/28');
     });
   });
 
