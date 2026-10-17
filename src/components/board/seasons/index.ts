@@ -1,5 +1,6 @@
 import { state } from '@/state';
-import { getAvailableSeasons, renderSeasonPills, renderSeasonHeaderSummary } from './seasonSelector';
+import { LEAGUE } from '@/config';
+import { getAvailableSeasons, renderSeasonStepper, renderSeasonHeaderSummary } from './seasonSelector';
 import { renderChampionshipTable } from './standingsTable';
 import { renderOtherTournamentsSection } from './tournamentCards';
 
@@ -187,20 +188,24 @@ export function renderSeasonsArchive(): void {
     currentSelectedSeason = seasons[0];
   }
 
-  // 1. Season Pills Bar
-  const pillsHtml = renderSeasonPills(seasons, currentSelectedSeason);
-
-  // 2. Competitions in current season
+  // Competitions in current season
   const comps = (state.competitions || []).filter(c => c.season === currentSelectedSeason);
 
   // Separate into Championship vs Other tournaments
-  const championship = comps.find(c => (c.category || '').toLowerCase() === 'championship' || (c.category || '').toLowerCase() === 'campionato' || /serie|campionato/i.test(c.name || ''));
+  const champLabel = LEAGUE.brand.championshipLabel || '';
+  const champRegex = champLabel ? new RegExp(champLabel.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'i') : null;
+  const championship = comps.find(c => {
+    const cat = (c.category || '').toLowerCase();
+    const name = c.name || '';
+    return cat === 'championship' || cat === 'campionato' || (champRegex && champRegex.test(name)) || /campionato|serie/i.test(name);
+  });
   const otherTournaments = comps.filter(c => c !== championship);
 
-  // Season Header Summary
+  // Unified Season Header & Stepper Summary
   const totalTeams = championship?.ranking?.length || comps[0]?.ranking?.length || 0;
   const isSeasonInProgress = comps.some(c => c.in_progress || c.status === 'in_progress');
-  const seasonSummaryHtml = renderSeasonHeaderSummary(currentSelectedSeason, comps.length, totalTeams, isSeasonInProgress);
+  const stepperHtml = renderSeasonStepper(seasons, currentSelectedSeason);
+  const seasonSummaryHtml = renderSeasonHeaderSummary(currentSelectedSeason, comps.length, totalTeams, isSeasonInProgress, stepperHtml);
 
   // Render Championship Standings Table
   const championshipHtml = championship ? renderChampionshipTable(championship) : '';
@@ -209,10 +214,7 @@ export function renderSeasonsArchive(): void {
   const othersHtml = renderOtherTournamentsSection(otherTournaments);
 
   container.innerHTML = `
-    <!-- Season Pills Bar -->
-    ${pillsHtml}
-
-    <!-- Season Header -->
+    <!-- Unified Season Header & Stepper -->
     ${seasonSummaryHtml}
 
     <!-- Championship Standings -->
@@ -229,5 +231,27 @@ if (typeof window !== 'undefined') {
   (window as unknown as { selectArchiveSeason?: typeof selectArchiveSeason }).selectArchiveSeason = selectArchiveSeason;
   (window as unknown as { renderSeasonsArchive?: typeof renderSeasonsArchive }).renderSeasonsArchive = renderSeasonsArchive;
   (window as unknown as { navigateToSeasonStandings?: typeof navigateToSeasonStandings }).navigateToSeasonStandings = navigateToSeasonStandings;
+
+  if (typeof window.addEventListener === 'function') {
+    window.addEventListener('keydown', (e: KeyboardEvent) => {
+      if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
+      const seasonsTab = document.getElementById('main-tab-seasons-content');
+      const isSeasonsActive = seasonsTab && !seasonsTab.classList.contains('hidden');
+      const isInputActive = ['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement?.tagName || '');
+      const isAnyModalOpen = document.querySelector('.modal:not(.hidden), [id$="-modal"]:not(.hidden)');
+      if (isSeasonsActive && !isInputActive && !isAnyModalOpen) {
+        const seasons = getAvailableSeasons();
+        const current = getCurrentSelectedSeason();
+        if (current && seasons.length > 0) {
+          const idx = seasons.indexOf(current);
+          if (e.key === 'ArrowLeft' && idx > 0) {
+            selectArchiveSeason(seasons[idx - 1]);
+          } else if (e.key === 'ArrowRight' && idx < seasons.length - 1) {
+            selectArchiveSeason(seasons[idx + 1]);
+          }
+        }
+      }
+    });
+  }
 }
 
