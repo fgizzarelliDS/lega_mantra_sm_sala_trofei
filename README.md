@@ -6,11 +6,14 @@
 [![TypeScript Strict](https://img.shields.io/badge/TypeScript-5.x_Strict-blue.svg)](https://www.typescriptlang.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
+![Se55o Mantrico Sala Trofei](public/preview.png)
+
 > Albo d'oro interattivo, motore league-agnostic, analisi econometrica di competitività, dinamica storica, record all-time, H2H e schede manager per la lega Fantacalcio **Se55o Mantrico**.
 
 ---
 
 ## Panoramica
+
 
 **Se55o Mantrico Sala Trofei** evolve il classico albo d'oro statico in un hub storico e analitico completo per la lega Fantacalcio Mantra **Se55o Mantrico** (fondata nella stagione 2022/23).
 
@@ -26,8 +29,6 @@ L'applicazione offre un'interfaccia interattiva desktop e mobile ad alte prestaz
 - **Branding & Crest Dedicati**: Emblema araldico monogramma "SM" oro antico e catalogo stemmi vettoriali per ogni franchigia.
 - **Live Application**: [fgizzarellids.github.io/lega_mantra_sm_sala_trofei](https://fgizzarellids.github.io/lega_mantra_sm_sala_trofei/)
 - **Database Ufficiale**: `public/data.json` (compilato dai file sorgente in `data/`)
-
-![Se55o Mantrico Sala Trofei](public/preview.png)
 
 ---
 
