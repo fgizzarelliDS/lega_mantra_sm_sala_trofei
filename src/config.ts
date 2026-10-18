@@ -90,9 +90,9 @@ export const DEFAULT_TITLES: TitlesConfig = {
   col2: 'Campionato',
   col3: 'Coppa di Lega',
   col4: 'Supercoppa',
-  col5: 'Cucchiaio',
-  col6: '',
-  col7: ''
+  col5: 'Mundialito',
+  col6: 'Cucchiaio',
+  col7: 'Cartonato'
 };
 
 export const ADMIN_TOKEN: string = import.meta.env.VITE_ADMIN_TOKEN || '';
