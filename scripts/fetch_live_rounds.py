@@ -103,8 +103,10 @@ def fetch_live_competition_data(competition_id: Optional[str] = None) -> int:
     # 6. Build lookup from season teams in 2026-27.json
     # Extract teamId from logo string (assets/teams/<tId>_<hash>.png) or known manual map
     team_id_map: Dict[int, Dict[str, Any]] = {
-        2550954: {"teamName": "LoTUS FC", "managerId": "m_avvisatina"},
-        3674613: {"teamName": "Partizan Peroni", "managerId": "m_pippo"}
+        17272113: {"teamName": "Champel United", "managerId": "m_claudio", "coach": "Claudio", "logo": "assets/crests/obsidian_fc.svg"},
+        9131106: {"teamName": "Iron Hill warriors", "managerId": "m_mf", "coach": "MF", "logo": "assets/crests/royal_vanguard.svg"},
+        13357959: {"teamName": "AS AV", "managerId": "m_vale", "coach": "Vale", "logo": "assets/crests/obsidian_fc.svg"},
+        8957094: {"teamName": "Villereal juif", "managerId": "m_simone", "coach": "Carota", "logo": "assets/crests/royal_vanguard.svg"}
     }
 
     active_info = find_in_progress_season_info(base_dir)
@@ -147,8 +149,8 @@ def fetch_live_competition_data(competition_id: Optional[str] = None) -> int:
             h_id = m.get("tIdH") or m.get("homeTeamId") or m.get("home_team_id")
             a_id = m.get("tIdA") or m.get("awayTeamId") or m.get("away_team_id")
 
-            h_info = team_id_map.get(int(h_id)) if h_id is not None and str(h_id).isdigit() else {}
-            a_info = team_id_map.get(int(a_id)) if a_id is not None and str(a_id).isdigit() else {}
+            h_info = (team_id_map.get(int(h_id)) or {}) if h_id is not None and str(h_id).isdigit() else {}
+            a_info = (team_id_map.get(int(a_id)) or {}) if a_id is not None and str(a_id).isdigit() else {}
 
             h_team = h_info.get("teamName") or m.get("homeTeam") or f"Team {h_id}"
             a_team = a_info.get("teamName") or m.get("awayTeam") or f"Team {a_id}"
