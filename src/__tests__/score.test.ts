@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { calculateManagerScore, formatScore, getSortedManagers } from '@/score';
+import { COMPETITION_REGISTRY } from '@/config';
 import { Manager } from '@/types';
 import { createTestManager } from './test-utils';
 
@@ -20,18 +21,25 @@ describe('score.ts - Invariants and Formulations', () => {
   });
 
   describe('calculateManagerScore', () => {
-    it('accurately computes score with official weights and penalties', () => {
+    it('accurately computes score with official weights and penalties for active competitions', () => {
+      // In this league (mundialito and cartonato disabled):
       // gold: 1 * 3.0 = 3.0
       // cup_gold: 1 * 2.0 = 2.0
       // supercup: 1 * 1.0 = 1.0
-      // mundialito: 1 * 1.0 = 1.0
       // silver: 1 * 0.5 = 0.5
       // cup_silver: 1 * 0.25 = 0.25
       // bronze: 1 * 0.25 = 0.25
       // spoon: 1 * -1.0 = -1.0
-      // cartonato: 1 * -2.0 = -2.0
-      // Total = 3 + 2 + 1 + 1 + 0.5 + 0.25 + 0.25 - 1 - 2 = 5.0
+      // Total = 3 + 2 + 1 + 0.5 + 0.25 + 0.25 - 1 = 6.0
       const score = calculateManagerScore(baseManager);
+      expect(score).toBe(6.0);
+    });
+
+    it('accurately computes score when given a full registry with all competitions enabled', () => {
+      // With all 7 competitions enabled:
+      // Total = 3 + 2 + 1 + 1 (mundialito) + 0.5 + 0.25 + 0.25 - 1 - 2 (cartonato) = 5.0
+      const fullRegistry = COMPETITION_REGISTRY.map(c => ({ ...c, enabled: true }));
+      const score = calculateManagerScore(baseManager, fullRegistry);
       expect(score).toBe(5.0);
     });
 
@@ -52,8 +60,14 @@ describe('score.ts - Invariants and Formulations', () => {
         spoon: 3,
         cartonato: 2
       });
-      // 3 * -1.0 + 2 * -2.0 = -3.0 - 4.0 = -7.0
-      expect(calculateManagerScore(unluckyManager)).toBe(-7.0);
+      // In this league: spoon is enabled (-1.0), cartonato is disabled (0).
+      // 3 * -1.0 = -3.0
+      expect(calculateManagerScore(unluckyManager)).toBe(-3.0);
+
+      // When cartonato is enabled:
+      // 3 * -1.0 + 2 * -2.0 = -7.0
+      const fullRegistry = COMPETITION_REGISTRY.map(c => ({ ...c, enabled: true }));
+      expect(calculateManagerScore(unluckyManager, fullRegistry)).toBe(-7.0);
     });
   });
 

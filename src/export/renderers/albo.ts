@@ -1,17 +1,7 @@
 import { state } from '@/state';
 import { showToast } from '@/ui';
-import { ALBO_COLUMNS } from '@/config';
+import { ALBO_COLUMNS, getActiveCompetitions, getCompetitionDef } from '@/config';
 import { renderNodeToCanvas, copyBlobToClipboard } from './core';
-
-const DESKTOP_COL_PROPORTIONS: Record<string, string> = {
-  manager: 'minmax(240px, 1.4fr)',
-  championship: 'minmax(200px, 1.4fr)',
-  cup: 'minmax(140px, 0.9fr)',
-  supercup: 'minmax(120px, 0.8fr)',
-  mundialito: 'minmax(120px, 0.8fr)',
-  spoon: 'minmax(90px, 0.6fr)',
-  cartonato: 'minmax(160px, 1.1fr)'
-};
 
 /**
  * Prepares and renders the full desktop Albo d'Oro wrapper into a high-res canvas.
@@ -31,7 +21,6 @@ export async function renderAlboCanvas(customWrapper?: HTMLElement): Promise<HTM
   // 2. Clone the wrapper for off-screen desktop rendering
   const clone = wrapper.cloneNode(true) as HTMLElement;
   clone.id = 'palmares-export-clone';
-  const targetWidth = 1380;
 
   // 3. Remove interactive and mobile-only elements
   clone.querySelector('#scroll-hint-pill')?.remove();
@@ -56,11 +45,36 @@ export async function renderAlboCanvas(customWrapper?: HTMLElement): Promise<HTM
     captionEl.style.display = 'block';
   }
 
-  // 4. Dynamically compute desktop column grid template for active league columns
-  const dynamicColsTemplate = ALBO_COLUMNS.map(c => DESKTOP_COL_PROPORTIONS[c.key] || '1fr').join(' ');
+  // 4. Compute dynamic column template and widths based on enabled ALBO_COLUMNS
+  let sumColWidths = 280; // manager base width
+  clone.style.setProperty('--col-manager', '280px');
+
+  for (const comp of getActiveCompetitions()) {
+    const width = comp.grid.desktopWidthPx || 120;
+    sumColWidths += width;
+    clone.style.setProperty(`--col-${comp.id}`, `${width}px`);
+  }
+
+  const columnWeights: Record<string, string> = {
+    manager: 'minmax(240px, 1.5fr)',
+    championship: 'minmax(220px, 1.4fr)',
+    cup: 'minmax(140px, 0.9fr)',
+    supercup: 'minmax(130px, 0.8fr)',
+    mundialito: 'minmax(130px, 0.8fr)',
+    spoon: 'minmax(70px, 0.5fr)',
+    cartonato: 'minmax(160px, 1.2fr)'
+  };
+  const dynamicColsTemplate = ALBO_COLUMNS.map(c => {
+    if (c.key === 'manager') return 'minmax(240px, 1.5fr)';
+    return columnWeights[c.key] || getCompetitionDef(c.key)?.grid.desktopTrack || 'minmax(120px, 1fr)';
+  }).join(' ');
+
   clone.style.setProperty('--albo-cols', dynamicColsTemplate);
 
-  // 5. Ensure desktop layout for top summary cards dynamically spanning full width
+  // Scalable canvas width: max(1380, sum of column widths + safe padding)
+  const targetWidth = Math.max(1380, sumColWidths + 80);
+
+  // 5. Ensure dynamic column layout for top summary cards (adapts cleanly to active cards)
   const summaryGrid = clone.querySelector('.grid.grid-cols-2') as HTMLElement | null;
   if (summaryGrid) {
     const visibleCards = Array.from(summaryGrid.children).filter(
@@ -69,8 +83,6 @@ export async function renderAlboCanvas(customWrapper?: HTMLElement): Promise<HTM
     summaryGrid.style.display = 'grid';
     summaryGrid.style.gridTemplateColumns = `repeat(${visibleCards || 4}, minmax(0, 1fr))`;
     summaryGrid.style.gap = '12px';
-    summaryGrid.style.width = '100%';
-    summaryGrid.style.maxWidth = '100%';
   }
 
   // 6. Ensure table scroll container and inner wrapper expand to full desktop width without scroll/cutoffs
@@ -90,13 +102,14 @@ export async function renderAlboCanvas(customWrapper?: HTMLElement): Promise<HTM
     innerWrap.style.maxWidth = 'none';
     innerWrap.style.overflow = 'visible';
   }
-  clone.querySelectorAll('.albo-table-wrap').forEach(el => {
-    const wrap = el as HTMLElement;
-    wrap.style.width = '100%';
-    wrap.style.maxWidth = 'none';
-  });
 
-  // 7. Fix header row: remove sticky, apply dynamic full-width grid columns, prevent mobile overlap
+  const tableWrap = clone.querySelector('.albo-table-wrap') as HTMLElement | null;
+  if (tableWrap) {
+    tableWrap.style.width = '100%';
+    tableWrap.style.maxWidth = 'none';
+  }
+
+  // 7. Fix header row: remove sticky, apply dynamicColsTemplate inline to beat mobile @media queries
   const headerRow = clone.querySelector('#albo-table-header') as HTMLElement | null;
   if (headerRow) {
     headerRow.style.paddingTop = '12px';
@@ -128,7 +141,7 @@ export async function renderAlboCanvas(customWrapper?: HTMLElement): Promise<HTM
     }
   });
 
-  // 8. Fix shelf rows: remove sticky, unclip manager name and apply dynamic full-width grid columns
+  // 8. Fix shelf rows: remove sticky, unclip manager name and apply dynamicColsTemplate inline
   const shelfRows = clone.querySelectorAll('.table-shelf-row');
   shelfRows.forEach(row => {
     const rowEl = row as HTMLElement;

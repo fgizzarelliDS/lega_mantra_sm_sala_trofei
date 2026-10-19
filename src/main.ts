@@ -122,12 +122,14 @@ import {
   navigateToHome,
   handleBrandHomeClick
 } from '@/components/board/tableBoard';
-import { updateStatistics } from '@/components/board/statsCounter';
+import { updateStatistics, renderTopStatsCards } from '@/components/board/statsCounter';
 import {
   switchMainViewTab,
   selectArchiveSeason,
   renderSeasonsArchive,
-  navigateToSeasonStandings
+  navigateToSeasonStandings,
+  openTeamMatchesModal,
+  closeTeamMatchesModal
 } from '@/components/board/seasonsArchive';
 import {
   filterRecordsCategory,
@@ -204,7 +206,7 @@ export {
   copyAlboToClipboard,
   shareAlboWhatsApp
 };
-export { updateStatistics };
+export { updateStatistics, renderTopStatsCards };
 export { promptPWAInstall };
 export {
   openSeasonModal,
@@ -273,6 +275,7 @@ declare global {
     resetOfficialData: typeof resetOfficialData;
     handleTitleBlur: typeof handleTitleBlur;
     renderBoard: typeof renderBoard;
+    renderTopStatsCards: typeof renderTopStatsCards;
     updateStatistics: typeof updateStatistics;
     promptPWAInstall: typeof promptPWAInstall;
     dismissScrollHint: typeof dismissScrollHint;
@@ -280,6 +283,8 @@ declare global {
     selectArchiveSeason: typeof selectArchiveSeason;
     renderSeasonsArchive: typeof renderSeasonsArchive;
     navigateToSeasonStandings: typeof navigateToSeasonStandings;
+    openTeamMatchesModal: typeof openTeamMatchesModal;
+    closeTeamMatchesModal: typeof closeTeamMatchesModal;
     filterRecordsCategory: typeof filterRecordsCategory;
     renderRecordsTab: typeof renderRecordsTab;
     searchRecords: typeof searchRecords;
@@ -362,6 +367,7 @@ export async function initApp(): Promise<void> {
   await loadLeagueData();
   applyTitlesToDOM();
   renderBoard();
+  renderTopStatsCards();
   updateStatistics();
   initScrollHintListener();
   initPWA();
@@ -527,6 +533,7 @@ if (typeof window !== 'undefined' && typeof document !== 'undefined') {
     resetOfficialData,
     handleTitleBlur,
     renderBoard,
+    renderTopStatsCards,
     updateStatistics,
     promptPWAInstall,
     dismissScrollHint,
@@ -534,6 +541,8 @@ if (typeof window !== 'undefined' && typeof document !== 'undefined') {
     selectArchiveSeason,
     renderSeasonsArchive,
     navigateToSeasonStandings,
+    openTeamMatchesModal,
+    closeTeamMatchesModal,
     filterRecordsCategory,
     renderRecordsTab,
     searchRecords,
