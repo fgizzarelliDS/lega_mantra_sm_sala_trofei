@@ -51,15 +51,8 @@ def extract_data(root_dir: Optional[str] = None) -> int:
     data_json_path = os.path.join(get_public_dir(), "data.json")
     existing_data = {}
     if os.path.exists(data_json_path):
-        try:
-            with open(data_json_path, "r", encoding="utf-8") as f:
-                loaded = json.load(f)
-                if loaded.get("leagueId") == LEAGUE_RULES["id"]:
-                    existing_data = loaded
-                else:
-                    info(f"Existing data in {data_json_path} belongs to a different league. Starting fresh.")
-        except Exception:
-            pass
+        with open(data_json_path, "r", encoding="utf-8") as f:
+            existing_data = json.load(f)
 
     existing_managers = existing_data.get("leagueData") or existing_data.get("managers") or []
     existing_managers_by_id = {m["id"]: m for m in existing_managers}
@@ -137,16 +130,7 @@ def extract_data(root_dir: Optional[str] = None) -> int:
         season_info = comp.get("season", {})
         s_name = season_info.get("name") or "Sconosciuta"
         cat_info = comp.get("category", {})
-        raw_cat = cat_info.get("name") or "Altro"
-        c_name_lower = c_name.lower()
-        if "supercoppa" in c_name_lower or "supercup" in c_name_lower:
-            cat_name = "Supercoppa"
-        elif "coppa" in c_name_lower or "final four" in c_name_lower or "final fo" in c_name_lower:
-            cat_name = "Coppa"
-        elif any(sub in c_name_lower for sub in ["serie", "campionato", "mantr-a", "mantrico"]):
-            cat_name = "Campionato"
-        else:
-            cat_name = raw_cat
+        cat_name = cat_info.get("name") or "Altro"
         ranking_raw = comp.get("ranking", [])
 
         ranking_items = []
@@ -205,10 +189,10 @@ def extract_data(root_dir: Optional[str] = None) -> int:
 
         num_teams = len(ranking)
         is_league = is_championship(cat_name, c_name)
-        is_supercoppa = "supercoppa" in cat_name or "supercup" in cat_name or "supercoppa" in c_name.lower() or "supercup" in c_name.lower()
+        is_supercoppa = "supercoppa" in cat_name or "supercup" in c_name.lower()
         is_mundialito = "mundialito" in cat_name or "mundialito" in c_name.lower()
         is_perdenti = "perdenti" in cat_name or "perdenti" in c_name.lower()
-        is_coppa = ("coppa" in cat_name or "coppa" in c_name.lower() or "final four" in c_name.lower() or "final fo" in c_name.lower()) and not is_supercoppa and not is_perdenti
+        is_coppa = ("coppa" in cat_name or "coppa" in c_name.lower()) and not is_supercoppa and not is_perdenti
 
         for r in ranking:
             rank = r.get("rank")
@@ -270,6 +254,22 @@ def extract_data(root_dir: Optional[str] = None) -> int:
         c_mundialito_silver = sum(1 for s in hist_list for a in s["achievements"] if a["badge"] == "mundialito_silver")
         c_cartonato = sum(1 for s in hist_list for a in s["achievements"] if a["badge"] == "cartonato")
 
+        calculated_trophies = {
+            "championship": c_gold,
+            "championship_silver": c_silver,
+            "championship_bronze": c_bronze,
+            "cup": c_cup_gold,
+            "cup_silver": c_cup_silver,
+            "supercup": c_supercup,
+            "supercup_silver": c_supercup_silver,
+            "mundialito": c_mundialito,
+            "mundialito_silver": c_mundialito_silver,
+            "spoon": c_spoon,
+            "cartonato": c_cartonato
+        }
+        all_trophies = dict(mgr.get("trophies") or {})
+        all_trophies.update(calculated_trophies)
+
         output_managers.append({
             "id": mgr["id"],
             "name": mgr["name"],
@@ -287,13 +287,13 @@ def extract_data(root_dir: Optional[str] = None) -> int:
             "cartonato": c_cartonato,
             "coach_banners": mgr["coach_banners"],
             "cartonato_coaches": mgr["cartonato_coaches"],
+            "trophies": all_trophies,
             "history": hist_list
         })
 
     output_managers.sort(key=lambda x: (x["gold"], x["cup_gold"], x["supercup"], x["mundialito"], x["silver"], x["bronze"]), reverse=True)
 
     final_payload = {
-        "leagueId": LEAGUE_RULES["id"],
         "leagueData": output_managers,
         "competitions": competitions_archive,
         "customTitles": existing_data.get("customTitles") or existing_data.get("titles") or {},
