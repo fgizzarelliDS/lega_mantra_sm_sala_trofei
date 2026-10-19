@@ -110,7 +110,7 @@ export async function renderAlboCanvas(customWrapper?: HTMLElement): Promise<HTM
   }
 
   // 7. Fix header row: remove sticky, apply dynamicColsTemplate inline to beat mobile @media queries
-  const headerRow = clone.querySelector('#albo-table-header') as HTMLElement | null;
+  const headerRow = (clone.querySelector('#albo-table-header') || clone.querySelector('.albo-grid-row')) as HTMLElement | null;
   if (headerRow) {
     headerRow.style.paddingTop = '12px';
     headerRow.style.paddingBottom = '12px';

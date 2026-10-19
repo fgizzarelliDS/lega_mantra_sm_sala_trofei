@@ -1638,7 +1638,28 @@
         "W"
       ],
       "statusBadge": "🔥",
-      "statusLabel": "In Fiamme"
+      "statusLabel": "In Fiamme",
+      "scheduleLuck": {
+        "xPoints": 6.44,
+        "xRank": 2,
+        "deltaRank": -1,
+        "allPlayRecord": {
+          "played": 27,
+          "wins": 17,
+          "draws": 7,
+          "losses": 3,
+          "winPct": 63.0
+        },
+        "luckZScore": 1.15,
+        "luckBadge": "🍀",
+        "luckLabel": "Favorevole",
+        "monteCarlo": {
+          "medianPoints": 7.0,
+          "stdDev": 1.74,
+          "pPodiumPct": null,
+          "pSpoonPct": null
+        }
+      }
     },
     {
       "rank": 2,
@@ -1652,7 +1673,28 @@
         "W"
       ],
       "statusBadge": "🔥",
-      "statusLabel": "In Fiamme"
+      "statusLabel": "In Fiamme",
+      "scheduleLuck": {
+        "xPoints": 7.22,
+        "xRank": 1,
+        "deltaRank": 1,
+        "allPlayRecord": {
+          "played": 27,
+          "wins": 20,
+          "draws": 5,
+          "losses": 2,
+          "winPct": 74.1
+        },
+        "luckZScore": 0.0,
+        "luckBadge": "⚖️",
+        "luckLabel": "Neutro",
+        "monteCarlo": {
+          "medianPoints": 7.0,
+          "stdDev": 1.32,
+          "pPodiumPct": null,
+          "pSpoonPct": null
+        }
+      }
     },
     {
       "rank": 3,
@@ -1666,7 +1708,28 @@
         "W"
       ],
       "statusBadge": "📈",
-      "statusLabel": "In Ascesa"
+      "statusLabel": "In Ascesa",
+      "scheduleLuck": {
+        "xPoints": 5.0,
+        "xRank": 3,
+        "deltaRank": 0,
+        "allPlayRecord": {
+          "played": 27,
+          "wins": 12,
+          "draws": 9,
+          "losses": 6,
+          "winPct": 44.4
+        },
+        "luckZScore": 0.97,
+        "luckBadge": "↗️",
+        "luckLabel": "Positivo",
+        "monteCarlo": {
+          "medianPoints": 5.0,
+          "stdDev": 2.07,
+          "pPodiumPct": null,
+          "pSpoonPct": null
+        }
+      }
     },
     {
       "rank": 4,
@@ -1680,7 +1743,28 @@
         "W"
       ],
       "statusBadge": "📈",
-      "statusLabel": "In Ascesa"
+      "statusLabel": "In Ascesa",
+      "scheduleLuck": {
+        "xPoints": 5.0,
+        "xRank": 4,
+        "deltaRank": 0,
+        "allPlayRecord": {
+          "played": 27,
+          "wins": 14,
+          "draws": 3,
+          "losses": 10,
+          "winPct": 51.9
+        },
+        "luckZScore": 0.0,
+        "luckBadge": "⚖️",
+        "luckLabel": "Neutro",
+        "monteCarlo": {
+          "medianPoints": 6.0,
+          "stdDev": 1.52,
+          "pPodiumPct": null,
+          "pSpoonPct": null
+        }
+      }
     },
     {
       "rank": 5,
@@ -1694,7 +1778,28 @@
         "L"
       ],
       "statusBadge": "⚖️",
-      "statusLabel": "Stabile"
+      "statusLabel": "Stabile",
+      "scheduleLuck": {
+        "xPoints": 4.33,
+        "xRank": 5,
+        "deltaRank": 0,
+        "allPlayRecord": {
+          "played": 27,
+          "wins": 10,
+          "draws": 9,
+          "losses": 8,
+          "winPct": 37.0
+        },
+        "luckZScore": 1.13,
+        "luckBadge": "🍀",
+        "luckLabel": "Favorevole",
+        "monteCarlo": {
+          "medianPoints": 4.0,
+          "stdDev": 1.77,
+          "pPodiumPct": null,
+          "pSpoonPct": null
+        }
+      }
     },
     {
       "rank": 6,
@@ -1708,7 +1813,28 @@
         "L"
       ],
       "statusBadge": "📉",
-      "statusLabel": "In Flessione"
+      "statusLabel": "In Flessione",
+      "scheduleLuck": {
+        "xPoints": 2.11,
+        "xRank": 7,
+        "deltaRank": -1,
+        "allPlayRecord": {
+          "played": 27,
+          "wins": 3,
+          "draws": 10,
+          "losses": 14,
+          "winPct": 11.1
+        },
+        "luckZScore": 0.71,
+        "luckBadge": "↗️",
+        "luckLabel": "Positivo",
+        "monteCarlo": {
+          "medianPoints": 2.0,
+          "stdDev": 1.4,
+          "pPodiumPct": null,
+          "pSpoonPct": null
+        }
+      }
     },
     {
       "rank": 7,
@@ -1722,7 +1848,28 @@
         "L"
       ],
       "statusBadge": "📉",
-      "statusLabel": "In Flessione"
+      "statusLabel": "In Flessione",
+      "scheduleLuck": {
+        "xPoints": 4.22,
+        "xRank": 6,
+        "deltaRank": 1,
+        "allPlayRecord": {
+          "played": 27,
+          "wins": 11,
+          "draws": 5,
+          "losses": 11,
+          "winPct": 40.7
+        },
+        "luckZScore": -0.75,
+        "luckBadge": "↘️",
+        "luckLabel": "Sfortunato",
+        "monteCarlo": {
+          "medianPoints": 4.0,
+          "stdDev": 1.34,
+          "pPodiumPct": null,
+          "pSpoonPct": null
+        }
+      }
     },
     {
       "rank": 8,
@@ -1736,7 +1883,28 @@
         "D"
       ],
       "statusBadge": "📉",
-      "statusLabel": "In Flessione"
+      "statusLabel": "In Flessione",
+      "scheduleLuck": {
+        "xPoints": 2.11,
+        "xRank": 8,
+        "deltaRank": 0,
+        "allPlayRecord": {
+          "played": 27,
+          "wins": 3,
+          "draws": 10,
+          "losses": 14,
+          "winPct": 11.1
+        },
+        "luckZScore": -0.71,
+        "luckBadge": "↘️",
+        "luckLabel": "Sfortunato",
+        "monteCarlo": {
+          "medianPoints": 2.0,
+          "stdDev": 1.41,
+          "pPodiumPct": null,
+          "pSpoonPct": null
+        }
+      }
     },
     {
       "rank": 9,
@@ -1750,7 +1918,28 @@
         "D"
       ],
       "statusBadge": "📉",
-      "statusLabel": "In Flessione"
+      "statusLabel": "In Flessione",
+      "scheduleLuck": {
+        "xPoints": 2.11,
+        "xRank": 9,
+        "deltaRank": 0,
+        "allPlayRecord": {
+          "played": 27,
+          "wins": 3,
+          "draws": 10,
+          "losses": 14,
+          "winPct": 11.1
+        },
+        "luckZScore": -0.76,
+        "luckBadge": "↘️",
+        "luckLabel": "Sfortunato",
+        "monteCarlo": {
+          "medianPoints": 2.0,
+          "stdDev": 1.32,
+          "pPodiumPct": null,
+          "pSpoonPct": null
+        }
+      }
     },
     {
       "rank": 10,
@@ -1764,7 +1953,28 @@
         "L"
       ],
       "statusBadge": "🧊",
-      "statusLabel": "Crisi Nera"
+      "statusLabel": "Crisi Nera",
+      "scheduleLuck": {
+        "xPoints": 2.11,
+        "xRank": 10,
+        "deltaRank": 0,
+        "allPlayRecord": {
+          "played": 27,
+          "wins": 3,
+          "draws": 10,
+          "losses": 14,
+          "winPct": 11.1
+        },
+        "luckZScore": -1.42,
+        "luckBadge": "⛈️",
+        "luckLabel": "Bersagliato",
+        "monteCarlo": {
+          "medianPoints": 2.0,
+          "stdDev": 1.4,
+          "pPodiumPct": null,
+          "pSpoonPct": null
+        }
+      }
     }
   ]
 }

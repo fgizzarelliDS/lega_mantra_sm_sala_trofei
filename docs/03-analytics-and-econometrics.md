@@ -368,6 +368,106 @@ L'interfaccia adotta l'architettura a due livelli (**Opzione 2**):
 
 ---
 
-## 8. Roadmap & Evoluzioni Future
+## 8. Analisi In-Progress: Forma Recente (L5), Momentum & Badge di Stato
+
+Nelle stagioni in corso, le prestazioni delle squadre vengono monitorate con un motore dinamico a rotazione continua sulle ultime 5 gare giocate ($k \le 5$):
+
+### 8.1 Ponderazione per Recency & Indice di Momentum
+I punti partita $pts(r_i)$ sono assegnati secondo la metrica classica: $pts(W) = 3$, $pts(D) = 1$, $pts(L) = 0$.
+Per catturare l'inerzia e i cambi di rotta di forma, l'indice di **Momentum** attribuisce un peso lineare crescente all'indice temporale $i \in [1, k]$ (dove $r_k$ è la giornata disputata più recentemente):
+
+$$\text{Momentum}(m) = \frac{\sum_{i=1}^{k} i \cdot pts(r_i)}{3 \cdot \frac{k(k+1)}{2}} \in [0.0, 1.0]$$
+
+Su una serie standard di 5 gare ($k = 5$):
+$$\text{Denominatore} = 3 \times \frac{5 \times 6}{2} = 45 \implies \text{Momentum} = \frac{1 \cdot pts(r_1) + 2 \cdot pts(r_2) + 3 \cdot pts(r_3) + 4 \cdot pts(r_4) + 5 \cdot pts(r_5)}{45}$$
+
+Un filotto di 5 vittorie produce $\text{Momentum} = 1.0$; 5 pareggi producono $\text{Momentum} = 0.33$; 5 sconfitte producono $\text{Momentum} = 0.0$. Una squadra che vince le ultime 3 dopo 2 sconfitte ottiene un Momentum di $0.80$, riflettendo l'inerzia positiva.
+
+---
+
+### 8.2 Matrice Decisionale dei Badge di Stato
+
+Combinando il Momentum con i fantapunti medi delle ultime 3 gare ($\bar{FP}_{L3}$) rispetto alla media di lega ($\mu_{\text{lega}}$) e gli ultimi esiti:
+
+| Badge | Etichetta | Colore | Condizione Matematica | Significato Dinamico |
+| :---: | :--- | :---: | :--- | :--- |
+| 🔥 | **In Fiamme** | Ambra | $\text{Momentum} \ge 0.75$ **AND** $\bar{FP}_{L3} \ge \mu_{\text{lega}} + 2.0$ | Rendimento travolgente: vittorie pesanti sostenute da punteggi eccellenti. |
+| 📈 | **In Ascesa** | Smeraldo | $\text{Momentum} \ge 0.55$ **AND** $r_{\text{last}} = 'W'$ | Trend ascendente: inerzia positiva consolidata con vittoria nell'ultimo turno. |
+| ⚖️ | **Stabile** | Ardesia | *Default bilanciato* (nessun estremo soddisfatto) | Rendimento costante, trend a centro classifica senza forti oscillazioni. |
+| 📉 | **In Flessione** | Arancione | $\text{Momentum} \le 0.35$ **OR** $r[-2:] = ['L', 'L']$ | Segnali di cedimento: calo di rendimento o due sconfitte consecutive. |
+| 🧊 | **Crisi Nera** | Ciano | $\text{Momentum} \le 0.15$ | Momento critico: striscia negativa prolungata e incapacità di fare punti. |
+
+---
+
+---
+
+## 9. Schedule Luck, Expected Points (xPTS) & Simulazione Monte Carlo
+
+Nelle leghe di fantacalcio a scontri diretti (*Head-to-Head*), la casualità degli accoppiamenti di calendario introduce una distorsione fisiologica che può spostare molti punti in classifica tra squadre con punteggi analoghi. Il motore implementa un framework scientifico a due livelli per misurare la fortuna da calendario e isolare il merito reale.
+
+### 9.1 Conversione in Soglie Gol Ufficiali
+Per ciascuna giornata completata, i fantapunti $S_{i, r}$ della squadra $i$ nel turno $r$ vengono convertiti in gol ufficiali $G_{i, r}$ tramite la consueta funzione a scaglioni (scatti di 6.0 pt con soglia base a 66.0 pt):
+
+$$G_{i, r} = \begin{cases} 
+0 & \text{se } S_{i, r} < 66.0 \\
+1 & \text{se } 66.0 \le S_{i, r} < 72.0 \\
+2 & \text{se } 72.0 \le S_{i, r} < 78.0 \\
+3 & \text{se } 78.0 \le S_{i, r} < 84.0 \\
+k & \text{se } 66.0 + (k-1) \times 6 \le S_{i, r} < 66.0 + k \times 6
+\end{cases}$$
+
+---
+
+### 9.2 Livello 1: Matrice Deterministica All-Play ($x\text{PTS}$ - "1 vs Tutti con Soglie Gol")
+In una lega con $N$ squadre (es. $N = 14$), ogni squadra disputa virtualmente un duello 1 contro 1 contro tutti gli altri $N - 1$ avversari nella stessa giornata.
+
+Per ogni coppia $(i, j)$ con $j \neq i$:
+$$\text{outcome}(i, j, r) = \begin{cases}
+3 \text{ pt} & \text{se } G_{i, r} > G_{j, r} \\
+1 \text{ pt} & \text{se } G_{i, r} = G_{j, r} \\
+0 \text{ pt} & \text{se } G_{i, r} < G_{j, r}
+\end{cases}$$
+
+I punti attesi della squadra $i$ nella giornata $r$, normalizzati sulla scala classica da 3 punti, sono dati dalla media aritmetica esatta:
+$$x\text{PTS}_{i, r} = \frac{\sum_{j \neq i} \text{outcome}(i, j, r)}{N - 1}$$
+
+Sulle $R$ giornate disputate, i punti attesi cumulativi sono:
+$$x\text{PTS}_i = \sum_{r=1}^R x\text{PTS}_{i, r}$$
+
+#### Scarto da Calendario ($\Delta\text{Punti}$):
+$$\Delta\text{Points}_i = \text{ActualPoints}_i - x\text{PTS}_i$$
+- $\Delta\text{Points}_i > 0$: **Calendario Favorevole** (ha incassato più punti rispetto a quanti meritati dai punteggi prodotti).
+- $\Delta\text{Points}_i < 0$: **Calendario Sfavorevole** (ha lasciato punti per strada affrontando exploit dell'avversario).
+- **Invariante a Somma Zero**: $\sum_{i=1}^N \Delta\text{Points}_i \approx 0.0$ (la fortuna di calendario è un gioco a somma zero tra tutti i partecipanti).
+
+---
+
+### 9.3 Livello 2: Permutazioni Monte Carlo del Calendario ($K = 10.000$ - "1 vs 1 con Soglie Gol")
+Per calcolare la dispersione probabilistica e quantificare la fortuna in unità di deviazione standard ($\sigma$), il motore esegue $K = 10.000$ iterazioni simulando calendari alternativi validi (abbinamenti 1 contro 1 perfetti per giornata):
+1. Mantiene fissati i gol segnati da ciascuna squadra nelle $R$ giornate disputate.
+2. Genera $K$ permutazioni di accoppiamento casuale 1 vs 1 e assegna i punti ufficiali (3, 1, 0).
+3. Calcola per ciascuna squadra la distribuzione empirica dei punti $\{P_i^{(k)}\}_{k=1}^K$, la mediana $\tilde{P}_i$, e la deviazione standard $\sigma_i$.
+4. **Z-Score di Fortuna da Calendario ($\mathcal{L}_{z, i}$)**:
+   $$\mathcal{L}_{z, i} = \frac{\text{ActualPoints}_i - \tilde{P}_i}{\sigma_i} \quad (\text{con } \sigma_i > 0)$$
+
+#### Matrice dei 5 Badge di Fortuna Z-Score:
+| Badge | Etichetta | Intervallo Z-Score | Colore | Significato Matematico |
+| :---: | :--- | :---: | :---: | :--- |
+| 🍀 | **Favorevole** | $\mathcal{L}_z \ge +1.0\sigma$ | Smeraldo | Massima resa: il calendario ha massimizzato i punti rispetto al merito oggettivo. |
+| ↗️ | **Positivo** | $+0.35\sigma \le \mathcal{L}_z < +1.0\sigma$ | Foglia di tè | Accoppiamenti favorevoli rispetto al volume di gioco espresso. |
+| ⚖️ | **Neutro** | $-0.35\sigma < \mathcal{L}_z < +0.35\sigma$ | Ardesia | Calendario bilanciato: punti reali allineati al merito della squadra. |
+| ↘️ | **Sfortunato** | $-1.0\sigma < \mathcal{L}_z \le -0.35\sigma$ | Ambra | Penalizzato dal calendario: ha affrontato spesso punteggi alti di giornata. |
+| ⛈️ | **Bersagliato** | $\mathcal{L}_z \le -1.0\sigma$ | Rosa | Sfortuna estrema: punti persi in sfide proibitive nonostante punteggi da vittoria. |
+
+#### Proiezioni di Fine Stagione (Sblocco a $R \ge 5$):
+A partire dalla 5ª giornata disputata, il simulatore proietta le giornate rimanenti campionando dalla distribuzione storica dei gol di ciascuna squadra, calcolando:
+- **$P(\text{Podio})$**: Probabilità empirica di terminare tra le prime 3 posizioni.
+- **$P(\text{Cucchiaio})$**: Probabilità empirica di concludere all'ultimo posto.
+Nelle prime 4 giornate, le percentuali rimangono neutre (`Dalla 5ª g.`) per preservare il rigore statistico del modello.
+
+---
+
+## 10. Roadmap & Evoluzioni Future
 
 - **Integrazione Storico Mundialito**: Formalizzazione dello storico finale Mundialito (vinti e persi) per completare il set di dati delle coppe della lega quando i dati delle prime edizioni saranno integralmente reperiti.
+

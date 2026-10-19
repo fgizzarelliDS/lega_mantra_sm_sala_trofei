@@ -209,26 +209,41 @@ L'applicazione include il supporto PWA per l'installazione nativa su desktop e d
 
 ## 11. Stagione In Corso & Live Analytics
 
-Per le stagioni contrassegnate come `in_progress: true`, il sistema compila e visualizza un motore live dedicato:
+Per le stagioni contrassegnate come `in_progress: true`, il sistema attiva un motore live dedicato:
 
 1. **Top Cards Riassuntive a Riga Singola (6 Card)**:
    - Griglia responsive desktop su un'unica riga (`lg:grid-cols-6`):
-     - `📅 STAGIONI` (Totale e dettaglio in corso)
+     - `📅 STAGIONI` (Totale e indicatore stagione in corso)
      - `🥇 SCUDETTI`
      - `🏆 COPPE & SUPERCOPPE` (Accorpamento dinamico Coppa + Supercoppa)
      - `🌍 MUNDIALITO`
      - `🥄 CUCCHIAI LEGNO`
      - `📦 BANNER CARTONATO`
 2. **Classifica Live In Corso (Configurazione Attiva)**:
-   - Desktop: `Pos`, `Squadra / Allenatore`, `Forma (L5)` (pallini colorati 🟢/🟡/🔴), `Stato` (badge dinamico 🔥/📈/⚖️/📉/🧊).
-   - Ordinamento: basato deterministicamente sui punti ufficiali e criteri di spareggio, omettendo la colonna punti per un'estetica pulita.
-   - Mobile: riga compatta `#Pos`, Club/Coach e Stato con sub-dettaglio per i pallini di forma recente.
-3. **Tabellino Partite Team Modal (`TeamMatchesModal.ts`)**:
-   - Espone il calendario gara per gara (`G 1`, `G 2`, ...) con avversario, stemma, allenatore, badge `CASA`/`TRASFERTA` e data.
-   - **Badge Esito Qualitativo**: mostra unicamente `VITTORIA` 🟢, `PAREGGIO` 🟡, `SCONFITTA` 🔴, senza punteggi numerici di gara (es. no 2-1) o fantapunti decimali.
-   - **Stack di Navigazione Circolare**: cliccando su "Vedi Profilo Storico Allenatore", alla chiusura del profilo l'utente torna automaticamente al tabellino partite della squadra selezionata.
-4. **TODO Backlog: Modalità Numerica Completa a 11 Colonne**:
-   - Predisposta e archiviata per riattivazione on-demand (o tramite flag `LEAGUE.features.liveExtendedStats`):
-     - 11 colonne: `Pos`, `Squadra / Allenatore`, `Pt`, `G`, `V`, `N`, `P`, `GF-GS`, `Tot FantaPt (Exp)`, `Forma (L5)`, `Stato`.
-     - $\Delta\text{Luck}$ / Indice di Calendario (merit rank per fantapunti effettivi).
-     - Ribbon a 4 pill nel modal (Record V-N-P, Reti Fatte/Subite, Totale FantaPunti, Media Gara FP/G) e punteggio numerico nei singoli match.
+   - **Desktop (>= 768px)**: 4 colonne essenziali:
+     - `Pos`: Posizionamento ufficiale in classifica.
+     - `Squadra / Allenatore`: Nome club e manager con stemma ufficiale ad alta definizione.
+     - `Forma (L5)`: Pallini compatti colorati 🟢 (Vittoria), 🟡 (Pareggio), 🔴 (Sconfitta).
+     - `Stato`: Badge qualitativo di momento (`🔥 IN FIAMME`, `📈 IN ASCESA`, `⚖️ STABILE`, `📉 IN FLESSIONE`, `🧊 CRISI NERA`) con etichetta estesa visibile sia su desktop che su mobile.
+    - **Mobile (< 768px)**: Card compatte touch-friendly con `#Pos`, club, mister, badge di stato ed espansione sub-dettaglio per i pallini L5.
+3. **Selettore a 2 Viste & Guida Dinamica Integrati nell'Header (`standingsTable.ts`)**:
+   - Direttamente nell'header box della tabella (la fascia con il colore del tema) è integrato lo switch segmentato a 2 viste in stile dark glass (`bg-black/25 backdrop-blur-xs border-white/15`):
+     - `[ Classifica Reale ]`: visualizzazione a 4 colonne focalizzata sulla corsa campionato (Pos, Squadra, Forma L5, Stato).
+     - `[ Merito & Fortuna (xPTS) ]`: visualizzazione analitica scientifica che misura la distorsione del calendario.
+     - Su desktop (>= sm) lo switch si trova sulla stessa riga dopo la dicitura `In corso`; su mobile (< sm) occupa ordinatamente una seconda riga a tutta larghezza (50/50).
+   - **Pulsante Guida Dinamica `[ℹ️ Guida & Legenda ▾]`**:
+     - Posizionato a destra nell'header in stile glass, apre a fisarmonica la guida contestuale direttamente sopra la tabella.
+     - In *Classifica Reale*: illustra il Momentum L5 e la matrice dei 5 badge di Stato.
+     - In *Merito & Fortuna*: illustra il calcolo dei punti attesi $x\text{PTS}$ (matrice 1 vs Tutti a soglie gol), il delta di fortuna $\Delta\text{Pt}$, e i 5 badge di fortuna del Z-Score Monte Carlo (`🍀`, `↗️`, `⚖️`, `↘️`, `⛈️`).
+4. **Colonne della Classifica Merito & Fortuna**:
+   - **Pos. xPTS**: Piazzamento di merito con pillola comparativa minimalista rispetto alla posizione reale (es. `▲ +3 (R:#4)`, `▼ -2 (R:#1)`, `= 0`).
+   - **Squadra & Allenatore**: Stemma, nome club e mister, interattivi per aprire il tabellino gare.
+   - **Punti Attesi ($x\text{PTS}$)**: Punti meritati su base 3 punti partita, con pillola $\Delta\text{Pt} = \text{Punti Reali} - x\text{PTS}$ (verde se favorito dal calendario, rosso se sfortunato).
+   - **Record Tutti vs Tutti**: Risultati cumulativi affrontando tutti gli altri 13 manager ogni giornata (es. `11V 1N 1P`) e percentuale vittorie.
+   - **Indice Fortuna Z-Score**: Badge con emoji, etichetta e deviazione standard $\mathcal{L}_z$ calcolata su 10.000 calendari alternativi.
+   - **Scenari Monte Carlo**: Percentuali di Podio % e Cucchiaio % (attivate a partire dalla 5ª giornata disputata per garantire solidità statistica).
+5. **Tabellino Partite Minimalista (`TeamMatchesModal.ts`)**:
+   - **Layout Essenziale**: Badge giornata in grassetto su singola riga (`G1`, `G2`...), stemma squadra e denominazione avversario affiancati orizzontalmente. Rimossi data, nome mister e pill CASA/TRASFERTA per massima pulizia visiva.
+   - **Mascheramento Punteggi & Esiti**: Mostra unicamente badge qualitativi (`VITTORIA` 🟢, `PAREGGIO` 🟡, `SCONFITTA` 🔴). Gli incontri non ancora disputati (in programma) riportano un pulito indicatore **`-`** privo di esito forzato.
+   - **Navigazione Contestuale tra Avversari**: Cliccando su qualsiasi squadra avversaria, il modale carica istantaneamente il calendario del club cliccato, esponendo un pulsante circolare `[←]` nell'header per ripercorrere a ritroso la cronologia di navigazione.
+

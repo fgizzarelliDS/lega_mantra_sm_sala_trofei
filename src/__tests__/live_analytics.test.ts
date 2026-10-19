@@ -5,10 +5,24 @@ import {
   renderFormDotsHTML,
   renderDeltaLuckBadgeHTML,
   renderStatusBadgeHTML,
+  renderLuckBadgeHTML,
+  renderDeltaRankPillHTML,
+  renderDeltaPointsPillHTML,
+  renderPodiumSVG,
   setLiveSeasonDetails
 } from '@/components/board/seasons/liveAnalytics';
-import { renderChampionshipTable } from '@/components/board/seasons/standingsTable';
+import {
+  renderChampionshipTable,
+  switchLiveStandingsView,
+  switchMeritSort,
+  toggleMobileMeritSort
+} from '@/components/board/seasons/standingsTable';
 import { openTeamMatchesModal, closeTeamMatchesModal } from '@/components/board/seasons/TeamMatchesModal';
+import {
+  buildTeamMatchesShareText,
+  buildMeritStandingsShareText,
+  buildRealStandingsShareText
+} from '@/export/share';
 import type { CompetitionRecord, LiveSeasonDetails } from '@/types';
 import { state } from '@/state';
 
@@ -524,5 +538,537 @@ describe('Live In-Progress Form & Analytics Engine', () => {
 
       closeModal();
     });
+
+    it('renders analytical summary strip in TeamMatchesModal with all-play record and luck badge', () => {
+      setLiveSeasonDetails({
+        season: '2026/27',
+        competitionId: 863632,
+        lastCompletedRound: 1,
+        totalRounds: 26,
+        standings: [
+          {
+            rank: 1,
+            points: 3,
+            managerId: 'm_valery',
+            teamName: 'Scalo San Genesio',
+            coach: 'valeriodam',
+            recentForm: ['W'],
+            statusBadge: '🔥',
+            statusLabel: 'In Fiamme',
+            scheduleLuck: {
+              xPoints: 2.85,
+              deltaPoints: 0.15,
+              xRank: 1,
+              deltaRank: 0,
+              allPlayRecord: { played: 13, wins: 12, draws: 0, losses: 1, winPct: 92.3 },
+              luckZScore: 1.25,
+              luckBadge: '🍀',
+              luckLabel: 'Fortunato'
+            }
+          }
+        ],
+        rounds: [
+          {
+            roundNumber: 1,
+            matches: [
+              {
+                homeTeam: 'Scalo San Genesio',
+                awayTeam: 'Arcore 1936',
+                homeOutcome: 'W',
+                awayOutcome: 'L',
+                isPlayed: true
+              }
+            ]
+          }
+        ]
+      });
+
+      openTeamMatchesModal('m_valery', 'Scalo San Genesio');
+      const modalContent = elements['team-matches-modal-content'];
+      expect(modalContent?.innerHTML).toContain('2.85 xPTS');
+      expect(modalContent?.innerHTML).toContain('+0.15 pt');
+      expect(modalContent?.innerHTML).toContain('vs 3 pt');
+      expect(modalContent?.innerHTML).toContain('#1 in classifica (3 pt)');
+      expect(modalContent?.innerHTML).toContain('12V 0N 1P');
+      expect(modalContent?.innerHTML).toContain('92.3%');
+      expect(modalContent?.innerHTML).toContain('Fortunato');
+      closeTeamMatchesModal();
+    });
+  });
+
+  describe('Schedule Luck, xPTS & 2-Way View Switching', () => {
+    it('renders luck badges correctly for all 5 categories', () => {
+      const lucky = renderLuckBadgeHTML('🍀', 'Favorevole', 1.45);
+      expect(lucky).toContain('🍀');
+      expect(lucky).toContain('Favorevole');
+      expect(lucky).toContain('+1.45σ');
+      expect(lucky).toContain('bg-emerald-500/20');
+
+      const positive = renderLuckBadgeHTML('↗️', 'Positivo', 0.65);
+      expect(positive).toContain('↗️');
+      expect(positive).toContain('Positivo');
+      expect(positive).toContain('+0.65σ');
+
+      const neutral = renderLuckBadgeHTML('⚖️', 'Neutro', 0.0);
+      expect(neutral).toContain('⚖️');
+      expect(neutral).toContain('Neutro');
+      expect(neutral).toContain('0.00σ');
+
+      const unlucky = renderLuckBadgeHTML('↘️', 'Sfortunato', -0.75);
+      expect(unlucky).toContain('↘️');
+      expect(unlucky).toContain('Sfortunato');
+      expect(unlucky).toContain('-0.75σ');
+
+      const battered = renderLuckBadgeHTML('⛈️', 'Bersagliato', -1.82);
+      expect(battered).toContain('⛈️');
+      expect(battered).toContain('Bersagliato');
+      expect(battered).toContain('-1.82σ');
+      expect(battered).toContain('bg-rose-500/20');
+    });
+
+    it('renders delta rank comparison pills correctly', () => {
+      const gain = renderDeltaRankPillHTML(3, 4);
+      expect(gain).toContain('▲ +3');
+      expect(gain).toContain('bg-emerald-100');
+
+      const drop = renderDeltaRankPillHTML(-2, 1);
+      expect(drop).toContain('▼ -2');
+      expect(drop).toContain('bg-rose-100');
+
+      const equal = renderDeltaRankPillHTML(0, 5);
+      expect(equal).toContain('= 0');
+      expect(equal).toContain('bg-slate-100');
+    });
+
+    it('renders delta points pills correctly', () => {
+      const luckyPts = renderDeltaPointsPillHTML(1.42);
+      expect(luckyPts).toContain('+1.42 pt');
+      expect(luckyPts).toContain('text-emerald-800');
+
+      const unluckyPts = renderDeltaPointsPillHTML(-1.85);
+      expect(unluckyPts).toContain('-1.85 pt');
+      expect(unluckyPts).toContain('text-rose-800');
+
+      const neutralPts = renderDeltaPointsPillHTML(0.0);
+      expect(neutralPts).toContain('0.00 pt');
+
+      const placeholderPts = renderDeltaPointsPillHTML(1.42, false);
+      expect(placeholderPts).toContain('-');
+      expect(placeholderPts).not.toContain('+1.42 pt');
+    });
+
+    it('renders 2-way toggle in standings table and switches views smoothly', () => {
+      const mockComp: CompetitionRecord = {
+        id: 863632,
+        name: 'Campionato',
+        season: '2026/27',
+        category: 'championship',
+        in_progress: true,
+        ranking: [
+          { rank: 1, teamName: 'Steven Bradbury FC', coach: 'alfius91', managerId: 'm_alfo', points: 3 },
+          { rank: 2, teamName: 'TorLupara FC', coach: 'cursimone', managerId: 'm_scurcio', points: 1 }
+        ]
+      };
+
+      setLiveSeasonDetails({
+        season: '2026/27',
+        competitionId: 863632,
+        lastCompletedRound: 1,
+        totalRounds: 26,
+        rounds: [],
+        standings: [
+          {
+            rank: 1,
+            points: 3,
+            managerId: 'm_alfo',
+            teamName: 'Steven Bradbury FC',
+            coach: 'alfius91',
+            recentForm: ['W'],
+            statusBadge: '🔥',
+            statusLabel: 'In Fiamme',
+            scheduleLuck: {
+              xPoints: 2.77,
+              deltaPoints: 0.23,
+              xRank: 1,
+              deltaRank: 0,
+              allPlayRecord: { played: 13, wins: 12, draws: 0, losses: 1, winPct: 92.3 },
+              luckZScore: 0.0,
+              luckBadge: '⚖️',
+              luckLabel: 'Neutro'
+            }
+          },
+          {
+            rank: 2,
+            managerId: 'm_scurcio',
+            teamName: 'TorLupara FC',
+            coach: 'cursimone',
+            recentForm: ['D'],
+            statusBadge: '📉',
+            statusLabel: 'In Flessione',
+            scheduleLuck: {
+              xPoints: 2.08,
+              deltaPoints: -1.08,
+              xRank: 2,
+              deltaRank: 0,
+              allPlayRecord: { played: 13, wins: 8, draws: 3, losses: 2, winPct: 61.5 },
+              luckZScore: -1.65,
+              luckBadge: '⛈️',
+              luckLabel: 'Bersagliato'
+            }
+          }
+        ]
+      });
+
+      const tableHTML = renderChampionshipTable(mockComp);
+      expect(tableHTML).toContain('btn-live-view-real');
+      expect(tableHTML).toContain('btn-live-view-merit');
+      expect(tableHTML).toContain('live-view-real-container');
+      expect(tableHTML).toContain('live-view-merit-container');
+      expect(tableHTML).toContain('guide-content-real');
+      expect(tableHTML).toContain('guide-content-merit');
+      // Assert dynamic real points when present and placeholder when undefined
+      expect(tableHTML).toContain('Reale #1 (3 pt)');
+      expect(tableHTML).toContain('vs 3 pt');
+      expect(tableHTML).toContain('Reale #2 (- pt)');
+      expect(tableHTML).toContain('vs - pt');
+
+      // Test view switching DOM manipulation with Mock Elements
+      class MockElement {
+        classes = new Set<string>();
+        classList = {
+          add: (...cls: string[]) => cls.forEach(c => this.classes.add(c)),
+          remove: (...cls: string[]) => cls.forEach(c => this.classes.delete(c)),
+          contains: (cls: string) => this.classes.has(cls)
+        };
+      }
+
+      const elements: Record<string, MockElement> = {
+        'btn-live-view-real': new MockElement(),
+        'btn-live-view-merit': new MockElement(),
+        'live-view-real-container': new MockElement(),
+        'live-view-merit-container': new MockElement(),
+        'guide-content-real': new MockElement(),
+        'guide-content-merit': new MockElement()
+      };
+
+      elements['live-view-merit-container'].classList.add('hidden');
+      elements['guide-content-merit'].classList.add('hidden');
+
+      const origDoc = (globalThis as any).document;
+      (globalThis as any).document = {
+        getElementById: (id: string) => elements[id] || null
+      };
+
+      try {
+        expect(elements['live-view-real-container'].classList.contains('hidden')).toBe(false);
+        expect(elements['live-view-merit-container'].classList.contains('hidden')).toBe(true);
+
+        // Switch to merit view
+        switchLiveStandingsView('merit');
+        expect(elements['live-view-real-container'].classList.contains('hidden')).toBe(true);
+        expect(elements['live-view-merit-container'].classList.contains('hidden')).toBe(false);
+        expect(elements['guide-content-real'].classList.contains('hidden')).toBe(true);
+        expect(elements['guide-content-merit'].classList.contains('hidden')).toBe(false);
+
+        // Switch back to real view
+        switchLiveStandingsView('real');
+        expect(elements['live-view-real-container'].classList.contains('hidden')).toBe(false);
+        expect(elements['live-view-merit-container'].classList.contains('hidden')).toBe(true);
+        expect(elements['guide-content-real'].classList.contains('hidden')).toBe(false);
+        expect(elements['guide-content-merit'].classList.contains('hidden')).toBe(true);
+      } finally {
+        (globalThis as any).document = origDoc;
+      }
+    });
+
+    it('renders vector micro-SVG podium icon with correct viewBox and steps', () => {
+      const svg = renderPodiumSVG(16, 'custom-podium');
+      expect(svg).toContain('<svg');
+      expect(svg).toContain('viewBox="0 0 24 24"');
+      expect(svg).toContain('width="16"');
+      expect(svg).toContain('height="16"');
+      expect(svg).toContain('custom-podium');
+      expect(svg).toContain('aria-label="Podio"');
+      expect(svg).toContain('>1</text>');
+      expect(svg).toContain('>2</text>');
+      expect(svg).toContain('>3</text>');
+    });
+
+    it('toggles interactive merit sorting between xPTS and luck', () => {
+      class MockElement {
+        classes = new Set<string>();
+        textContent: string = '';
+        classList = {
+          add: (...cls: string[]) => cls.forEach(c => this.classes.add(c)),
+          remove: (...cls: string[]) => cls.forEach(c => this.classes.delete(c)),
+          contains: (cls: string) => this.classes.has(cls)
+        };
+      }
+
+      const elements: Record<string, MockElement> = {
+        'th-merit-sort-xpts': new MockElement(),
+        'th-merit-sort-luck': new MockElement(),
+        'sort-icon-merit-xpts': new MockElement(),
+        'sort-icon-merit-luck': new MockElement(),
+        'label-merit-sort-mobile': new MockElement(),
+        'merit-desktop-tbody-xpts': new MockElement(),
+        'merit-desktop-tbody-luck': new MockElement(),
+        'merit-mobile-cards-xpts': new MockElement(),
+        'merit-mobile-cards-luck': new MockElement()
+      };
+
+      elements['merit-desktop-tbody-luck'].classList.add('hidden');
+      elements['merit-mobile-cards-luck'].classList.add('hidden');
+      elements['sort-icon-merit-luck'].classList.add('hidden');
+
+      const origDoc = (globalThis as any).document;
+      (globalThis as any).document = {
+        getElementById: (id: string) => elements[id] || null
+      };
+
+      try {
+        expect(elements['merit-desktop-tbody-xpts'].classList.contains('hidden')).toBe(false);
+        expect(elements['merit-desktop-tbody-luck'].classList.contains('hidden')).toBe(true);
+
+        switchMeritSort('luck');
+        expect(elements['merit-desktop-tbody-xpts'].classList.contains('hidden')).toBe(true);
+        expect(elements['merit-desktop-tbody-luck'].classList.contains('hidden')).toBe(false);
+        expect(elements['merit-mobile-cards-xpts'].classList.contains('hidden')).toBe(true);
+        expect(elements['merit-mobile-cards-luck'].classList.contains('hidden')).toBe(false);
+        expect(elements['sort-icon-merit-luck'].classList.contains('hidden')).toBe(false);
+        expect(elements['sort-icon-merit-xpts'].classList.contains('hidden')).toBe(true);
+        expect(elements['label-merit-sort-mobile'].textContent).toBe('Fortuna (Z-Score)');
+
+        toggleMobileMeritSort();
+        expect(elements['merit-desktop-tbody-xpts'].classList.contains('hidden')).toBe(false);
+        expect(elements['merit-desktop-tbody-luck'].classList.contains('hidden')).toBe(true);
+        expect(elements['merit-mobile-cards-xpts'].classList.contains('hidden')).toBe(false);
+        expect(elements['merit-mobile-cards-luck'].classList.contains('hidden')).toBe(true);
+        expect(elements['sort-icon-merit-xpts'].classList.contains('hidden')).toBe(false);
+        expect(elements['sort-icon-merit-luck'].classList.contains('hidden')).toBe(true);
+        expect(elements['label-merit-sort-mobile'].textContent).toBe('xPTS (Merito)');
+      } finally {
+        (globalThis as any).document = origDoc;
+      }
+    });
+
+    it('renders Monte Carlo podium SVG and Spoon pills on mobile cards when unlocked', () => {
+      const mockComp: CompetitionRecord = {
+        id: 863632,
+        name: 'Campionato In Corso',
+        season: '2025-2026',
+        category: 'championship',
+        in_progress: true,
+        ranking: [{ rank: 1, teamName: 'FC Bovisa', managerId: 'm_lucar', points: 15, coach: 'Luca R.' }]
+      };
+
+      setLiveSeasonDetails({
+        season: '2025-2026',
+        competitionId: 863632,
+        lastCompletedRound: 5,
+        totalRounds: 26,
+        rounds: [],
+        standings: [
+          {
+            rank: 1,
+            managerId: 'm_lucar',
+            teamName: 'FC Bovisa',
+            coach: 'Luca R.',
+            recentForm: ['W', 'W', 'W', 'W', 'W'],
+            statusBadge: '🔥',
+            statusLabel: 'In Fiamme',
+            scheduleLuck: {
+              xPoints: 3.0,
+              deltaPoints: 0.0,
+              xRank: 1,
+              deltaRank: 0,
+              allPlayRecord: { played: 13, wins: 12, draws: 0, losses: 1, winPct: 92.3 },
+              luckZScore: 0.0,
+              luckBadge: '⚖️',
+              luckLabel: 'Neutro',
+              monteCarlo: {
+                medianPoints: 45.0,
+                stdDev: 6.2,
+                pPodiumPct: 88.4,
+                pSpoonPct: 0.2
+              }
+            }
+          }
+        ]
+      });
+
+      const tableHTML = renderChampionshipTable(mockComp);
+      expect(tableHTML).toContain('88.4%');
+      expect(tableHTML).toContain('0.2%');
+      expect(tableHTML).toContain('aria-label="Podio"');
+    });
+  });
+
+  describe('Live Standings & Team Matches Sharing and Deep-Linking', () => {
+    const mockTeamMetric = {
+      rank: 2,
+      managerId: 'm_scurcio',
+      teamName: 'TorLupara FC',
+      coach: 'cursimone',
+      scheduleLuck: {
+        xPoints: 2.08,
+        xRank: 2,
+        deltaRank: 0,
+        allPlayRecord: { played: 13, wins: 8, draws: 3, losses: 2, winPct: 61.5 },
+        luckZScore: -1.65,
+        luckBadge: '⛈️' as const,
+        luckLabel: 'Bersagliato',
+        monteCarlo: { medianPoints: 2.08, stdDev: 0.5, pPodiumPct: null, pSpoonPct: null }
+      }
+    };
+
+    it('builds rich formatted WhatsApp share text for team matches', () => {
+      const shareUrl = 'https://insalatlas.it/?tab=seasons&team=TorLupara%20FC';
+      const text = buildTeamMatchesShareText(mockTeamMetric as any, shareUrl);
+
+      expect(text).toContain('*TorLupara FC* (cursimone)');
+      expect(text).toContain('Posizione Reale: #2');
+      expect(text).toContain('Merito:* #2 (2.08 xPTS)');
+      expect(text).toContain('⛈️ Bersagliato (-1.65σ)');
+      expect(text).toContain('8V 3N 2P (61.5%)');
+      expect(text).toContain(shareUrl);
+    });
+
+    it('builds rich formatted WhatsApp share text for Merit Standings', () => {
+      const shareUrl = 'https://insalatlas.it/?tab=seasons&view=merit';
+      const standings = [
+        mockTeamMetric,
+        {
+          rank: 1,
+          managerId: 'm_alfo',
+          teamName: 'Steven Bradbury FC',
+          coach: 'alfius91',
+          scheduleLuck: {
+            xPoints: 2.77,
+            xRank: 1,
+            deltaRank: 0,
+            allPlayRecord: { played: 13, wins: 12, draws: 0, losses: 1, winPct: 92.3 },
+            luckZScore: 0.0,
+            luckBadge: '⚖️' as const,
+            luckLabel: 'Neutro'
+          }
+        }
+      ];
+
+      const text = buildMeritStandingsShareText(standings as any, shareUrl);
+      expect(text).toContain('Classifica di Merito (xPTS)');
+      expect(text).toContain('🥇 #1 *Steven Bradbury FC* (2.77 xPTS)');
+      expect(text).toContain('🥈 #2 *TorLupara FC* (2.08 xPTS)');
+      expect(text).toContain(shareUrl);
+    });
+
+    it('syncs ?team= to window.history on openTeamMatchesModal and removes on close', () => {
+      let currentUrl = 'https://insalatlas.it/?tab=seasons';
+      const pushSpy = vi.fn((_state, _title, url) => {
+        currentUrl = url.toString();
+        if (typeof window !== 'undefined' && window.location) {
+          (window.location as any).href = currentUrl;
+          (window.location as any).search = currentUrl.includes('?') ? currentUrl.slice(currentUrl.indexOf('?')) : '';
+        }
+      });
+      const replaceSpy = vi.fn((_state, _title, url) => {
+        currentUrl = url.toString();
+        if (typeof window !== 'undefined' && window.location) {
+          (window.location as any).href = currentUrl;
+          (window.location as any).search = currentUrl.includes('?') ? currentUrl.slice(currentUrl.indexOf('?')) : '';
+        }
+      });
+
+      const origHistory = typeof window !== 'undefined' ? window.history : undefined;
+      const origLocation = typeof window !== 'undefined' ? window.location : undefined;
+
+      const elements: Record<string, any> = {
+        'team-matches-modal': {
+          classList: {
+            classes: new Set<string>(['hidden']),
+            add: (c: string) => elements['team-matches-modal'].classList.classes.add(c),
+            remove: (c: string) => elements['team-matches-modal'].classList.classes.delete(c),
+            contains: (c: string) => elements['team-matches-modal'].classList.classes.has(c)
+          },
+          innerHTML: ''
+        },
+        'team-matches-modal-content': { innerHTML: '' },
+        'team-matches-dialog': { innerHTML: '' }
+      };
+
+      const origDoc = (globalThis as any).document;
+      (globalThis as any).document = {
+        getElementById: (id: string) => elements[id] || null,
+        addEventListener: vi.fn(),
+        removeEventListener: vi.fn(),
+        body: { insertAdjacentHTML: vi.fn() }
+      };
+
+      (globalThis as any).window = (globalThis as any).window || {};
+      (globalThis as any).window.history = { pushState: pushSpy, replaceState: replaceSpy };
+      (globalThis as any).window.location = new URL(currentUrl);
+
+      setLiveSeasonDetails({
+        season: '2026/27',
+        competitionId: 863632,
+        lastCompletedRound: 1,
+        totalRounds: 26,
+        rounds: [
+          {
+            roundNumber: 1,
+            matches: [
+              {
+                homeTeam: 'TorLupara FC',
+                awayTeam: 'Levrieri d Abruzzo',
+                homeManagerId: 'm_scurcio',
+                awayManagerId: 'm_gizzagustacito',
+                isPlayed: true,
+                homeOutcome: 'D',
+                awayOutcome: 'D'
+              }
+            ]
+          }
+        ],
+        standings: [mockTeamMetric as any]
+      });
+
+      openTeamMatchesModal('m_scurcio', 'TorLupara FC', false, true);
+
+      expect(pushSpy).toHaveBeenCalled();
+      const calledUrl = pushSpy.mock.calls[0][2] as string;
+      expect(calledUrl).toContain('team=TorLupara');
+
+      // Verify 3 share dropdown options in DOM (PNG, Copia, WA Link)
+      const content = elements['team-matches-modal-content'];
+      expect(content.innerHTML).toContain('btn-team-matches-share');
+      expect(content.innerHTML).toContain('team-matches-share-dropdown');
+      expect(content.innerHTML).toContain('Scarica Scheda PNG (HD)');
+      expect(content.innerHTML).toContain('Copia per WhatsApp');
+      expect(content.innerHTML).toContain('Invia Link WhatsApp');
+
+      closeTeamMatchesModal(true);
+      expect(replaceSpy).toHaveBeenCalled();
+
+      // Cleanup
+      (globalThis as any).document = origDoc;
+      if (origHistory) (globalThis as any).window.history = origHistory;
+      if (origLocation) (globalThis as any).window.location = origLocation;
+    });
+
+    it('formats real standings snapshot text for WhatsApp correctly', () => {
+      const mockStandings = [
+        { rank: 1, teamName: 'TorLupara FC', points: 18 },
+        { rank: 2, teamName: 'Scalo San Genesio', points: 16 },
+        { rank: 3, teamName: 'Levrieri d Abruzzo', points: 14 }
+      ];
+      const text = buildRealStandingsShareText(mockStandings, 'https://insalatlas.it?tab=seasons&view=real');
+      expect(text).toContain('Classifica Ufficiale');
+      expect(text).toContain('TorLupara FC');
+      expect(text).toContain('18 pt');
+      expect(text).toContain('Scalo San Genesio');
+      expect(text).toContain('16 pt');
+      expect(text).toContain('https://insalatlas.it?tab=seasons&view=real');
+    });
   });
 });
+

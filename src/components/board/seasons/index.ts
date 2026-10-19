@@ -198,11 +198,7 @@ export function renderSeasonsArchive(): void {
   // Separate into Championship vs Other tournaments
   const champLabel = LEAGUE.brand.championshipLabel || '';
   const champRegex = champLabel ? new RegExp(champLabel.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'i') : null;
-  const championship = comps.find(c => {
-    const cat = (c.category || '').toLowerCase();
-    const name = c.name || '';
-    return cat === 'championship' || cat === 'campionato' || (champRegex && champRegex.test(name)) || /campionato|serie/i.test(name);
-  });
+  const championship = comps.find(c => c.category === 'championship' || (champRegex && champRegex.test(c.name)) || /campionato|serie/i.test(c.name));
   const otherTournaments = comps.filter(c => c !== championship);
 
   // Unified Season Header & Stepper Summary

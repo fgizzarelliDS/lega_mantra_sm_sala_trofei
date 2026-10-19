@@ -572,20 +572,45 @@ export type FormResult = 'W' | 'D' | 'L';
 
 export type CompositeStatusBadge = '🔥' | '📈' | '⚖️' | '📉' | '🧊';
 
+export type LuckBadge = '🍀' | '↗️' | '⚖️' | '↘️' | '⛈️';
+
+export interface ScheduleLuckAnalytics {
+  xPoints: number;
+  deltaPoints?: number;
+  xRank: number;
+  deltaRank: number;
+  allPlayRecord: {
+    played: number;
+    wins: number;
+    draws: number;
+    losses: number;
+    winPct: number;
+  };
+  luckZScore: number;
+  luckBadge: LuckBadge;
+  luckLabel: string;
+  monteCarlo?: {
+    medianPoints: number;
+    stdDev: number;
+    pPodiumPct?: number | null;
+    pSpoonPct?: number | null;
+  };
+}
+
 export interface MatchdayMatch {
   homeTeam: string;
   awayTeam: string;
   homeManagerId?: string;
   awayManagerId?: string;
+  isPlayed?: boolean;
+  homeOutcome?: FormResult | null;
+  awayOutcome?: FormResult | null;
   homeScore?: number;
   awayScore?: number;
   homeFantaPoints?: number;
   awayFantaPoints?: number;
   homeLogo?: string;
   awayLogo?: string;
-  isPlayed?: boolean;
-  homeOutcome?: FormResult;
-  awayOutcome?: FormResult;
 }
 
 export interface MatchdayRound {
@@ -599,23 +624,24 @@ export interface LiveTeamMetrics {
   managerId?: string;
   teamName: string;
   coach: string;
-  points: number;
-  played: number;
-  won: number;
-  drawn: number;
-  lost: number;
-  goalsFor: number;
-  goalsAgainst: number;
-  goalDiff: number;
-  totalFantaPoints: number;
-  avgFantaPoints: number;
-  expectedRank: number;
-  deltaLuck: number;
-  momentum: number;
   recentForm: FormResult[];
   statusBadge: CompositeStatusBadge;
   statusLabel: string;
   logo?: string;
+  scheduleLuck?: ScheduleLuckAnalytics;
+  points?: number;
+  played?: number;
+  won?: number;
+  drawn?: number;
+  lost?: number;
+  goalsFor?: number;
+  goalsAgainst?: number;
+  goalDiff?: number;
+  totalFantaPoints?: number;
+  avgFantaPoints?: number;
+  expectedRank?: number;
+  deltaLuck?: number;
+  momentum?: number;
 }
 
 export interface LiveSeasonDetails {

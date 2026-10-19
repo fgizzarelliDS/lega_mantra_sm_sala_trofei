@@ -105,7 +105,12 @@ import {
   exportAlboHD,
   copyAlboToClipboard,
   shareAlboWhatsApp,
-  sharePosterWhatsApp
+  sharePosterWhatsApp,
+  exportStandingsPNG,
+  copyStandingsToClipboard,
+  shareStandingsWhatsApp,
+  exportTeamMatchesPNG,
+  copyTeamMatchesToClipboard
 } from '@/export';
 import {
   changeSort,
@@ -129,7 +134,12 @@ import {
   renderSeasonsArchive,
   navigateToSeasonStandings,
   openTeamMatchesModal,
-  closeTeamMatchesModal
+  closeTeamMatchesModal,
+  switchLiveStandingsView,
+  closeTeamMatchesShareDropdown,
+  closeMeritShareDropdown,
+  toggleStandingsShareDropdown,
+  closeStandingsShareDropdown
 } from '@/components/board/seasonsArchive';
 import {
   filterRecordsCategory,
@@ -156,7 +166,9 @@ import {
   getMainTabParamFromURL,
   getSeasonParamFromURL,
   getRecordCategoryParamFromURL,
-  getTrophyParamFromURL
+  getTrophyParamFromURL,
+  getTeamParamFromURL,
+  getViewParamFromURL
 } from '@/router';
 import { initPWA, promptPWAInstall } from '@/pwa';
 
@@ -170,7 +182,9 @@ export {
   getRecordParamFromURL,
   getMainTabParamFromURL,
   getSeasonParamFromURL,
-  getRecordCategoryParamFromURL
+  getRecordCategoryParamFromURL,
+  getTeamParamFromURL,
+  getViewParamFromURL
 };
 export {
   changeSort,
@@ -349,6 +363,11 @@ declare global {
     closeTrophyShareDropdown: typeof closeTrophyShareDropdown;
     exportTrophyModalHD: typeof exportTrophyModalHD;
     copyTrophyModalToClipboard: typeof copyTrophyModalToClipboard;
+    exportStandingsPNG: typeof exportStandingsPNG;
+    copyStandingsToClipboard: typeof copyStandingsToClipboard;
+    shareStandingsWhatsApp: typeof shareStandingsWhatsApp;
+    exportTeamMatchesPNG: typeof exportTeamMatchesPNG;
+    copyTeamMatchesToClipboard: typeof copyTeamMatchesToClipboard;
   }
 }
 
@@ -431,12 +450,21 @@ export async function initApp(): Promise<void> {
   } else {
     // Navigation state restoration on refresh
     const mainTab = getMainTabParamFromURL();
-    if (mainTab === 'seasons') {
+    const teamParam = getTeamParamFromURL();
+    const viewParam = getViewParamFromURL();
+
+    if (mainTab === 'seasons' || teamParam || viewParam) {
       const seasonParam = getSeasonParamFromURL();
       if (seasonParam) {
         selectArchiveSeason(seasonParam, false);
       }
       switchMainViewTab('seasons', false);
+      if (viewParam === 'merit') {
+        switchLiveStandingsView('merit', false);
+      }
+      if (teamParam) {
+        openTeamMatchesModal(undefined, teamParam, false, false);
+      }
     } else if (mainTab === 'records') {
       if (categoryParam) {
         filterRecordsCategory(categoryParam, false);
@@ -473,6 +501,17 @@ export async function initApp(): Promise<void> {
     }
     if (!target.closest('#btn-trophy-share-dropdown') && !target.closest('#trophy-share-dropdown-menu')) {
       closeTrophyShareDropdown();
+    }
+    if (!target.closest('#btn-team-matches-share') && !target.closest('#team-matches-share-dropdown')) {
+      closeTeamMatchesShareDropdown();
+    }
+    if (
+      !target.closest('#btn-merit-share-desktop') &&
+      !target.closest('#btn-merit-share-mobile') &&
+      !target.closest('.merit-share-btn') &&
+      !target.closest('[id^="merit-share-dropdown-"]')
+    ) {
+      closeMeritShareDropdown();
     }
   });
 }
@@ -609,7 +648,14 @@ if (typeof window !== 'undefined' && typeof document !== 'undefined') {
     toggleTrophyShareDropdown,
     closeTrophyShareDropdown,
     exportTrophyModalHD,
-    copyTrophyModalToClipboard
+    copyTrophyModalToClipboard,
+    exportStandingsPNG,
+    copyStandingsToClipboard,
+    shareStandingsWhatsApp,
+    exportTeamMatchesPNG,
+    copyTeamMatchesToClipboard,
+    toggleStandingsShareDropdown,
+    closeStandingsShareDropdown
   });
 
   if (document.readyState === 'loading') {
@@ -669,6 +715,20 @@ if (typeof window !== 'undefined' && typeof document !== 'undefined') {
         }
       }, 150);
       return;
+    }
+
+    const teamParam = getTeamParamFromURL();
+    if (teamParam) {
+      openTeamMatchesModal(undefined, teamParam, false, false);
+    } else {
+      closeTeamMatchesModal(false);
+    }
+
+    const viewParam = getViewParamFromURL();
+    if (viewParam === 'merit') {
+      switchLiveStandingsView('merit', false);
+    } else if (document.getElementById('live-view-merit-container') && !document.getElementById('live-view-merit-container')?.classList.contains('hidden')) {
+      switchLiveStandingsView('real', false);
     }
 
     const targetTab = getMainTabParamFromURL() || 'albo';
