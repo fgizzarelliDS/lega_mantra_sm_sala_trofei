@@ -217,7 +217,31 @@ def fetch_live_competition_data(competition_id: Optional[str] = None) -> int:
 
     # Re-run compiler to update public/live_season_details.json and public/data.json
     banner("Re-building Application Live Data")
-    compile_live_season_details(root_dir=base_dir)
+    compiled = compile_live_season_details(root_dir=base_dir)
+
+    if compiled and active_info and active_info.get("season_file"):
+        try:
+            with open(active_info["season_file"], "r", encoding="utf-8") as sf:
+                s_data = json.load(sf)
+            for comp in s_data.get("competitions", []):
+                if comp.get("id") == int(competition_id):
+                    comp_ranking = []
+                    for st in compiled.get("standings", []):
+                        comp_ranking.append({
+                            "rank": st["rank"],
+                            "teamName": st["teamName"],
+                            "coach": st["coach"],
+                            "managerId": st["managerId"],
+                            "points": float(st["points"]),
+                            "logo": st.get("logo")
+                        })
+                    comp["ranking"] = comp_ranking
+            with open(active_info["season_file"], "w", encoding="utf-8") as sf:
+                json.dump(s_data, sf, indent=2, ensure_ascii=False)
+            ok(f"Aggiornata classifica con punti live in: {active_info['season_file']}")
+        except Exception as e:
+            warn(f"Impossibile sincronizzare punti stagione: {e}")
+
     build_data()
     ok("Tutto pronto! Dati reali integrati e compilati con successo.")
     return 0

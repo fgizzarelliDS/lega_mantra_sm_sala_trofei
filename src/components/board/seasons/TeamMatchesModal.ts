@@ -168,21 +168,28 @@ export function openTeamMatchesModal(managerId?: string, teamName?: string, isBa
       const oppScore = isHome ? m.awayScore : m.homeScore;
       const oppTeam = isHome ? m.awayTeam : m.homeTeam;
       const oppMgrId = isHome ? m.awayManagerId : m.homeManagerId;
-      const oppLogo = isHome ? m.awayLogo : m.homeLogo;
+      const rawOppLogo = isHome ? m.awayLogo : m.homeLogo;
+      const oppLogo = rawOppLogo || liveData.standings?.find(s => s.teamName === oppTeam || (oppMgrId && s.managerId === oppMgrId))?.logo;
 
       const isPlayed = Boolean(
+        (m as any).isPlayed ||
+        (m as any).played ||
         (m.homeFantaPoints !== undefined && m.homeFantaPoints > 0) ||
         (m.awayFantaPoints !== undefined && m.awayFantaPoints > 0) ||
-        (liveData.lastCompletedRound && r.roundNumber <= liveData.lastCompletedRound) ||
-        (m as any).isPlayed ||
-        (m as any).played
+        (liveData.lastCompletedRound && r.roundNumber <= liveData.lastCompletedRound)
       );
 
       let outcome: 'W' | 'D' | 'L' | null = null;
       if (isPlayed) {
-        if (teamScore > oppScore) outcome = 'W';
-        else if (teamScore < oppScore) outcome = 'L';
-        else outcome = 'D';
+        if (isHome && (m as any).homeOutcome) {
+          outcome = (m as any).homeOutcome;
+        } else if (isAway && (m as any).awayOutcome) {
+          outcome = (m as any).awayOutcome;
+        } else if (typeof teamScore === 'number' && typeof oppScore === 'number' && !isNaN(teamScore) && !isNaN(oppScore)) {
+          if (teamScore > oppScore) outcome = 'W';
+          else if (teamScore < oppScore) outcome = 'L';
+          else outcome = 'D';
+        }
       }
 
       matchesPlayed.push({

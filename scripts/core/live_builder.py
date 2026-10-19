@@ -464,6 +464,53 @@ def compile_live_season_details(
     ]
     last_completed = max(completed_rounds, default=0)
 
+    # Mask match fixtures for public distribution (no raw scores or fantapoints)
+    masked_rounds = []
+    for r in all_rounds:
+        r_num = r.get('roundNumber')
+        masked_matches = []
+        for m in r.get('matches', []):
+            h_score = int(m.get('homeScore', 0) or 0)
+            a_score = int(m.get('awayScore', 0) or 0)
+            h_fp = float(m.get('homeFantaPoints', 0.0) or 0.0)
+            a_fp = float(m.get('awayFantaPoints', 0.0) or 0.0)
+
+            is_played = bool(
+                m.get('isPlayed')
+                or m.get('played')
+                or h_fp > 0
+                or a_fp > 0
+            )
+
+            home_outcome = None
+            away_outcome = None
+            if is_played:
+                if h_score > a_score:
+                    home_outcome = 'W'
+                    away_outcome = 'L'
+                elif h_score < a_score:
+                    home_outcome = 'L'
+                    away_outcome = 'W'
+                else:
+                    home_outcome = 'D'
+                    away_outcome = 'D'
+
+            masked_matches.append({
+                'homeTeam': m.get('homeTeam'),
+                'awayTeam': m.get('awayTeam'),
+                'homeManagerId': m.get('homeManagerId'),
+                'awayManagerId': m.get('awayManagerId'),
+                'homeLogo': m.get('homeLogo'),
+                'awayLogo': m.get('awayLogo'),
+                'isPlayed': is_played,
+                'homeOutcome': home_outcome,
+                'awayOutcome': away_outcome
+            })
+        masked_rounds.append({
+            'roundNumber': r_num,
+            'matches': masked_matches
+        })
+
     # Clean intermediate calculation fields from final JSON standings
     final_standings = []
     for t in teams_list:
@@ -472,23 +519,10 @@ def compile_live_season_details(
             'managerId': t.get('managerId'),
             'teamName': t['teamName'],
             'coach': t.get('coach', ''),
-            'points': t['points'],
-            'played': t['played'],
-            'won': t['won'],
-            'drawn': t['drawn'],
-            'lost': t['lost'],
-            'goalsFor': t['goalsFor'],
-            'goalsAgainst': t['goalsAgainst'],
-            'goalDiff': t['goalDiff'],
-            'totalFantaPoints': t['totalFantaPoints'],
-            'avgFantaPoints': t['avgFantaPoints'],
-            'expectedRank': t['expectedRank'],
-            'deltaLuck': t['deltaLuck'],
-            'momentum': t['momentum'],
+            'logo': t.get('logo'),
             'recentForm': t['recentForm'],
             'statusBadge': t['statusBadge'],
-            'statusLabel': t['statusLabel'],
-            'logo': t.get('logo')
+            'statusLabel': t['statusLabel']
         })
 
     compiled_details = {
@@ -496,7 +530,7 @@ def compile_live_season_details(
         'competitionId': competition_id,
         'lastCompletedRound': last_completed,
         'totalRounds': total_rounds,
-        'rounds': all_rounds,
+        'rounds': masked_rounds,
         'standings': final_standings
     }
 

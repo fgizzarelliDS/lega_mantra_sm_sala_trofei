@@ -577,12 +577,15 @@ export interface MatchdayMatch {
   awayTeam: string;
   homeManagerId?: string;
   awayManagerId?: string;
-  homeScore: number;
-  awayScore: number;
-  homeFantaPoints: number;
-  awayFantaPoints: number;
+  homeScore?: number;
+  awayScore?: number;
+  homeFantaPoints?: number;
+  awayFantaPoints?: number;
   homeLogo?: string;
   awayLogo?: string;
+  isPlayed?: boolean;
+  homeOutcome?: FormResult;
+  awayOutcome?: FormResult;
 }
 
 export interface MatchdayRound {

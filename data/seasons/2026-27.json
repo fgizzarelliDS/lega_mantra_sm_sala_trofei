@@ -15,7 +15,7 @@
           "teamName": "Kiwi Football Club",
           "coach": "tazio",
           "managerId": "m_tazio",
-          "points": 0.0,
+          "points": 9.0,
           "logo": "assets/teams/9435540_08112345.png"
         },
         {
@@ -23,7 +23,7 @@
           "teamName": "Iron Hill warriors",
           "coach": "MF",
           "managerId": "m_mf",
-          "points": 0.0,
+          "points": 7.0,
           "logo": "assets/crests/royal_vanguard.svg"
         },
         {
@@ -31,7 +31,7 @@
           "teamName": "Scalo San Genesio",
           "coach": "Valery",
           "managerId": "m_valery",
-          "points": 0.0,
+          "points": 7.0,
           "logo": "assets/teams/10945839_08045816.png"
         },
         {
@@ -39,7 +39,7 @@
           "teamName": "Vrace FRC",
           "coach": "Gizza",
           "managerId": "m_gizza",
-          "points": 0.0,
+          "points": 6.0,
           "logo": "assets/teams/9081967_07405356.png"
         },
         {
@@ -47,31 +47,31 @@
           "teamName": "Champel United",
           "coach": "Claudio",
           "managerId": "m_claudio",
-          "points": 0.0,
+          "points": 6.0,
           "logo": "assets/crests/obsidian_fc.svg"
         },
         {
           "rank": 6,
-          "teamName": "Grassotthers",
-          "coach": "PeterDani",
-          "managerId": "m_peterdani",
-          "points": 0.0,
-          "logo": "assets/teams/8956599_07229128.png"
-        },
-        {
-          "rank": 7,
           "teamName": "AS AV",
           "coach": "Vale",
           "managerId": "m_vale",
-          "points": 0.0,
+          "points": 3.0,
           "logo": "assets/crests/obsidian_fc.svg"
+        },
+        {
+          "rank": 7,
+          "teamName": "Grassotthers",
+          "coach": "PeterDani",
+          "managerId": "m_peterdani",
+          "points": 3.0,
+          "logo": "assets/teams/8956599_07229128.png"
         },
         {
           "rank": 8,
           "teamName": "Cardinthians",
           "coach": "Luca",
           "managerId": "m_luca",
-          "points": 0.0,
+          "points": 1.0,
           "logo": "assets/teams/10713886_04772701.png"
         },
         {
@@ -79,7 +79,7 @@
           "teamName": "Villereal juif",
           "coach": "Carota",
           "managerId": "m_simone",
-          "points": 0.0,
+          "points": 1.0,
           "logo": "assets/crests/royal_vanguard.svg"
         },
         {
