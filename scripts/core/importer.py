@@ -8,7 +8,7 @@ import sys
 import json
 from typing import Optional, Dict, Any, List
 
-from .config import get_base_dir, get_data_dir, get_public_dir
+from .config import get_base_dir, get_data_dir, get_public_dir, LEAGUE_RULES
 from .logger import ok, info, warn, error, banner
 
 def season_to_filename(season_str: str) -> str:
@@ -29,7 +29,8 @@ def import_data(input_path: Optional[str] = None) -> int:
         error(f"Source file not found: {input_path}")
         return 1
 
-    banner("InsalAtlas Data Decomposition (Import)")
+    brand_name = LEAGUE_RULES.get("brand_name", "League")
+    banner(f"{brand_name} Data Decomposition (Import)")
     info(f"Reading source file: {input_path} ...")
 
     with open(input_path, 'r', encoding='utf-8') as f:

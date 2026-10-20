@@ -8,7 +8,7 @@ import sys
 import json
 import re
 from typing import Optional, Dict, Any, List
-from .config import get_base_dir, get_public_dir
+from .config import get_base_dir, get_public_dir, LEAGUE_RULES
 from .logger import ok, info, warn, error, banner
 
 def validate_manager(m: Dict[str, Any], index: int) -> Optional[str]:
@@ -76,7 +76,8 @@ def validate_data(data_path: Optional[str] = None, schema_path: Optional[str] = 
     if not schema_path:
         schema_path = os.path.join(root_dir, "schemas", "data.schema.json")
 
-    banner("InsalAtlas Data Validation")
+    brand_name = LEAGUE_RULES.get("brand_name", "League")
+    banner(f"{brand_name} Data Validation")
     info(f"Target data file: {data_path}")
 
     if not os.path.exists(data_path):

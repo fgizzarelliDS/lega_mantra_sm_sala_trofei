@@ -1,7 +1,7 @@
 {
   "season": "2026/27",
   "competitionId": 679593,
-  "lastCompletedRound": 3,
+  "lastCompletedRound": 4,
   "totalRounds": 27,
   "rounds": [
     {
@@ -194,9 +194,9 @@
           "awayManagerId": "m_vale",
           "homeLogo": "assets/teams/10713886_04772701.png",
           "awayLogo": "assets/crests/obsidian_fc.svg",
-          "isPlayed": false,
-          "homeOutcome": null,
-          "awayOutcome": null
+          "isPlayed": true,
+          "homeOutcome": "D",
+          "awayOutcome": "D"
         },
         {
           "homeTeam": "Scalo San Genesio",
@@ -205,9 +205,9 @@
           "awayManagerId": "m_claudio",
           "homeLogo": "assets/teams/10945839_08045816.png",
           "awayLogo": "assets/crests/obsidian_fc.svg",
-          "isPlayed": false,
-          "homeOutcome": null,
-          "awayOutcome": null
+          "isPlayed": true,
+          "homeOutcome": "W",
+          "awayOutcome": "L"
         },
         {
           "homeTeam": "Iron Hill warriors",
@@ -216,9 +216,9 @@
           "awayManagerId": "m_tazio",
           "homeLogo": "assets/crests/royal_vanguard.svg",
           "awayLogo": "assets/teams/9435540_08112345.png",
-          "isPlayed": false,
-          "homeOutcome": null,
-          "awayOutcome": null
+          "isPlayed": true,
+          "homeOutcome": "L",
+          "awayOutcome": "W"
         },
         {
           "homeTeam": "Vrace FRC",
@@ -227,9 +227,9 @@
           "awayManagerId": "m_peterdani",
           "homeLogo": "assets/teams/9081967_07405356.png",
           "awayLogo": "assets/teams/8956599_07229128.png",
-          "isPlayed": false,
-          "homeOutcome": null,
-          "awayOutcome": null
+          "isPlayed": true,
+          "homeOutcome": "W",
+          "awayOutcome": "L"
         },
         {
           "homeTeam": "Tevere FC",
@@ -238,9 +238,9 @@
           "awayManagerId": "m_simone",
           "homeLogo": "assets/teams/8957083_03150402.png",
           "awayLogo": "assets/crests/royal_vanguard.svg",
-          "isPlayed": false,
-          "homeOutcome": null,
-          "awayOutcome": null
+          "isPlayed": true,
+          "homeOutcome": "L",
+          "awayOutcome": "W"
         }
       ]
     },
@@ -1635,27 +1635,28 @@
       "recentForm": [
         "W",
         "W",
+        "W",
         "W"
       ],
       "statusBadge": "🔥",
       "statusLabel": "In Fiamme",
       "scheduleLuck": {
-        "xPoints": 6.44,
-        "xRank": 2,
-        "deltaRank": -1,
+        "xPoints": 8.44,
+        "xRank": 1,
+        "deltaRank": 0,
         "allPlayRecord": {
-          "played": 27,
-          "wins": 17,
-          "draws": 7,
-          "losses": 3,
-          "winPct": 63.0
+          "played": 36,
+          "wins": 22,
+          "draws": 10,
+          "losses": 4,
+          "winPct": 61.1
         },
-        "luckZScore": 1.15,
+        "luckZScore": 1.91,
         "luckBadge": "🍀",
         "luckLabel": "Favorevole",
         "monteCarlo": {
-          "medianPoints": 7.0,
-          "stdDev": 1.74,
+          "medianPoints": 8.0,
+          "stdDev": 2.1,
           "pPodiumPct": null,
           "pSpoonPct": null
         }
@@ -1663,41 +1664,6 @@
     },
     {
       "rank": 2,
-      "managerId": "m_mf",
-      "teamName": "Iron Hill warriors",
-      "coach": "MF",
-      "logo": "assets/crests/royal_vanguard.svg",
-      "recentForm": [
-        "D",
-        "W",
-        "W"
-      ],
-      "statusBadge": "🔥",
-      "statusLabel": "In Fiamme",
-      "scheduleLuck": {
-        "xPoints": 7.22,
-        "xRank": 1,
-        "deltaRank": 1,
-        "allPlayRecord": {
-          "played": 27,
-          "wins": 20,
-          "draws": 5,
-          "losses": 2,
-          "winPct": 74.1
-        },
-        "luckZScore": 0.0,
-        "luckBadge": "⚖️",
-        "luckLabel": "Neutro",
-        "monteCarlo": {
-          "medianPoints": 7.0,
-          "stdDev": 1.32,
-          "pPodiumPct": null,
-          "pSpoonPct": null
-        }
-      }
-    },
-    {
-      "rank": 3,
       "managerId": "m_valery",
       "teamName": "Scalo San Genesio",
       "coach": "Valery",
@@ -1705,34 +1671,35 @@
       "recentForm": [
         "D",
         "W",
+        "W",
         "W"
       ],
-      "statusBadge": "📈",
-      "statusLabel": "In Ascesa",
+      "statusBadge": "🔥",
+      "statusLabel": "In Fiamme",
       "scheduleLuck": {
-        "xPoints": 5.0,
-        "xRank": 3,
+        "xPoints": 8.0,
+        "xRank": 2,
         "deltaRank": 0,
         "allPlayRecord": {
-          "played": 27,
-          "wins": 12,
+          "played": 36,
+          "wins": 21,
           "draws": 9,
           "losses": 6,
-          "winPct": 44.4
+          "winPct": 58.3
         },
-        "luckZScore": 0.97,
+        "luckZScore": 0.98,
         "luckBadge": "↗️",
         "luckLabel": "Positivo",
         "monteCarlo": {
-          "medianPoints": 5.0,
-          "stdDev": 2.07,
+          "medianPoints": 8.0,
+          "stdDev": 2.04,
           "pPodiumPct": null,
           "pSpoonPct": null
         }
       }
     },
     {
-      "rank": 4,
+      "rank": 3,
       "managerId": "m_gizza",
       "teamName": "Vrace FRC",
       "coach": "Gizza",
@@ -1740,27 +1707,64 @@
       "recentForm": [
         "W",
         "L",
+        "W",
         "W"
       ],
       "statusBadge": "📈",
       "statusLabel": "In Ascesa",
       "scheduleLuck": {
-        "xPoints": 5.0,
+        "xPoints": 7.0,
         "xRank": 4,
-        "deltaRank": 0,
+        "deltaRank": -1,
         "allPlayRecord": {
-          "played": 27,
-          "wins": 14,
-          "draws": 3,
+          "played": 36,
+          "wins": 19,
+          "draws": 6,
+          "losses": 11,
+          "winPct": 52.8
+        },
+        "luckZScore": 1.06,
+        "luckBadge": "🍀",
+        "luckLabel": "Favorevole",
+        "monteCarlo": {
+          "medianPoints": 7.0,
+          "stdDev": 1.88,
+          "pPodiumPct": null,
+          "pSpoonPct": null
+        }
+      }
+    },
+    {
+      "rank": 4,
+      "managerId": "m_mf",
+      "teamName": "Iron Hill warriors",
+      "coach": "MF",
+      "logo": "assets/crests/royal_vanguard.svg",
+      "recentForm": [
+        "D",
+        "W",
+        "W",
+        "L"
+      ],
+      "statusBadge": "⚖️",
+      "statusLabel": "Stabile",
+      "scheduleLuck": {
+        "xPoints": 7.33,
+        "xRank": 3,
+        "deltaRank": 1,
+        "allPlayRecord": {
+          "played": 36,
+          "wins": 20,
+          "draws": 6,
           "losses": 10,
-          "winPct": 51.9
+          "winPct": 55.6
         },
         "luckZScore": 0.0,
         "luckBadge": "⚖️",
         "luckLabel": "Neutro",
         "monteCarlo": {
-          "medianPoints": 6.0,
-          "stdDev": 1.52,
+          "medianPoints": 7.0,
+          "stdDev": 1.37,
           "pPodiumPct": null,
           "pSpoonPct": null
         }
@@ -1775,27 +1779,28 @@
       "recentForm": [
         "W",
         "W",
+        "L",
         "L"
       ],
-      "statusBadge": "⚖️",
-      "statusLabel": "Stabile",
+      "statusBadge": "📉",
+      "statusLabel": "In Flessione",
       "scheduleLuck": {
-        "xPoints": 4.33,
+        "xPoints": 6.33,
         "xRank": 5,
         "deltaRank": 0,
         "allPlayRecord": {
-          "played": 27,
-          "wins": 10,
-          "draws": 9,
-          "losses": 8,
-          "winPct": 37.0
+          "played": 36,
+          "wins": 15,
+          "draws": 12,
+          "losses": 9,
+          "winPct": 41.7
         },
-        "luckZScore": 1.13,
-        "luckBadge": "🍀",
-        "luckLabel": "Favorevole",
+        "luckZScore": -0.47,
+        "luckBadge": "↘️",
+        "luckLabel": "Sfortunato",
         "monteCarlo": {
-          "medianPoints": 4.0,
-          "stdDev": 1.77,
+          "medianPoints": 7.0,
+          "stdDev": 2.11,
           "pPodiumPct": null,
           "pSpoonPct": null
         }
@@ -1810,27 +1815,28 @@
       "recentForm": [
         "L",
         "W",
-        "L"
+        "L",
+        "D"
       ],
       "statusBadge": "📉",
       "statusLabel": "In Flessione",
       "scheduleLuck": {
-        "xPoints": 2.11,
-        "xRank": 7,
-        "deltaRank": -1,
+        "xPoints": 3.0,
+        "xRank": 8,
+        "deltaRank": -2,
         "allPlayRecord": {
-          "played": 27,
-          "wins": 3,
-          "draws": 10,
-          "losses": 14,
-          "winPct": 11.1
+          "played": 36,
+          "wins": 5,
+          "draws": 12,
+          "losses": 19,
+          "winPct": 13.9
         },
-        "luckZScore": 0.71,
+        "luckZScore": 0.54,
         "luckBadge": "↗️",
         "luckLabel": "Positivo",
         "monteCarlo": {
-          "medianPoints": 2.0,
-          "stdDev": 1.4,
+          "medianPoints": 3.0,
+          "stdDev": 1.84,
           "pPodiumPct": null,
           "pSpoonPct": null
         }
@@ -1838,76 +1844,6 @@
     },
     {
       "rank": 7,
-      "managerId": "m_peterdani",
-      "teamName": "Grassotthers",
-      "coach": "PeterDani",
-      "logo": "assets/teams/8956599_07229128.png",
-      "recentForm": [
-        "W",
-        "L",
-        "L"
-      ],
-      "statusBadge": "📉",
-      "statusLabel": "In Flessione",
-      "scheduleLuck": {
-        "xPoints": 4.22,
-        "xRank": 6,
-        "deltaRank": 1,
-        "allPlayRecord": {
-          "played": 27,
-          "wins": 11,
-          "draws": 5,
-          "losses": 11,
-          "winPct": 40.7
-        },
-        "luckZScore": -0.75,
-        "luckBadge": "↘️",
-        "luckLabel": "Sfortunato",
-        "monteCarlo": {
-          "medianPoints": 4.0,
-          "stdDev": 1.34,
-          "pPodiumPct": null,
-          "pSpoonPct": null
-        }
-      }
-    },
-    {
-      "rank": 8,
-      "managerId": "m_luca",
-      "teamName": "Cardinthians",
-      "coach": "Luca",
-      "logo": "assets/teams/10713886_04772701.png",
-      "recentForm": [
-        "L",
-        "L",
-        "D"
-      ],
-      "statusBadge": "📉",
-      "statusLabel": "In Flessione",
-      "scheduleLuck": {
-        "xPoints": 2.11,
-        "xRank": 8,
-        "deltaRank": 0,
-        "allPlayRecord": {
-          "played": 27,
-          "wins": 3,
-          "draws": 10,
-          "losses": 14,
-          "winPct": 11.1
-        },
-        "luckZScore": -0.71,
-        "luckBadge": "↘️",
-        "luckLabel": "Sfortunato",
-        "monteCarlo": {
-          "medianPoints": 2.0,
-          "stdDev": 1.41,
-          "pPodiumPct": null,
-          "pSpoonPct": null
-        }
-      }
-    },
-    {
-      "rank": 9,
       "managerId": "m_simone",
       "teamName": "Villereal juif",
       "coach": "Carota",
@@ -1915,27 +1851,100 @@
       "recentForm": [
         "L",
         "L",
+        "D",
+        "W"
+      ],
+      "statusBadge": "⚖️",
+      "statusLabel": "Stabile",
+      "scheduleLuck": {
+        "xPoints": 4.11,
+        "xRank": 7,
+        "deltaRank": 0,
+        "allPlayRecord": {
+          "played": 36,
+          "wins": 8,
+          "draws": 13,
+          "losses": 15,
+          "winPct": 22.2
+        },
+        "luckZScore": 0.0,
+        "luckBadge": "⚖️",
+        "luckLabel": "Neutro",
+        "monteCarlo": {
+          "medianPoints": 4.0,
+          "stdDev": 1.74,
+          "pPodiumPct": null,
+          "pSpoonPct": null
+        }
+      }
+    },
+    {
+      "rank": 8,
+      "managerId": "m_peterdani",
+      "teamName": "Grassotthers",
+      "coach": "PeterDani",
+      "logo": "assets/teams/8956599_07229128.png",
+      "recentForm": [
+        "W",
+        "L",
+        "L",
+        "L"
+      ],
+      "statusBadge": "🧊",
+      "statusLabel": "Crisi Nera",
+      "scheduleLuck": {
+        "xPoints": 5.11,
+        "xRank": 6,
+        "deltaRank": 2,
+        "allPlayRecord": {
+          "played": 36,
+          "wins": 13,
+          "draws": 7,
+          "losses": 16,
+          "winPct": 36.1
+        },
+        "luckZScore": -0.56,
+        "luckBadge": "↘️",
+        "luckLabel": "Sfortunato",
+        "monteCarlo": {
+          "medianPoints": 4.0,
+          "stdDev": 1.8,
+          "pPodiumPct": null,
+          "pSpoonPct": null
+        }
+      }
+    },
+    {
+      "rank": 9,
+      "managerId": "m_luca",
+      "teamName": "Cardinthians",
+      "coach": "Luca",
+      "logo": "assets/teams/10713886_04772701.png",
+      "recentForm": [
+        "L",
+        "L",
+        "D",
         "D"
       ],
       "statusBadge": "📉",
       "statusLabel": "In Flessione",
       "scheduleLuck": {
-        "xPoints": 2.11,
+        "xPoints": 3.0,
         "xRank": 9,
         "deltaRank": 0,
         "allPlayRecord": {
-          "played": 27,
-          "wins": 3,
-          "draws": 10,
-          "losses": 14,
-          "winPct": 11.1
+          "played": 36,
+          "wins": 5,
+          "draws": 12,
+          "losses": 19,
+          "winPct": 13.9
         },
-        "luckZScore": -0.76,
+        "luckZScore": -0.54,
         "luckBadge": "↘️",
         "luckLabel": "Sfortunato",
         "monteCarlo": {
-          "medianPoints": 2.0,
-          "stdDev": 1.32,
+          "medianPoints": 3.0,
+          "stdDev": 1.86,
           "pPodiumPct": null,
           "pSpoonPct": null
         }
@@ -1950,27 +1959,28 @@
       "recentForm": [
         "L",
         "L",
+        "L",
         "L"
       ],
       "statusBadge": "🧊",
       "statusLabel": "Crisi Nera",
       "scheduleLuck": {
-        "xPoints": 2.11,
+        "xPoints": 2.22,
         "xRank": 10,
         "deltaRank": 0,
         "allPlayRecord": {
-          "played": 27,
+          "played": 36,
           "wins": 3,
-          "draws": 10,
-          "losses": 14,
-          "winPct": 11.1
+          "draws": 11,
+          "losses": 22,
+          "winPct": 8.3
         },
-        "luckZScore": -1.42,
+        "luckZScore": -1.4,
         "luckBadge": "⛈️",
         "luckLabel": "Bersagliato",
         "monteCarlo": {
           "medianPoints": 2.0,
-          "stdDev": 1.4,
+          "stdDev": 1.43,
           "pPodiumPct": null,
           "pSpoonPct": null
         }
