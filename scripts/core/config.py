@@ -76,6 +76,23 @@ LEAGUE_RULES = {
             119514: "Coppa",
             265499: "Supercoppa"
         }
+    },
+    "elo": {
+        "base_rating": 1500.0,
+        "scale_factor": 400.0,
+        "carryover_alpha": 0.75,
+        "historical_seeding": {
+            "scale": 75.0,
+            "min_rating": 1350.0,
+            "max_rating": 1650.0
+        },
+        "k_factors": {
+            "Campionato": 32.0,
+            "Coppa_Knockout": 40.0,
+            "Coppa": 24.0,
+            "Supercoppa": 24.0,
+            "default": 32.0
+        }
     }
 }
 
