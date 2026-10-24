@@ -144,4 +144,4 @@ export function handleTitleBlur(element: HTMLElement): void {
   showToast('Titolo aggiornato e salvato!', 'info');
 }
 
-export { applyTitlesToDOM } from '@/utils/domTitles';
+export { applyTitlesToDOM, applyFeatureFlagsToDOM } from '@/utils/domTitles';

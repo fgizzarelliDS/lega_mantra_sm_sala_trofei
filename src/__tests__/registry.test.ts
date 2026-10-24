@@ -418,5 +418,58 @@ describe('Dynamic Competition Registry Engine', () => {
       const idx = COMPETITION_REGISTRY.findIndex(c => c.id === 'winter_cup');
       if (idx !== -1) COMPETITION_REGISTRY.splice(idx, 1);
     });
+
+    it('hides elements and removes options with disabled data-feature via applyFeatureFlagsToDOM', async () => {
+      const { applyFeatureFlagsToDOM } = await import('@/utils/domTitles');
+      const { LEAGUE } = await import('@/config');
+
+      const mockSpanMundialito = {
+        tagName: 'SPAN',
+        dataset: { feature: 'mundialito' },
+        style: { display: '' }
+      };
+      const mockSpanCartonato = {
+        tagName: 'SPAN',
+        dataset: { feature: 'cartonato' },
+        style: { display: '' }
+      };
+      const mockSpanSpoon = {
+        tagName: 'SPAN',
+        dataset: { feature: 'spoon' },
+        style: { display: '' }
+      };
+      let optionRemoved = false;
+      const mockOptionMundialito = {
+        tagName: 'OPTION',
+        dataset: { feature: 'mundialito' },
+        style: { display: '' },
+        remove: () => { optionRemoved = true; }
+      };
+
+      const originalDoc = (globalThis as any).document;
+      (globalThis as any).document = {
+        querySelectorAll: (selector: string) => {
+          if (selector === '[data-feature]') {
+            return [mockSpanMundialito, mockSpanCartonato, mockSpanSpoon, mockOptionMundialito];
+          }
+          return [];
+        }
+      };
+
+      applyFeatureFlagsToDOM();
+
+      if (!LEAGUE.features.mundialito) {
+        expect(mockSpanMundialito.style.display).toBe('none');
+        expect(optionRemoved).toBe(true);
+      }
+      if (!LEAGUE.features.cartonato) {
+        expect(mockSpanCartonato.style.display).toBe('none');
+      }
+      if (LEAGUE.features.spoon) {
+        expect(mockSpanSpoon.style.display).toBe('');
+      }
+
+      (globalThis as any).document = originalDoc;
+    });
   });
 });
