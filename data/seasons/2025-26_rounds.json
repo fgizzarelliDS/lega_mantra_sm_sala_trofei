@@ -1,0 +1,1899 @@
+{
+  "season": "2025/26",
+  "competitionId": 622243,
+  "category": "Campionato",
+  "totalRounds": 27,
+  "lastCompletedRound": 27,
+  "rounds": [
+    {
+      "roundNumber": 1,
+      "matches": [
+        {
+          "homeTeam": "Cardinthians",
+          "awayTeam": "Vrace FRC",
+          "homeManagerId": "m_luca",
+          "awayManagerId": "m_gizza",
+          "homeScore": 4,
+          "awayScore": 0,
+          "homeFantaPoints": 84.5,
+          "awayFantaPoints": 64.0,
+          "homeOutcome": "W",
+          "awayOutcome": "L",
+          "isPlayed": true
+        },
+        {
+          "homeTeam": "Champel United",
+          "awayTeam": "Iron Hill warriors",
+          "homeManagerId": "m_claudio",
+          "awayManagerId": "m_mf",
+          "homeScore": 1,
+          "awayScore": 1,
+          "homeFantaPoints": 68.5,
+          "awayFantaPoints": 68.0,
+          "homeOutcome": "D",
+          "awayOutcome": "D",
+          "isPlayed": true
+        },
+        {
+          "homeTeam": "Kiwi Football Club",
+          "awayTeam": "Villereal juif",
+          "homeManagerId": "m_tazio",
+          "awayManagerId": "m_simone",
+          "homeScore": 1,
+          "awayScore": 1,
+          "homeFantaPoints": 66.0,
+          "awayFantaPoints": 67.0,
+          "homeOutcome": "D",
+          "awayOutcome": "D",
+          "isPlayed": true
+        },
+        {
+          "homeTeam": "AS AV",
+          "awayTeam": "Tevere FC",
+          "homeManagerId": "m_vale",
+          "awayManagerId": "m_lucchetto",
+          "homeScore": 1,
+          "awayScore": 3,
+          "homeFantaPoints": 71.5,
+          "awayFantaPoints": 78.5,
+          "homeOutcome": "L",
+          "awayOutcome": "W",
+          "isPlayed": true
+        },
+        {
+          "homeTeam": "Grassotthers",
+          "awayTeam": "Scalo San Genesio",
+          "homeManagerId": "m_peterdani",
+          "awayManagerId": "m_valery",
+          "homeScore": 3,
+          "awayScore": 3,
+          "homeFantaPoints": 78.0,
+          "awayFantaPoints": 81.0,
+          "homeOutcome": "D",
+          "awayOutcome": "D",
+          "isPlayed": true
+        }
+      ]
+    },
+    {
+      "roundNumber": 2,
+      "matches": [
+        {
+          "homeTeam": "AS AV",
+          "awayTeam": "Scalo San Genesio",
+          "homeManagerId": "m_vale",
+          "awayManagerId": "m_valery",
+          "homeScore": 1,
+          "awayScore": 1,
+          "homeFantaPoints": 69.0,
+          "awayFantaPoints": 68.0,
+          "homeOutcome": "D",
+          "awayOutcome": "D",
+          "isPlayed": true
+        },
+        {
+          "homeTeam": "Champel United",
+          "awayTeam": "Tevere FC",
+          "homeManagerId": "m_claudio",
+          "awayManagerId": "m_lucchetto",
+          "homeScore": 1,
+          "awayScore": 1,
+          "homeFantaPoints": 71.0,
+          "awayFantaPoints": 68.0,
+          "homeOutcome": "D",
+          "awayOutcome": "D",
+          "isPlayed": true
+        },
+        {
+          "homeTeam": "Kiwi Football Club",
+          "awayTeam": "Vrace FRC",
+          "homeManagerId": "m_tazio",
+          "awayManagerId": "m_gizza",
+          "homeScore": 1,
+          "awayScore": 1,
+          "homeFantaPoints": 69.5,
+          "awayFantaPoints": 71.0,
+          "homeOutcome": "D",
+          "awayOutcome": "D",
+          "isPlayed": true
+        },
+        {
+          "homeTeam": "Iron Hill warriors",
+          "awayTeam": "Villereal juif",
+          "homeManagerId": "m_mf",
+          "awayManagerId": "m_simone",
+          "homeScore": 1,
+          "awayScore": 2,
+          "homeFantaPoints": 69.0,
+          "awayFantaPoints": 76.0,
+          "homeOutcome": "L",
+          "awayOutcome": "W",
+          "isPlayed": true
+        },
+        {
+          "homeTeam": "Cardinthians",
+          "awayTeam": "Grassotthers",
+          "homeManagerId": "m_luca",
+          "awayManagerId": "m_peterdani",
+          "homeScore": 2,
+          "awayScore": 3,
+          "homeFantaPoints": 73.5,
+          "awayFantaPoints": 78.5,
+          "homeOutcome": "L",
+          "awayOutcome": "W",
+          "isPlayed": true
+        }
+      ]
+    },
+    {
+      "roundNumber": 3,
+      "matches": [
+        {
+          "homeTeam": "Iron Hill warriors",
+          "awayTeam": "Vrace FRC",
+          "homeManagerId": "m_mf",
+          "awayManagerId": "m_gizza",
+          "homeScore": 1,
+          "awayScore": 0,
+          "homeFantaPoints": 66.0,
+          "awayFantaPoints": 63.0,
+          "homeOutcome": "W",
+          "awayOutcome": "L",
+          "isPlayed": true
+        },
+        {
+          "homeTeam": "Champel United",
+          "awayTeam": "Villereal juif",
+          "homeManagerId": "m_claudio",
+          "awayManagerId": "m_simone",
+          "homeScore": 1,
+          "awayScore": 1,
+          "homeFantaPoints": 66.0,
+          "awayFantaPoints": 71.0,
+          "homeOutcome": "D",
+          "awayOutcome": "D",
+          "isPlayed": true
+        },
+        {
+          "homeTeam": "Scalo San Genesio",
+          "awayTeam": "Tevere FC",
+          "homeManagerId": "m_valery",
+          "awayManagerId": "m_lucchetto",
+          "homeScore": 1,
+          "awayScore": 2,
+          "homeFantaPoints": 67.0,
+          "awayFantaPoints": 73.5,
+          "homeOutcome": "L",
+          "awayOutcome": "W",
+          "isPlayed": true
+        },
+        {
+          "homeTeam": "Grassotthers",
+          "awayTeam": "Kiwi Football Club",
+          "homeManagerId": "m_peterdani",
+          "awayManagerId": "m_tazio",
+          "homeScore": 2,
+          "awayScore": 1,
+          "homeFantaPoints": 77.0,
+          "awayFantaPoints": 69.5,
+          "homeOutcome": "W",
+          "awayOutcome": "L",
+          "isPlayed": true
+        },
+        {
+          "homeTeam": "AS AV",
+          "awayTeam": "Cardinthians",
+          "homeManagerId": "m_vale",
+          "awayManagerId": "m_luca",
+          "homeScore": 2,
+          "awayScore": 2,
+          "homeFantaPoints": 75.0,
+          "awayFantaPoints": 72.0,
+          "homeOutcome": "D",
+          "awayOutcome": "D",
+          "isPlayed": true
+        }
+      ]
+    },
+    {
+      "roundNumber": 4,
+      "matches": [
+        {
+          "homeTeam": "Grassotthers",
+          "awayTeam": "Iron Hill warriors",
+          "homeManagerId": "m_peterdani",
+          "awayManagerId": "m_mf",
+          "homeScore": 2,
+          "awayScore": 0,
+          "homeFantaPoints": 72.0,
+          "awayFantaPoints": 61.0,
+          "homeOutcome": "W",
+          "awayOutcome": "L",
+          "isPlayed": true
+        },
+        {
+          "homeTeam": "Tevere FC",
+          "awayTeam": "Villereal juif",
+          "homeManagerId": "m_lucchetto",
+          "awayManagerId": "m_simone",
+          "homeScore": 0,
+          "awayScore": 2,
+          "homeFantaPoints": 59.5,
+          "awayFantaPoints": 73.5,
+          "homeOutcome": "L",
+          "awayOutcome": "W",
+          "isPlayed": true
+        },
+        {
+          "homeTeam": "Champel United",
+          "awayTeam": "Vrace FRC",
+          "homeManagerId": "m_claudio",
+          "awayManagerId": "m_gizza",
+          "homeScore": 1,
+          "awayScore": 1,
+          "homeFantaPoints": 70.5,
+          "awayFantaPoints": 70.0,
+          "homeOutcome": "D",
+          "awayOutcome": "D",
+          "isPlayed": true
+        },
+        {
+          "homeTeam": "Cardinthians",
+          "awayTeam": "Scalo San Genesio",
+          "homeManagerId": "m_luca",
+          "awayManagerId": "m_valery",
+          "homeScore": 1,
+          "awayScore": 4,
+          "homeFantaPoints": 69.0,
+          "awayFantaPoints": 84.5,
+          "homeOutcome": "L",
+          "awayOutcome": "W",
+          "isPlayed": true
+        },
+        {
+          "homeTeam": "AS AV",
+          "awayTeam": "Kiwi Football Club",
+          "homeManagerId": "m_vale",
+          "awayManagerId": "m_tazio",
+          "homeScore": 1,
+          "awayScore": 2,
+          "homeFantaPoints": 69.5,
+          "awayFantaPoints": 74.5,
+          "homeOutcome": "L",
+          "awayOutcome": "W",
+          "isPlayed": true
+        }
+      ]
+    },
+    {
+      "roundNumber": 5,
+      "matches": [
+        {
+          "homeTeam": "Kiwi Football Club",
+          "awayTeam": "Scalo San Genesio",
+          "homeManagerId": "m_tazio",
+          "awayManagerId": "m_valery",
+          "homeScore": 1,
+          "awayScore": 0,
+          "homeFantaPoints": 68.5,
+          "awayFantaPoints": 64.5,
+          "homeOutcome": "W",
+          "awayOutcome": "L",
+          "isPlayed": true
+        },
+        {
+          "homeTeam": "Villereal juif",
+          "awayTeam": "Vrace FRC",
+          "homeManagerId": "m_simone",
+          "awayManagerId": "m_gizza",
+          "homeScore": 1,
+          "awayScore": 0,
+          "homeFantaPoints": 67.0,
+          "awayFantaPoints": 62.0,
+          "homeOutcome": "W",
+          "awayOutcome": "L",
+          "isPlayed": true
+        },
+        {
+          "homeTeam": "AS AV",
+          "awayTeam": "Iron Hill warriors",
+          "homeManagerId": "m_vale",
+          "awayManagerId": "m_mf",
+          "homeScore": 1,
+          "awayScore": 0,
+          "homeFantaPoints": 67.5,
+          "awayFantaPoints": 59.5,
+          "homeOutcome": "W",
+          "awayOutcome": "L",
+          "isPlayed": true
+        },
+        {
+          "homeTeam": "Champel United",
+          "awayTeam": "Grassotthers",
+          "homeManagerId": "m_claudio",
+          "awayManagerId": "m_peterdani",
+          "homeScore": 0,
+          "awayScore": 1,
+          "homeFantaPoints": 62.0,
+          "awayFantaPoints": 71.0,
+          "homeOutcome": "L",
+          "awayOutcome": "W",
+          "isPlayed": true
+        },
+        {
+          "homeTeam": "Cardinthians",
+          "awayTeam": "Tevere FC",
+          "homeManagerId": "m_luca",
+          "awayManagerId": "m_lucchetto",
+          "homeScore": 3,
+          "awayScore": 1,
+          "homeFantaPoints": 81.5,
+          "awayFantaPoints": 68.0,
+          "homeOutcome": "W",
+          "awayOutcome": "L",
+          "isPlayed": true
+        }
+      ]
+    },
+    {
+      "roundNumber": 6,
+      "matches": [
+        {
+          "homeTeam": "Iron Hill warriors",
+          "awayTeam": "Scalo San Genesio",
+          "homeManagerId": "m_mf",
+          "awayManagerId": "m_valery",
+          "homeScore": 0,
+          "awayScore": 1,
+          "homeFantaPoints": 53.5,
+          "awayFantaPoints": 70.5,
+          "homeOutcome": "L",
+          "awayOutcome": "W",
+          "isPlayed": true
+        },
+        {
+          "homeTeam": "Tevere FC",
+          "awayTeam": "Vrace FRC",
+          "homeManagerId": "m_lucchetto",
+          "awayManagerId": "m_gizza",
+          "homeScore": 0,
+          "awayScore": 2,
+          "homeFantaPoints": 65.0,
+          "awayFantaPoints": 74.5,
+          "homeOutcome": "L",
+          "awayOutcome": "W",
+          "isPlayed": true
+        },
+        {
+          "homeTeam": "Cardinthians",
+          "awayTeam": "Kiwi Football Club",
+          "homeManagerId": "m_luca",
+          "awayManagerId": "m_tazio",
+          "homeScore": 1,
+          "awayScore": 1,
+          "homeFantaPoints": 67.0,
+          "awayFantaPoints": 68.5,
+          "homeOutcome": "D",
+          "awayOutcome": "D",
+          "isPlayed": true
+        },
+        {
+          "homeTeam": "Grassotthers",
+          "awayTeam": "Villereal juif",
+          "homeManagerId": "m_peterdani",
+          "awayManagerId": "m_simone",
+          "homeScore": 4,
+          "awayScore": 1,
+          "homeFantaPoints": 84.0,
+          "awayFantaPoints": 66.5,
+          "homeOutcome": "W",
+          "awayOutcome": "L",
+          "isPlayed": true
+        },
+        {
+          "homeTeam": "AS AV",
+          "awayTeam": "Champel United",
+          "homeManagerId": "m_vale",
+          "awayManagerId": "m_claudio",
+          "homeScore": 1,
+          "awayScore": 2,
+          "homeFantaPoints": 69.0,
+          "awayFantaPoints": 74.5,
+          "homeOutcome": "L",
+          "awayOutcome": "W",
+          "isPlayed": true
+        }
+      ]
+    },
+    {
+      "roundNumber": 7,
+      "matches": [
+        {
+          "homeTeam": "Champel United",
+          "awayTeam": "Scalo San Genesio",
+          "homeManagerId": "m_claudio",
+          "awayManagerId": "m_valery",
+          "homeScore": 1,
+          "awayScore": 1,
+          "homeFantaPoints": 70.0,
+          "awayFantaPoints": 70.5,
+          "homeOutcome": "D",
+          "awayOutcome": "D",
+          "isPlayed": true
+        },
+        {
+          "homeTeam": "Kiwi Football Club",
+          "awayTeam": "Tevere FC",
+          "homeManagerId": "m_tazio",
+          "awayManagerId": "m_lucchetto",
+          "homeScore": 1,
+          "awayScore": 1,
+          "homeFantaPoints": 70.0,
+          "awayFantaPoints": 66.0,
+          "homeOutcome": "D",
+          "awayOutcome": "D",
+          "isPlayed": true
+        },
+        {
+          "homeTeam": "Cardinthians",
+          "awayTeam": "Iron Hill warriors",
+          "homeManagerId": "m_luca",
+          "awayManagerId": "m_mf",
+          "homeScore": 1,
+          "awayScore": 2,
+          "homeFantaPoints": 66.5,
+          "awayFantaPoints": 72.0,
+          "homeOutcome": "L",
+          "awayOutcome": "W",
+          "isPlayed": true
+        },
+        {
+          "homeTeam": "AS AV",
+          "awayTeam": "Villereal juif",
+          "homeManagerId": "m_vale",
+          "awayManagerId": "m_simone",
+          "homeScore": 2,
+          "awayScore": 0,
+          "homeFantaPoints": 72.5,
+          "awayFantaPoints": 59.5,
+          "homeOutcome": "W",
+          "awayOutcome": "L",
+          "isPlayed": true
+        },
+        {
+          "homeTeam": "Grassotthers",
+          "awayTeam": "Vrace FRC",
+          "homeManagerId": "m_peterdani",
+          "awayManagerId": "m_gizza",
+          "homeScore": 2,
+          "awayScore": 1,
+          "homeFantaPoints": 77.5,
+          "awayFantaPoints": 69.0,
+          "homeOutcome": "W",
+          "awayOutcome": "L",
+          "isPlayed": true
+        }
+      ]
+    },
+    {
+      "roundNumber": 8,
+      "matches": [
+        {
+          "homeTeam": "Cardinthians",
+          "awayTeam": "Champel United",
+          "homeManagerId": "m_luca",
+          "awayManagerId": "m_claudio",
+          "homeScore": 1,
+          "awayScore": 1,
+          "homeFantaPoints": 68.5,
+          "awayFantaPoints": 68.5,
+          "homeOutcome": "D",
+          "awayOutcome": "D",
+          "isPlayed": true
+        },
+        {
+          "homeTeam": "AS AV",
+          "awayTeam": "Vrace FRC",
+          "homeManagerId": "m_vale",
+          "awayManagerId": "m_gizza",
+          "homeScore": 2,
+          "awayScore": 1,
+          "homeFantaPoints": 77.5,
+          "awayFantaPoints": 70.0,
+          "homeOutcome": "W",
+          "awayOutcome": "L",
+          "isPlayed": true
+        },
+        {
+          "homeTeam": "Grassotthers",
+          "awayTeam": "Tevere FC",
+          "homeManagerId": "m_peterdani",
+          "awayManagerId": "m_lucchetto",
+          "homeScore": 1,
+          "awayScore": 2,
+          "homeFantaPoints": 66.0,
+          "awayFantaPoints": 75.0,
+          "homeOutcome": "L",
+          "awayOutcome": "W",
+          "isPlayed": true
+        },
+        {
+          "homeTeam": "Iron Hill warriors",
+          "awayTeam": "Kiwi Football Club",
+          "homeManagerId": "m_mf",
+          "awayManagerId": "m_tazio",
+          "homeScore": 1,
+          "awayScore": 2,
+          "homeFantaPoints": 71.5,
+          "awayFantaPoints": 72.5,
+          "homeOutcome": "L",
+          "awayOutcome": "W",
+          "isPlayed": true
+        },
+        {
+          "homeTeam": "Scalo San Genesio",
+          "awayTeam": "Villereal juif",
+          "homeManagerId": "m_valery",
+          "awayManagerId": "m_simone",
+          "homeScore": 2,
+          "awayScore": 3,
+          "homeFantaPoints": 73.5,
+          "awayFantaPoints": 78.0,
+          "homeOutcome": "L",
+          "awayOutcome": "W",
+          "isPlayed": true
+        }
+      ]
+    },
+    {
+      "roundNumber": 9,
+      "matches": [
+        {
+          "homeTeam": "Cardinthians",
+          "awayTeam": "Villereal juif",
+          "homeManagerId": "m_luca",
+          "awayManagerId": "m_simone",
+          "homeScore": 0,
+          "awayScore": 1,
+          "homeFantaPoints": 62.5,
+          "awayFantaPoints": 67.5,
+          "homeOutcome": "L",
+          "awayOutcome": "W",
+          "isPlayed": true
+        },
+        {
+          "homeTeam": "Iron Hill warriors",
+          "awayTeam": "Tevere FC",
+          "homeManagerId": "m_mf",
+          "awayManagerId": "m_lucchetto",
+          "homeScore": 1,
+          "awayScore": 0,
+          "homeFantaPoints": 66.0,
+          "awayFantaPoints": 62.5,
+          "homeOutcome": "W",
+          "awayOutcome": "L",
+          "isPlayed": true
+        },
+        {
+          "homeTeam": "AS AV",
+          "awayTeam": "Grassotthers",
+          "homeManagerId": "m_vale",
+          "awayManagerId": "m_peterdani",
+          "homeScore": 1,
+          "awayScore": 3,
+          "homeFantaPoints": 70.0,
+          "awayFantaPoints": 81.0,
+          "homeOutcome": "L",
+          "awayOutcome": "W",
+          "isPlayed": true
+        },
+        {
+          "homeTeam": "Champel United",
+          "awayTeam": "Kiwi Football Club",
+          "homeManagerId": "m_claudio",
+          "awayManagerId": "m_tazio",
+          "homeScore": 0,
+          "awayScore": 2,
+          "homeFantaPoints": 64.0,
+          "awayFantaPoints": 72.5,
+          "homeOutcome": "L",
+          "awayOutcome": "W",
+          "isPlayed": true
+        },
+        {
+          "homeTeam": "Scalo San Genesio",
+          "awayTeam": "Vrace FRC",
+          "homeManagerId": "m_valery",
+          "awayManagerId": "m_gizza",
+          "homeScore": 2,
+          "awayScore": 1,
+          "homeFantaPoints": 74.5,
+          "awayFantaPoints": 68.0,
+          "homeOutcome": "W",
+          "awayOutcome": "L",
+          "isPlayed": true
+        }
+      ]
+    },
+    {
+      "roundNumber": 10,
+      "matches": [
+        {
+          "homeTeam": "AS AV",
+          "awayTeam": "Tevere FC",
+          "homeManagerId": "m_vale",
+          "awayManagerId": "m_lucchetto",
+          "homeScore": 1,
+          "awayScore": 1,
+          "homeFantaPoints": 70.0,
+          "awayFantaPoints": 66.0,
+          "homeOutcome": "D",
+          "awayOutcome": "D",
+          "isPlayed": true
+        },
+        {
+          "homeTeam": "Grassotthers",
+          "awayTeam": "Scalo San Genesio",
+          "homeManagerId": "m_peterdani",
+          "awayManagerId": "m_valery",
+          "homeScore": 1,
+          "awayScore": 1,
+          "homeFantaPoints": 66.0,
+          "awayFantaPoints": 68.5,
+          "homeOutcome": "D",
+          "awayOutcome": "D",
+          "isPlayed": true
+        },
+        {
+          "homeTeam": "Kiwi Football Club",
+          "awayTeam": "Villereal juif",
+          "homeManagerId": "m_tazio",
+          "awayManagerId": "m_simone",
+          "homeScore": 2,
+          "awayScore": 2,
+          "homeFantaPoints": 72.0,
+          "awayFantaPoints": 72.0,
+          "homeOutcome": "D",
+          "awayOutcome": "D",
+          "isPlayed": true
+        },
+        {
+          "homeTeam": "Cardinthians",
+          "awayTeam": "Vrace FRC",
+          "homeManagerId": "m_luca",
+          "awayManagerId": "m_gizza",
+          "homeScore": 2,
+          "awayScore": 3,
+          "homeFantaPoints": 77.5,
+          "awayFantaPoints": 82.0,
+          "homeOutcome": "L",
+          "awayOutcome": "W",
+          "isPlayed": true
+        },
+        {
+          "homeTeam": "Champel United",
+          "awayTeam": "Iron Hill warriors",
+          "homeManagerId": "m_claudio",
+          "awayManagerId": "m_mf",
+          "homeScore": 0,
+          "awayScore": 3,
+          "homeFantaPoints": 65.0,
+          "awayFantaPoints": 78.0,
+          "homeOutcome": "L",
+          "awayOutcome": "W",
+          "isPlayed": true
+        }
+      ]
+    },
+    {
+      "roundNumber": 11,
+      "matches": [
+        {
+          "homeTeam": "Iron Hill warriors",
+          "awayTeam": "Villereal juif",
+          "homeManagerId": "m_mf",
+          "awayManagerId": "m_simone",
+          "homeScore": 1,
+          "awayScore": 1,
+          "homeFantaPoints": 69.5,
+          "awayFantaPoints": 71.5,
+          "homeOutcome": "D",
+          "awayOutcome": "D",
+          "isPlayed": true
+        },
+        {
+          "homeTeam": "Kiwi Football Club",
+          "awayTeam": "Vrace FRC",
+          "homeManagerId": "m_tazio",
+          "awayManagerId": "m_gizza",
+          "homeScore": 1,
+          "awayScore": 1,
+          "homeFantaPoints": 66.0,
+          "awayFantaPoints": 67.5,
+          "homeOutcome": "D",
+          "awayOutcome": "D",
+          "isPlayed": true
+        },
+        {
+          "homeTeam": "AS AV",
+          "awayTeam": "Scalo San Genesio",
+          "homeManagerId": "m_vale",
+          "awayManagerId": "m_valery",
+          "homeScore": 1,
+          "awayScore": 2,
+          "homeFantaPoints": 70.5,
+          "awayFantaPoints": 74.5,
+          "homeOutcome": "L",
+          "awayOutcome": "W",
+          "isPlayed": true
+        },
+        {
+          "homeTeam": "Champel United",
+          "awayTeam": "Tevere FC",
+          "homeManagerId": "m_claudio",
+          "awayManagerId": "m_lucchetto",
+          "homeScore": 1,
+          "awayScore": 2,
+          "homeFantaPoints": 70.0,
+          "awayFantaPoints": 72.0,
+          "homeOutcome": "L",
+          "awayOutcome": "W",
+          "isPlayed": true
+        },
+        {
+          "homeTeam": "Cardinthians",
+          "awayTeam": "Grassotthers",
+          "homeManagerId": "m_luca",
+          "awayManagerId": "m_peterdani",
+          "homeScore": 2,
+          "awayScore": 3,
+          "homeFantaPoints": 74.5,
+          "awayFantaPoints": 78.5,
+          "homeOutcome": "L",
+          "awayOutcome": "W",
+          "isPlayed": true
+        }
+      ]
+    },
+    {
+      "roundNumber": 12,
+      "matches": [
+        {
+          "homeTeam": "Grassotthers",
+          "awayTeam": "Kiwi Football Club",
+          "homeManagerId": "m_peterdani",
+          "awayManagerId": "m_tazio",
+          "homeScore": 0,
+          "awayScore": 0,
+          "homeFantaPoints": 64.0,
+          "awayFantaPoints": 64.0,
+          "homeOutcome": "D",
+          "awayOutcome": "D",
+          "isPlayed": true
+        },
+        {
+          "homeTeam": "Champel United",
+          "awayTeam": "Villereal juif",
+          "homeManagerId": "m_claudio",
+          "awayManagerId": "m_simone",
+          "homeScore": 1,
+          "awayScore": 0,
+          "homeFantaPoints": 71.5,
+          "awayFantaPoints": 65.5,
+          "homeOutcome": "W",
+          "awayOutcome": "L",
+          "isPlayed": true
+        },
+        {
+          "homeTeam": "Scalo San Genesio",
+          "awayTeam": "Tevere FC",
+          "homeManagerId": "m_valery",
+          "awayManagerId": "m_lucchetto",
+          "homeScore": 1,
+          "awayScore": 1,
+          "homeFantaPoints": 70.5,
+          "awayFantaPoints": 66.0,
+          "homeOutcome": "D",
+          "awayOutcome": "D",
+          "isPlayed": true
+        },
+        {
+          "homeTeam": "Iron Hill warriors",
+          "awayTeam": "Vrace FRC",
+          "homeManagerId": "m_mf",
+          "awayManagerId": "m_gizza",
+          "homeScore": 2,
+          "awayScore": 3,
+          "homeFantaPoints": 77.0,
+          "awayFantaPoints": 80.5,
+          "homeOutcome": "L",
+          "awayOutcome": "W",
+          "isPlayed": true
+        },
+        {
+          "homeTeam": "AS AV",
+          "awayTeam": "Cardinthians",
+          "homeManagerId": "m_vale",
+          "awayManagerId": "m_luca",
+          "homeScore": 2,
+          "awayScore": 3,
+          "homeFantaPoints": 75.5,
+          "awayFantaPoints": 78.0,
+          "homeOutcome": "L",
+          "awayOutcome": "W",
+          "isPlayed": true
+        }
+      ]
+    },
+    {
+      "roundNumber": 13,
+      "matches": [
+        {
+          "homeTeam": "Cardinthians",
+          "awayTeam": "Scalo San Genesio",
+          "homeManagerId": "m_luca",
+          "awayManagerId": "m_valery",
+          "homeScore": 2,
+          "awayScore": 1,
+          "homeFantaPoints": 75.5,
+          "awayFantaPoints": 68.0,
+          "homeOutcome": "W",
+          "awayOutcome": "L",
+          "isPlayed": true
+        },
+        {
+          "homeTeam": "Tevere FC",
+          "awayTeam": "Villereal juif",
+          "homeManagerId": "m_lucchetto",
+          "awayManagerId": "m_simone",
+          "homeScore": 0,
+          "awayScore": 2,
+          "homeFantaPoints": 63.5,
+          "awayFantaPoints": 75.0,
+          "homeOutcome": "L",
+          "awayOutcome": "W",
+          "isPlayed": true
+        },
+        {
+          "homeTeam": "Champel United",
+          "awayTeam": "Vrace FRC",
+          "homeManagerId": "m_claudio",
+          "awayManagerId": "m_gizza",
+          "homeScore": 1,
+          "awayScore": 2,
+          "homeFantaPoints": 70.5,
+          "awayFantaPoints": 72.0,
+          "homeOutcome": "L",
+          "awayOutcome": "W",
+          "isPlayed": true
+        },
+        {
+          "homeTeam": "Grassotthers",
+          "awayTeam": "Iron Hill warriors",
+          "homeManagerId": "m_peterdani",
+          "awayManagerId": "m_mf",
+          "homeScore": 3,
+          "awayScore": 0,
+          "homeFantaPoints": 78.5,
+          "awayFantaPoints": 62.5,
+          "homeOutcome": "W",
+          "awayOutcome": "L",
+          "isPlayed": true
+        },
+        {
+          "homeTeam": "AS AV",
+          "awayTeam": "Kiwi Football Club",
+          "homeManagerId": "m_vale",
+          "awayManagerId": "m_tazio",
+          "homeScore": 3,
+          "awayScore": 3,
+          "homeFantaPoints": 80.0,
+          "awayFantaPoints": 81.5,
+          "homeOutcome": "D",
+          "awayOutcome": "D",
+          "isPlayed": true
+        }
+      ]
+    },
+    {
+      "roundNumber": 14,
+      "matches": [
+        {
+          "homeTeam": "Cardinthians",
+          "awayTeam": "Tevere FC",
+          "homeManagerId": "m_luca",
+          "awayManagerId": "m_lucchetto",
+          "homeScore": 1,
+          "awayScore": 0,
+          "homeFantaPoints": 70.5,
+          "awayFantaPoints": 63.5,
+          "homeOutcome": "W",
+          "awayOutcome": "L",
+          "isPlayed": true
+        },
+        {
+          "homeTeam": "Villereal juif",
+          "awayTeam": "Vrace FRC",
+          "homeManagerId": "m_simone",
+          "awayManagerId": "m_gizza",
+          "homeScore": 0,
+          "awayScore": 1,
+          "homeFantaPoints": 62.5,
+          "awayFantaPoints": 68.5,
+          "homeOutcome": "L",
+          "awayOutcome": "W",
+          "isPlayed": true
+        },
+        {
+          "homeTeam": "Champel United",
+          "awayTeam": "Grassotthers",
+          "homeManagerId": "m_claudio",
+          "awayManagerId": "m_peterdani",
+          "homeScore": 1,
+          "awayScore": 1,
+          "homeFantaPoints": 70.0,
+          "awayFantaPoints": 66.5,
+          "homeOutcome": "D",
+          "awayOutcome": "D",
+          "isPlayed": true
+        },
+        {
+          "homeTeam": "Kiwi Football Club",
+          "awayTeam": "Scalo San Genesio",
+          "homeManagerId": "m_tazio",
+          "awayManagerId": "m_valery",
+          "homeScore": 1,
+          "awayScore": 2,
+          "homeFantaPoints": 70.5,
+          "awayFantaPoints": 77.0,
+          "homeOutcome": "L",
+          "awayOutcome": "W",
+          "isPlayed": true
+        },
+        {
+          "homeTeam": "AS AV",
+          "awayTeam": "Iron Hill warriors",
+          "homeManagerId": "m_vale",
+          "awayManagerId": "m_mf",
+          "homeScore": 1,
+          "awayScore": 2,
+          "homeFantaPoints": 71.0,
+          "awayFantaPoints": 72.5,
+          "homeOutcome": "L",
+          "awayOutcome": "W",
+          "isPlayed": true
+        }
+      ]
+    },
+    {
+      "roundNumber": 15,
+      "matches": [
+        {
+          "homeTeam": "Iron Hill warriors",
+          "awayTeam": "Scalo San Genesio",
+          "homeManagerId": "m_mf",
+          "awayManagerId": "m_valery",
+          "homeScore": 0,
+          "awayScore": 1,
+          "homeFantaPoints": 56.5,
+          "awayFantaPoints": 71.0,
+          "homeOutcome": "L",
+          "awayOutcome": "W",
+          "isPlayed": true
+        },
+        {
+          "homeTeam": "Cardinthians",
+          "awayTeam": "Kiwi Football Club",
+          "homeManagerId": "m_luca",
+          "awayManagerId": "m_tazio",
+          "homeScore": 1,
+          "awayScore": 3,
+          "homeFantaPoints": 71.5,
+          "awayFantaPoints": 82.5,
+          "homeOutcome": "L",
+          "awayOutcome": "W",
+          "isPlayed": true
+        },
+        {
+          "homeTeam": "Tevere FC",
+          "awayTeam": "Vrace FRC",
+          "homeManagerId": "m_lucchetto",
+          "awayManagerId": "m_gizza",
+          "homeScore": 1,
+          "awayScore": 2,
+          "homeFantaPoints": 67.0,
+          "awayFantaPoints": 76.5,
+          "homeOutcome": "L",
+          "awayOutcome": "W",
+          "isPlayed": true
+        },
+        {
+          "homeTeam": "Grassotthers",
+          "awayTeam": "Villereal juif",
+          "homeManagerId": "m_peterdani",
+          "awayManagerId": "m_simone",
+          "homeScore": 2,
+          "awayScore": 2,
+          "homeFantaPoints": 73.5,
+          "awayFantaPoints": 76.5,
+          "homeOutcome": "D",
+          "awayOutcome": "D",
+          "isPlayed": true
+        },
+        {
+          "homeTeam": "AS AV",
+          "awayTeam": "Champel United",
+          "homeManagerId": "m_vale",
+          "awayManagerId": "m_claudio",
+          "homeScore": 3,
+          "awayScore": 0,
+          "homeFantaPoints": 81.0,
+          "awayFantaPoints": 61.5,
+          "homeOutcome": "W",
+          "awayOutcome": "L",
+          "isPlayed": true
+        }
+      ]
+    },
+    {
+      "roundNumber": 16,
+      "matches": [
+        {
+          "homeTeam": "Cardinthians",
+          "awayTeam": "Iron Hill warriors",
+          "homeManagerId": "m_luca",
+          "awayManagerId": "m_mf",
+          "homeScore": 1,
+          "awayScore": 0,
+          "homeFantaPoints": 68.0,
+          "awayFantaPoints": 55.0,
+          "homeOutcome": "W",
+          "awayOutcome": "L",
+          "isPlayed": true
+        },
+        {
+          "homeTeam": "AS AV",
+          "awayTeam": "Villereal juif",
+          "homeManagerId": "m_vale",
+          "awayManagerId": "m_simone",
+          "homeScore": 0,
+          "awayScore": 1,
+          "homeFantaPoints": 63.0,
+          "awayFantaPoints": 69.0,
+          "homeOutcome": "L",
+          "awayOutcome": "W",
+          "isPlayed": true
+        },
+        {
+          "homeTeam": "Grassotthers",
+          "awayTeam": "Vrace FRC",
+          "homeManagerId": "m_peterdani",
+          "awayManagerId": "m_gizza",
+          "homeScore": 0,
+          "awayScore": 2,
+          "homeFantaPoints": 64.0,
+          "awayFantaPoints": 76.5,
+          "homeOutcome": "L",
+          "awayOutcome": "W",
+          "isPlayed": true
+        },
+        {
+          "homeTeam": "Champel United",
+          "awayTeam": "Scalo San Genesio",
+          "homeManagerId": "m_claudio",
+          "awayManagerId": "m_valery",
+          "homeScore": 2,
+          "awayScore": 2,
+          "homeFantaPoints": 75.0,
+          "awayFantaPoints": 75.0,
+          "homeOutcome": "D",
+          "awayOutcome": "D",
+          "isPlayed": true
+        },
+        {
+          "homeTeam": "Kiwi Football Club",
+          "awayTeam": "Tevere FC",
+          "homeManagerId": "m_tazio",
+          "awayManagerId": "m_lucchetto",
+          "homeScore": 4,
+          "awayScore": 3,
+          "homeFantaPoints": 86.0,
+          "awayFantaPoints": 80.5,
+          "homeOutcome": "W",
+          "awayOutcome": "L",
+          "isPlayed": true
+        }
+      ]
+    },
+    {
+      "roundNumber": 17,
+      "matches": [
+        {
+          "homeTeam": "AS AV",
+          "awayTeam": "Vrace FRC",
+          "homeManagerId": "m_vale",
+          "awayManagerId": "m_gizza",
+          "homeScore": 0,
+          "awayScore": 2,
+          "homeFantaPoints": 0.0,
+          "awayFantaPoints": 76.5,
+          "homeOutcome": "L",
+          "awayOutcome": "W",
+          "isPlayed": true
+        },
+        {
+          "homeTeam": "Iron Hill warriors",
+          "awayTeam": "Kiwi Football Club",
+          "homeManagerId": "m_mf",
+          "awayManagerId": "m_tazio",
+          "homeScore": 2,
+          "awayScore": 0,
+          "homeFantaPoints": 73.0,
+          "awayFantaPoints": 64.0,
+          "homeOutcome": "W",
+          "awayOutcome": "L",
+          "isPlayed": true
+        },
+        {
+          "homeTeam": "Scalo San Genesio",
+          "awayTeam": "Villereal juif",
+          "homeManagerId": "m_valery",
+          "awayManagerId": "m_simone",
+          "homeScore": 0,
+          "awayScore": 3,
+          "homeFantaPoints": 65.5,
+          "awayFantaPoints": 81.0,
+          "homeOutcome": "L",
+          "awayOutcome": "W",
+          "isPlayed": true
+        },
+        {
+          "homeTeam": "Grassotthers",
+          "awayTeam": "Tevere FC",
+          "homeManagerId": "m_peterdani",
+          "awayManagerId": "m_lucchetto",
+          "homeScore": 0,
+          "awayScore": 2,
+          "homeFantaPoints": 62.0,
+          "awayFantaPoints": 77.0,
+          "homeOutcome": "L",
+          "awayOutcome": "W",
+          "isPlayed": true
+        },
+        {
+          "homeTeam": "Cardinthians",
+          "awayTeam": "Champel United",
+          "homeManagerId": "m_luca",
+          "awayManagerId": "m_claudio",
+          "homeScore": 2,
+          "awayScore": 1,
+          "homeFantaPoints": 77.5,
+          "awayFantaPoints": 68.5,
+          "homeOutcome": "W",
+          "awayOutcome": "L",
+          "isPlayed": true
+        }
+      ]
+    },
+    {
+      "roundNumber": 18,
+      "matches": [
+        {
+          "homeTeam": "AS AV",
+          "awayTeam": "Grassotthers",
+          "homeManagerId": "m_vale",
+          "awayManagerId": "m_peterdani",
+          "homeScore": 1,
+          "awayScore": 0,
+          "homeFantaPoints": 71.0,
+          "awayFantaPoints": 64.5,
+          "homeOutcome": "W",
+          "awayOutcome": "L",
+          "isPlayed": true
+        },
+        {
+          "homeTeam": "Iron Hill warriors",
+          "awayTeam": "Tevere FC",
+          "homeManagerId": "m_mf",
+          "awayManagerId": "m_lucchetto",
+          "homeScore": 1,
+          "awayScore": 0,
+          "homeFantaPoints": 70.5,
+          "awayFantaPoints": 58.5,
+          "homeOutcome": "W",
+          "awayOutcome": "L",
+          "isPlayed": true
+        },
+        {
+          "homeTeam": "Champel United",
+          "awayTeam": "Kiwi Football Club",
+          "homeManagerId": "m_claudio",
+          "awayManagerId": "m_tazio",
+          "homeScore": 1,
+          "awayScore": 2,
+          "homeFantaPoints": 71.5,
+          "awayFantaPoints": 73.0,
+          "homeOutcome": "L",
+          "awayOutcome": "W",
+          "isPlayed": true
+        },
+        {
+          "homeTeam": "Cardinthians",
+          "awayTeam": "Villereal juif",
+          "homeManagerId": "m_luca",
+          "awayManagerId": "m_simone",
+          "homeScore": 0,
+          "awayScore": 2,
+          "homeFantaPoints": 61.0,
+          "awayFantaPoints": 75.0,
+          "homeOutcome": "L",
+          "awayOutcome": "W",
+          "isPlayed": true
+        },
+        {
+          "homeTeam": "Scalo San Genesio",
+          "awayTeam": "Vrace FRC",
+          "homeManagerId": "m_valery",
+          "awayManagerId": "m_gizza",
+          "homeScore": 1,
+          "awayScore": 3,
+          "homeFantaPoints": 66.5,
+          "awayFantaPoints": 78.0,
+          "homeOutcome": "L",
+          "awayOutcome": "W",
+          "isPlayed": true
+        }
+      ]
+    },
+    {
+      "roundNumber": 19,
+      "matches": [
+        {
+          "homeTeam": "Champel United",
+          "awayTeam": "Iron Hill warriors",
+          "homeManagerId": "m_claudio",
+          "awayManagerId": "m_mf",
+          "homeScore": 0,
+          "awayScore": 1,
+          "homeFantaPoints": 64.5,
+          "awayFantaPoints": 68.5,
+          "homeOutcome": "L",
+          "awayOutcome": "W",
+          "isPlayed": true
+        },
+        {
+          "homeTeam": "Kiwi Football Club",
+          "awayTeam": "Villereal juif",
+          "homeManagerId": "m_tazio",
+          "awayManagerId": "m_simone",
+          "homeScore": 1,
+          "awayScore": 1,
+          "homeFantaPoints": 71.0,
+          "awayFantaPoints": 69.5,
+          "homeOutcome": "D",
+          "awayOutcome": "D",
+          "isPlayed": true
+        },
+        {
+          "homeTeam": "AS AV",
+          "awayTeam": "Tevere FC",
+          "homeManagerId": "m_vale",
+          "awayManagerId": "m_lucchetto",
+          "homeScore": 1,
+          "awayScore": 2,
+          "homeFantaPoints": 71.0,
+          "awayFantaPoints": 77.0,
+          "homeOutcome": "L",
+          "awayOutcome": "W",
+          "isPlayed": true
+        },
+        {
+          "homeTeam": "Cardinthians",
+          "awayTeam": "Vrace FRC",
+          "homeManagerId": "m_luca",
+          "awayManagerId": "m_gizza",
+          "homeScore": 3,
+          "awayScore": 1,
+          "homeFantaPoints": 81.0,
+          "awayFantaPoints": 69.5,
+          "homeOutcome": "W",
+          "awayOutcome": "L",
+          "isPlayed": true
+        },
+        {
+          "homeTeam": "Grassotthers",
+          "awayTeam": "Scalo San Genesio",
+          "homeManagerId": "m_peterdani",
+          "awayManagerId": "m_valery",
+          "homeScore": 2,
+          "awayScore": 2,
+          "homeFantaPoints": 74.0,
+          "awayFantaPoints": 72.0,
+          "homeOutcome": "D",
+          "awayOutcome": "D",
+          "isPlayed": true
+        }
+      ]
+    },
+    {
+      "roundNumber": 20,
+      "matches": [
+        {
+          "homeTeam": "AS AV",
+          "awayTeam": "Scalo San Genesio",
+          "homeManagerId": "m_vale",
+          "awayManagerId": "m_valery",
+          "homeScore": 2,
+          "awayScore": 0,
+          "homeFantaPoints": 72.0,
+          "awayFantaPoints": 60.5,
+          "homeOutcome": "W",
+          "awayOutcome": "L",
+          "isPlayed": true
+        },
+        {
+          "homeTeam": "Kiwi Football Club",
+          "awayTeam": "Vrace FRC",
+          "homeManagerId": "m_tazio",
+          "awayManagerId": "m_gizza",
+          "homeScore": 0,
+          "awayScore": 2,
+          "homeFantaPoints": 63.5,
+          "awayFantaPoints": 77.0,
+          "homeOutcome": "L",
+          "awayOutcome": "W",
+          "isPlayed": true
+        },
+        {
+          "homeTeam": "Iron Hill warriors",
+          "awayTeam": "Villereal juif",
+          "homeManagerId": "m_mf",
+          "awayManagerId": "m_simone",
+          "homeScore": 1,
+          "awayScore": 2,
+          "homeFantaPoints": 69.5,
+          "awayFantaPoints": 76.5,
+          "homeOutcome": "L",
+          "awayOutcome": "W",
+          "isPlayed": true
+        },
+        {
+          "homeTeam": "Cardinthians",
+          "awayTeam": "Grassotthers",
+          "homeManagerId": "m_luca",
+          "awayManagerId": "m_peterdani",
+          "homeScore": 2,
+          "awayScore": 2,
+          "homeFantaPoints": 74.5,
+          "awayFantaPoints": 75.0,
+          "homeOutcome": "D",
+          "awayOutcome": "D",
+          "isPlayed": true
+        },
+        {
+          "homeTeam": "Champel United",
+          "awayTeam": "Tevere FC",
+          "homeManagerId": "m_claudio",
+          "awayManagerId": "m_lucchetto",
+          "homeScore": 1,
+          "awayScore": 3,
+          "homeFantaPoints": 68.5,
+          "awayFantaPoints": 82.0,
+          "homeOutcome": "L",
+          "awayOutcome": "W",
+          "isPlayed": true
+        }
+      ]
+    },
+    {
+      "roundNumber": 21,
+      "matches": [
+        {
+          "homeTeam": "Iron Hill warriors",
+          "awayTeam": "Vrace FRC",
+          "homeManagerId": "m_mf",
+          "awayManagerId": "m_gizza",
+          "homeScore": 0,
+          "awayScore": 1,
+          "homeFantaPoints": 65.0,
+          "awayFantaPoints": 66.5,
+          "homeOutcome": "L",
+          "awayOutcome": "W",
+          "isPlayed": true
+        },
+        {
+          "homeTeam": "AS AV",
+          "awayTeam": "Cardinthians",
+          "homeManagerId": "m_vale",
+          "awayManagerId": "m_luca",
+          "homeScore": 1,
+          "awayScore": 2,
+          "homeFantaPoints": 71.5,
+          "awayFantaPoints": 72.5,
+          "homeOutcome": "L",
+          "awayOutcome": "W",
+          "isPlayed": true
+        },
+        {
+          "homeTeam": "Scalo San Genesio",
+          "awayTeam": "Tevere FC",
+          "homeManagerId": "m_valery",
+          "awayManagerId": "m_lucchetto",
+          "homeScore": 1,
+          "awayScore": 2,
+          "homeFantaPoints": 66.0,
+          "awayFantaPoints": 76.5,
+          "homeOutcome": "L",
+          "awayOutcome": "W",
+          "isPlayed": true
+        },
+        {
+          "homeTeam": "Champel United",
+          "awayTeam": "Villereal juif",
+          "homeManagerId": "m_claudio",
+          "awayManagerId": "m_simone",
+          "homeScore": 3,
+          "awayScore": 1,
+          "homeFantaPoints": 79.0,
+          "awayFantaPoints": 66.0,
+          "homeOutcome": "W",
+          "awayOutcome": "L",
+          "isPlayed": true
+        },
+        {
+          "homeTeam": "Grassotthers",
+          "awayTeam": "Kiwi Football Club",
+          "homeManagerId": "m_peterdani",
+          "awayManagerId": "m_tazio",
+          "homeScore": 1,
+          "awayScore": 3,
+          "homeFantaPoints": 71.0,
+          "awayFantaPoints": 83.0,
+          "homeOutcome": "L",
+          "awayOutcome": "W",
+          "isPlayed": true
+        }
+      ]
+    },
+    {
+      "roundNumber": 22,
+      "matches": [
+        {
+          "homeTeam": "Champel United",
+          "awayTeam": "Vrace FRC",
+          "homeManagerId": "m_claudio",
+          "awayManagerId": "m_gizza",
+          "homeScore": 0,
+          "awayScore": 1,
+          "homeFantaPoints": 65.0,
+          "awayFantaPoints": 70.0,
+          "homeOutcome": "L",
+          "awayOutcome": "W",
+          "isPlayed": true
+        },
+        {
+          "homeTeam": "Cardinthians",
+          "awayTeam": "Scalo San Genesio",
+          "homeManagerId": "m_luca",
+          "awayManagerId": "m_valery",
+          "homeScore": 0,
+          "awayScore": 2,
+          "homeFantaPoints": 65.0,
+          "awayFantaPoints": 72.0,
+          "homeOutcome": "L",
+          "awayOutcome": "W",
+          "isPlayed": true
+        },
+        {
+          "homeTeam": "AS AV",
+          "awayTeam": "Kiwi Football Club",
+          "homeManagerId": "m_vale",
+          "awayManagerId": "m_tazio",
+          "homeScore": 3,
+          "awayScore": 0,
+          "homeFantaPoints": 82.0,
+          "awayFantaPoints": 64.0,
+          "homeOutcome": "W",
+          "awayOutcome": "L",
+          "isPlayed": true
+        },
+        {
+          "homeTeam": "Tevere FC",
+          "awayTeam": "Villereal juif",
+          "homeManagerId": "m_lucchetto",
+          "awayManagerId": "m_simone",
+          "homeScore": 1,
+          "awayScore": 1,
+          "homeFantaPoints": 66.5,
+          "awayFantaPoints": 68.5,
+          "homeOutcome": "D",
+          "awayOutcome": "D",
+          "isPlayed": true
+        },
+        {
+          "homeTeam": "Grassotthers",
+          "awayTeam": "Iron Hill warriors",
+          "homeManagerId": "m_peterdani",
+          "awayManagerId": "m_mf",
+          "homeScore": 2,
+          "awayScore": 3,
+          "homeFantaPoints": 73.0,
+          "awayFantaPoints": 81.0,
+          "homeOutcome": "L",
+          "awayOutcome": "W",
+          "isPlayed": true
+        }
+      ]
+    },
+    {
+      "roundNumber": 23,
+      "matches": [
+        {
+          "homeTeam": "Cardinthians",
+          "awayTeam": "Tevere FC",
+          "homeManagerId": "m_luca",
+          "awayManagerId": "m_lucchetto",
+          "homeScore": 0,
+          "awayScore": 1,
+          "homeFantaPoints": 65.5,
+          "awayFantaPoints": 69.5,
+          "homeOutcome": "L",
+          "awayOutcome": "W",
+          "isPlayed": true
+        },
+        {
+          "homeTeam": "AS AV",
+          "awayTeam": "Iron Hill warriors",
+          "homeManagerId": "m_vale",
+          "awayManagerId": "m_mf",
+          "homeScore": 1,
+          "awayScore": 2,
+          "homeFantaPoints": 68.0,
+          "awayFantaPoints": 77.5,
+          "homeOutcome": "L",
+          "awayOutcome": "W",
+          "isPlayed": true
+        },
+        {
+          "homeTeam": "Champel United",
+          "awayTeam": "Grassotthers",
+          "homeManagerId": "m_claudio",
+          "awayManagerId": "m_peterdani",
+          "homeScore": 2,
+          "awayScore": 1,
+          "homeFantaPoints": 75.5,
+          "awayFantaPoints": 69.5,
+          "homeOutcome": "W",
+          "awayOutcome": "L",
+          "isPlayed": true
+        },
+        {
+          "homeTeam": "Kiwi Football Club",
+          "awayTeam": "Scalo San Genesio",
+          "homeManagerId": "m_tazio",
+          "awayManagerId": "m_valery",
+          "homeScore": 2,
+          "awayScore": 1,
+          "homeFantaPoints": 77.5,
+          "awayFantaPoints": 71.5,
+          "homeOutcome": "W",
+          "awayOutcome": "L",
+          "isPlayed": true
+        },
+        {
+          "homeTeam": "Villereal juif",
+          "awayTeam": "Vrace FRC",
+          "homeManagerId": "m_simone",
+          "awayManagerId": "m_gizza",
+          "homeScore": 2,
+          "awayScore": 3,
+          "homeFantaPoints": 74.0,
+          "awayFantaPoints": 80.0,
+          "homeOutcome": "L",
+          "awayOutcome": "W",
+          "isPlayed": true
+        }
+      ]
+    },
+    {
+      "roundNumber": 24,
+      "matches": [
+        {
+          "homeTeam": "Cardinthians",
+          "awayTeam": "Kiwi Football Club",
+          "homeManagerId": "m_luca",
+          "awayManagerId": "m_tazio",
+          "homeScore": 0,
+          "awayScore": 0,
+          "homeFantaPoints": 64.5,
+          "awayFantaPoints": 65.5,
+          "homeOutcome": "D",
+          "awayOutcome": "D",
+          "isPlayed": true
+        },
+        {
+          "homeTeam": "Tevere FC",
+          "awayTeam": "Vrace FRC",
+          "homeManagerId": "m_lucchetto",
+          "awayManagerId": "m_gizza",
+          "homeScore": 1,
+          "awayScore": 2,
+          "homeFantaPoints": 69.5,
+          "awayFantaPoints": 75.5,
+          "homeOutcome": "L",
+          "awayOutcome": "W",
+          "isPlayed": true
+        },
+        {
+          "homeTeam": "AS AV",
+          "awayTeam": "Champel United",
+          "homeManagerId": "m_vale",
+          "awayManagerId": "m_claudio",
+          "homeScore": 3,
+          "awayScore": 1,
+          "homeFantaPoints": 79.5,
+          "awayFantaPoints": 69.0,
+          "homeOutcome": "W",
+          "awayOutcome": "L",
+          "isPlayed": true
+        },
+        {
+          "homeTeam": "Iron Hill warriors",
+          "awayTeam": "Scalo San Genesio",
+          "homeManagerId": "m_mf",
+          "awayManagerId": "m_valery",
+          "homeScore": 1,
+          "awayScore": 3,
+          "homeFantaPoints": 66.0,
+          "awayFantaPoints": 82.0,
+          "homeOutcome": "L",
+          "awayOutcome": "W",
+          "isPlayed": true
+        },
+        {
+          "homeTeam": "Grassotthers",
+          "awayTeam": "Villereal juif",
+          "homeManagerId": "m_peterdani",
+          "awayManagerId": "m_simone",
+          "homeScore": 4,
+          "awayScore": 2,
+          "homeFantaPoints": 85.0,
+          "awayFantaPoints": 73.0,
+          "homeOutcome": "W",
+          "awayOutcome": "L",
+          "isPlayed": true
+        }
+      ]
+    },
+    {
+      "roundNumber": 25,
+      "matches": [
+        {
+          "homeTeam": "Champel United",
+          "awayTeam": "Scalo San Genesio",
+          "homeManagerId": "m_claudio",
+          "awayManagerId": "m_valery",
+          "homeScore": 0,
+          "awayScore": 1,
+          "homeFantaPoints": 65.5,
+          "awayFantaPoints": 70.0,
+          "homeOutcome": "L",
+          "awayOutcome": "W",
+          "isPlayed": true
+        },
+        {
+          "homeTeam": "Cardinthians",
+          "awayTeam": "Iron Hill warriors",
+          "homeManagerId": "m_luca",
+          "awayManagerId": "m_mf",
+          "homeScore": 1,
+          "awayScore": 1,
+          "homeFantaPoints": 69.0,
+          "awayFantaPoints": 70.5,
+          "homeOutcome": "D",
+          "awayOutcome": "D",
+          "isPlayed": true
+        },
+        {
+          "homeTeam": "AS AV",
+          "awayTeam": "Villereal juif",
+          "homeManagerId": "m_vale",
+          "awayManagerId": "m_simone",
+          "homeScore": 1,
+          "awayScore": 2,
+          "homeFantaPoints": 68.0,
+          "awayFantaPoints": 77.0,
+          "homeOutcome": "L",
+          "awayOutcome": "W",
+          "isPlayed": true
+        },
+        {
+          "homeTeam": "Kiwi Football Club",
+          "awayTeam": "Tevere FC",
+          "homeManagerId": "m_tazio",
+          "awayManagerId": "m_lucchetto",
+          "homeScore": 1,
+          "awayScore": 2,
+          "homeFantaPoints": 68.5,
+          "awayFantaPoints": 72.5,
+          "homeOutcome": "L",
+          "awayOutcome": "W",
+          "isPlayed": true
+        },
+        {
+          "homeTeam": "Grassotthers",
+          "awayTeam": "Vrace FRC",
+          "homeManagerId": "m_peterdani",
+          "awayManagerId": "m_gizza",
+          "homeScore": 3,
+          "awayScore": 1,
+          "homeFantaPoints": 79.0,
+          "awayFantaPoints": 70.0,
+          "homeOutcome": "W",
+          "awayOutcome": "L",
+          "isPlayed": true
+        }
+      ]
+    },
+    {
+      "roundNumber": 26,
+      "matches": [
+        {
+          "homeTeam": "Scalo San Genesio",
+          "awayTeam": "Villereal juif",
+          "homeManagerId": "m_valery",
+          "awayManagerId": "m_simone",
+          "homeScore": 1,
+          "awayScore": 0,
+          "homeFantaPoints": 68.0,
+          "awayFantaPoints": 65.0,
+          "homeOutcome": "W",
+          "awayOutcome": "L",
+          "isPlayed": true
+        },
+        {
+          "homeTeam": "Cardinthians",
+          "awayTeam": "Champel United",
+          "homeManagerId": "m_luca",
+          "awayManagerId": "m_claudio",
+          "homeScore": 1,
+          "awayScore": 1,
+          "homeFantaPoints": 66.5,
+          "awayFantaPoints": 68.5,
+          "homeOutcome": "D",
+          "awayOutcome": "D",
+          "isPlayed": true
+        },
+        {
+          "homeTeam": "AS AV",
+          "awayTeam": "Vrace FRC",
+          "homeManagerId": "m_vale",
+          "awayManagerId": "m_gizza",
+          "homeScore": 2,
+          "awayScore": 1,
+          "homeFantaPoints": 74.0,
+          "awayFantaPoints": 68.0,
+          "homeOutcome": "W",
+          "awayOutcome": "L",
+          "isPlayed": true
+        },
+        {
+          "homeTeam": "Iron Hill warriors",
+          "awayTeam": "Kiwi Football Club",
+          "homeManagerId": "m_mf",
+          "awayManagerId": "m_tazio",
+          "homeScore": 2,
+          "awayScore": 0,
+          "homeFantaPoints": 72.5,
+          "awayFantaPoints": 62.0,
+          "homeOutcome": "W",
+          "awayOutcome": "L",
+          "isPlayed": true
+        },
+        {
+          "homeTeam": "Grassotthers",
+          "awayTeam": "Tevere FC",
+          "homeManagerId": "m_peterdani",
+          "awayManagerId": "m_lucchetto",
+          "homeScore": 4,
+          "awayScore": 2,
+          "homeFantaPoints": 89.0,
+          "awayFantaPoints": 76.5,
+          "homeOutcome": "W",
+          "awayOutcome": "L",
+          "isPlayed": true
+        }
+      ]
+    },
+    {
+      "roundNumber": 27,
+      "matches": [
+        {
+          "homeTeam": "Champel United",
+          "awayTeam": "Kiwi Football Club",
+          "homeManagerId": "m_claudio",
+          "awayManagerId": "m_tazio",
+          "homeScore": 2,
+          "awayScore": 0,
+          "homeFantaPoints": 74.5,
+          "awayFantaPoints": 64.0,
+          "homeOutcome": "W",
+          "awayOutcome": "L",
+          "isPlayed": true
+        },
+        {
+          "homeTeam": "Cardinthians",
+          "awayTeam": "Villereal juif",
+          "homeManagerId": "m_luca",
+          "awayManagerId": "m_simone",
+          "homeScore": 1,
+          "awayScore": 1,
+          "homeFantaPoints": 70.5,
+          "awayFantaPoints": 70.0,
+          "homeOutcome": "D",
+          "awayOutcome": "D",
+          "isPlayed": true
+        },
+        {
+          "homeTeam": "Iron Hill warriors",
+          "awayTeam": "Tevere FC",
+          "homeManagerId": "m_mf",
+          "awayManagerId": "m_lucchetto",
+          "homeScore": 1,
+          "awayScore": 1,
+          "homeFantaPoints": 71.0,
+          "awayFantaPoints": 66.5,
+          "homeOutcome": "D",
+          "awayOutcome": "D",
+          "isPlayed": true
+        },
+        {
+          "homeTeam": "Scalo San Genesio",
+          "awayTeam": "Vrace FRC",
+          "homeManagerId": "m_valery",
+          "awayManagerId": "m_gizza",
+          "homeScore": 1,
+          "awayScore": 1,
+          "homeFantaPoints": 70.0,
+          "awayFantaPoints": 66.5,
+          "homeOutcome": "D",
+          "awayOutcome": "D",
+          "isPlayed": true
+        },
+        {
+          "homeTeam": "AS AV",
+          "awayTeam": "Grassotthers",
+          "homeManagerId": "m_vale",
+          "awayManagerId": "m_peterdani",
+          "homeScore": 2,
+          "awayScore": 3,
+          "homeFantaPoints": 74.5,
+          "awayFantaPoints": 82.5,
+          "homeOutcome": "L",
+          "awayOutcome": "W",
+          "isPlayed": true
+        }
+      ]
+    }
+  ]
+}

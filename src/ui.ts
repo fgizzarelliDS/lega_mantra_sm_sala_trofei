@@ -1,8 +1,8 @@
 import { ThemeKey, TitlesConfig } from '@/types';
 import { state } from '@/state';
-import { verifyAdminPassword, LEAGUE } from '@/config';
+import { verifyAdminPassword } from '@/config';
 import { saveTitles } from '@/storage';
-import { renderBoard } from '@/main';
+import { renderBoard } from '@/components/board/tableBoard';
 
 /**
  * Changes active visual theme, adjusts body class, re-renders board and notifies user
@@ -11,44 +11,13 @@ import { renderBoard } from '@/main';
 export function changeTheme(theme: ThemeKey): void {
   state.currentTheme = theme;
   document.body.className = `theme-${theme} antialiased selection:bg-amber-500 selection:text-white min-h-screen pb-16`;
-  const select = document.getElementById('theme-select') as HTMLSelectElement | null;
-  if (select && select.value !== theme) {
-    select.value = theme;
-  }
   renderBoard();
   showToast(`Palette impostata su: ${theme.toUpperCase()}`, 'info');
 }
 
-/**
- * Injects animated alert notification into #toast-box with auto-dismiss after 3200ms
- * @param msg - Message text
- * @param type - Severity level
- */
-export function showToast(msg: string, type: 'info' | 'success' | 'error' = 'info'): void {
-  const box = document.getElementById('toast-box');
-  if (!box) return;
-  const toast = document.createElement('div');
+import { showToast, type ToastType } from '@/utils/toast';
 
-  const colors = {
-    success: 'bg-emerald-600 text-white border-emerald-400',
-    error: 'bg-red-600 text-white border-red-400',
-    info: 'bg-slate-900 text-amber-300 border-amber-500/50'
-  };
-
-  toast.className = `px-4 py-3 rounded-2xl shadow-2xl text-xs font-bold border transition-all duration-300 transform translate-y-3 opacity-0 flex items-center gap-2.5 ${colors[type] || colors.info}`;
-  toast.innerHTML = `<i class="fa-solid fa-circle-check text-amber-400"></i> <span>${msg}</span>`;
-
-  box.appendChild(toast);
-
-  requestAnimationFrame(() => {
-    toast.classList.remove('translate-y-3', 'opacity-0');
-  });
-
-  setTimeout(() => {
-    toast.classList.add('opacity-0', 'translate-y-3');
-    setTimeout(() => toast.remove(), 3200);
-  }, 3200);
-}
+export { showToast, type ToastType };
 
 /**
  * Visually enables edit mode
@@ -175,53 +144,4 @@ export function handleTitleBlur(element: HTMLElement): void {
   showToast('Titolo aggiornato e salvato!', 'info');
 }
 
-/**
- * Injects state.titles into mapped DOM elements
- * @param titles - Optional override
- */
-export function applyTitlesToDOM(titles: TitlesConfig = state.titles): void {
-  const map: Record<string, string | undefined> = {
-    'title-brand-main': titles.brandMain,
-    'title-brand-highlight': titles.brandHighlight,
-    'title-brand-sub': titles.brandSub,
-    'title-main-heading': titles.mainHeading,
-    'title-sub-heading': titles.subHeading,
-    'title-league-caption': titles.leagueCaption,
-    'th-col-1': titles.col1,
-    'th-col-2': titles.col2,
-    'th-col-3': titles.col3,
-    'th-col-4': titles.col4,
-    'th-col-5': titles.col5,
-    'th-col-6': titles.col6,
-    'th-col-7': titles.col7,
-    'legend-cup-title': titles.col3 ? `🏆 ${titles.col3}` : undefined,
-    'legend-supercup-title': titles.col4 ? `⭐ ${titles.col4}` : undefined,
-    'legend-spoon-title': titles.col6 ? `🥄 ${titles.col6}` : undefined
-  };
-
-  for (const [id, val] of Object.entries(map)) {
-    const el = document.getElementById(id);
-    if (el && val !== undefined) el.textContent = val;
-  }
-
-  applyFeatureFlagsToDOM();
-}
-
-/**
- * Dynamically toggles visibility of feature-flagged DOM elements based on LEAGUE.features
- */
-export function applyFeatureFlagsToDOM(): void {
-  if (typeof document === 'undefined' || typeof document.querySelectorAll !== 'function') {
-    return;
-  }
-  document.querySelectorAll<HTMLElement>('[data-feature]').forEach(el => {
-    const feat = el.dataset?.feature as keyof typeof LEAGUE.features;
-    if (feat && feat in LEAGUE.features) {
-      const isEnabled = LEAGUE.features[feat];
-      el.style.display = isEnabled ? '' : 'none';
-      if (el instanceof HTMLOptionElement) {
-        el.hidden = !isEnabled;
-      }
-    }
-  });
-}
+export { applyTitlesToDOM, applyFeatureFlagsToDOM } from '@/utils/domTitles';

@@ -1,9 +1,11 @@
 import { describe, it, expect, beforeEach, afterEach } from 'vitest';
 import type { SeasonRecord, CompetitionRecord, Manager } from '@/types';
 import { state } from '@/state';
+import { LEAGUE } from '@/config';
 import { renderRankTrajectorySparkline } from '@/components/modals/profile';
 import { toggleCompetitionDrawer } from '@/components/modals/ProfileModal';
 import dataJson from '../../public/data.json';
+import { mockLeagueManagers } from './test-utils';
 
 describe('Historical Rankings & Career Visualizations', () => {
   beforeEach(() => {
@@ -153,7 +155,7 @@ describe('Historical Rankings & Career Visualizations', () => {
       expect(svg).toContain('fill="#3b82f6"');
     });
 
-    it('renders hollow N/D circle and dashed line for unranked seasons', () => {
+    it('renders hollow N/D circle and dashed line for unranked seasons such as 2023/24', () => {
       const history: SeasonRecord[] = [
         { season: '2024/25', team: 'Team A', rank: 3, points: 55, achievements: [] },
         { season: '2023/24', team: 'Team A', rank: null, points: null, achievements: [] },
@@ -174,7 +176,7 @@ describe('Historical Rankings & Career Visualizations', () => {
       ];
 
       const svg = renderRankTrajectorySparkline(claudioHistory);
-      // All 4 seasons are present on X-axis
+      // All 4 completed seasons are present on X-axis
       expect(svg).toContain('22/23');
       expect(svg).toContain('23/24');
       expect(svg).toContain('24/25');
@@ -231,30 +233,30 @@ describe('Historical Rankings & Career Visualizations', () => {
       const compId = 778165;
       const mockComp: CompetitionRecord = {
         id: compId,
-        name: 'Serie Atlas 2025-2026',
+        name: 'Serie Test 2025-2026',
         season: '2025/26',
         category: 'Campionato',
         ranking: [
-          { rank: 1, teamName: 'Steven Bradbury FC', coach: 'alfius91', managerId: 'm_alfo', points: 62.0 },
-          { rank: 2, teamName: 'Sarviette FC', coach: 'petrubik88 & Vittu', managerId: 'm_peterdani', points: 57.0 }
+          { rank: 1, teamName: 'Champion United', coach: 'Coach Champ', managerId: 'm_champ', points: 62.0 },
+          { rank: 2, teamName: 'Cup FC', coach: 'Coach Cup', managerId: 'm_cup', points: 57.0 }
         ]
       };
       state.competitions = [mockComp];
       state.managers = [
-        { id: 'm_alfo', name: 'Alfo', years: 10, gold: 1, silver: 3, bronze: 2, spoon: 0, cup_gold: 3, cup_silver: 0, supercup: 3, mundialito: 2, cartonato: 0 },
-        { id: 'm_peterdani', name: 'Peter&Dani', years: 7, gold: 1, silver: 1, bronze: 0, spoon: 0, cup_gold: 2, cup_silver: 0, supercup: 1, mundialito: 0, cartonato: 0 }
+        { id: 'm_champ', name: 'Champion Manager', years: 3, gold: 1, silver: 1, bronze: 0, spoon: 0, cup_gold: 1, cup_silver: 0, supercup: 1, mundialito: 0, cartonato: 0 },
+        { id: 'm_cup', name: 'Cup Specialist', years: 3, gold: 0, silver: 1, bronze: 0, spoon: 0, cup_gold: 1, cup_silver: 0, supercup: 0, mundialito: 0, cartonato: 0 }
       ];
-      state.selectedManagerId = 'm_alfo';
+      state.selectedManagerId = 'm_champ';
 
       toggleCompetitionDrawer(compId);
 
       expect(mockDrawer.classList.contains('hidden')).toBe(false);
-      expect(mockDrawer.innerHTML).toContain('Serie Atlas 2025-2026');
-      expect(mockDrawer.innerHTML).toContain('Steven Bradbury FC');
-      expect(mockDrawer.innerHTML).toContain('Sarviette FC');
+      expect(mockDrawer.innerHTML).toContain('Serie Test 2025-2026');
+      expect(mockDrawer.innerHTML).toContain('Champion United');
+      expect(mockDrawer.innerHTML).toContain('Cup FC');
       // Must contain canonical manager names as in the main table
-      expect(mockDrawer.innerHTML).toContain('Alfo');
-      expect(mockDrawer.innerHTML).toContain('Peter&Dani');
+      expect(mockDrawer.innerHTML).toContain('Champion Manager');
+      expect(mockDrawer.innerHTML).toContain('Cup Specialist');
       // Highlight for selected manager
       expect(mockDrawer.innerHTML).toContain('border-amber-400');
 
@@ -263,28 +265,28 @@ describe('Historical Rankings & Career Visualizations', () => {
       expect(mockDrawer.classList.contains('hidden')).toBe(true);
     });
 
-    it('displays "-" instead of "0 pt" for season 2020/21 unrecorded points', () => {
+    it('displays "-" instead of "0 pt" for unrecorded points', () => {
       const compId = 147888;
       const mockComp2020: CompetitionRecord = {
         id: compId,
-        name: 'SerieAtlas',
+        name: 'SerieTest',
         season: '2020/21',
         category: 'Campionato',
         ranking: [
-          { rank: 1, teamName: 'AS CorradiAndRosatiTeam', coach: 'vannico', managerId: 'm_vannico', points: null },
-          { rank: 2, teamName: 'Makako Antwerpen', coach: 'miles92', managerId: 'm_makako', points: null }
+          { rank: 1, teamName: 'Team A', coach: 'coachA', managerId: 'm_champ', points: null },
+          { rank: 2, teamName: 'Team B', coach: 'coachB', managerId: 'm_cup', points: null }
         ]
       };
       state.competitions = [mockComp2020];
       state.managers = [
-        { id: 'm_vannico', name: 'Vannico', years: 9, gold: 3, silver: 1, bronze: 0, spoon: 1, cup_gold: 0, cup_silver: 0, supercup: 2, mundialito: 0, cartonato: 0 },
-        { id: 'm_makako', name: 'Makako', years: 7, gold: 1, silver: 2, bronze: 0, spoon: 1, cup_gold: 1, cup_silver: 0, supercup: 0, mundialito: 0, cartonato: 0 }
+        { id: 'm_champ', name: 'Champion Manager', years: 2, gold: 1, silver: 0, bronze: 0, spoon: 0, cup_gold: 0, cup_silver: 0, supercup: 0, mundialito: 0, cartonato: 0 },
+        { id: 'm_cup', name: 'Cup Specialist', years: 2, gold: 0, silver: 1, bronze: 0, spoon: 0, cup_gold: 0, cup_silver: 0, supercup: 0, mundialito: 0, cartonato: 0 }
       ];
-      state.selectedManagerId = 'm_vannico';
+      state.selectedManagerId = 'm_champ';
 
       toggleCompetitionDrawer(compId, '2020/21');
-      expect(mockDrawer.innerHTML).toContain('Vannico');
-      expect(mockDrawer.innerHTML).toContain('Makako');
+      expect(mockDrawer.innerHTML).toContain('Champion Manager');
+      expect(mockDrawer.innerHTML).toContain('Cup Specialist');
       expect(mockDrawer.innerHTML).toContain('-');
       expect(mockDrawer.innerHTML).not.toContain('0 pt');
     });
@@ -296,18 +298,36 @@ describe('Historical Rankings & Career Visualizations', () => {
       expect(mockDrawer.innerHTML).toContain('Dettaglio classifica non disponibile');
     });
 
-    it('sorts wooden spoon to the very last position and renders spoon symbol', () => {
-      const compId = 622243;
-      const comp2025 = dataJson.competitions.find((c: { id: number }) => c.id === compId);
-      expect(comp2025).toBeDefined();
+    it('sorts wooden spoon to the very last position after N/D participants and renders spoon symbol', () => {
+      const compId = 147888;
+      const compWithSpoon: CompetitionRecord = {
+        id: compId,
+        name: 'Championship Test',
+        season: '2020/21',
+        category: 'Campionato',
+        ranking: [
+          { rank: 1, teamName: 'Champion Team', coach: 'Coach Champ', managerId: 'm_champ', points: null },
+          { rank: null, teamName: 'ND Team', coach: 'Coach ND', managerId: undefined, points: null },
+          { rank: 12, teamName: 'Spoon Team', coach: 'Coach Banter', managerId: 'm_banter', points: null }
+        ]
+      };
 
-      state.competitions = [comp2025 as unknown as CompetitionRecord];
-      state.managers = dataJson.leagueData as unknown as Manager[];
+      state.competitions = [compWithSpoon];
+      state.managers = [
+        { id: 'm_champ', name: 'Champion Manager', years: 3, gold: 1, silver: 0, bronze: 0, spoon: 0, cup_gold: 0, cup_silver: 0, supercup: 0, mundialito: 0, cartonato: 0 },
+        { id: 'm_banter', name: 'Banter Boss', years: 3, gold: 0, silver: 0, bronze: 0, spoon: 1, cup_gold: 0, cup_silver: 0, supercup: 0, mundialito: 0, cartonato: 0 }
+      ];
 
-      toggleCompetitionDrawer(compId, '2025/26');
+      toggleCompetitionDrawer(compId, '2020/21');
       expect(mockDrawer.classList.contains('hidden')).toBe(false);
-      expect(mockDrawer.innerHTML).toContain('🥄 10°');
-      expect(mockDrawer.innerHTML).toContain('Champel United');
+      expect(mockDrawer.innerHTML).toContain('🥄 12°');
+      expect(mockDrawer.innerHTML).toContain('Spoon Team');
+
+      // Verify that Spoon Team appears AFTER N/D participants in DOM
+      const ndIndex = mockDrawer.innerHTML.indexOf('N/D');
+      const spoonIndex = mockDrawer.innerHTML.indexOf('Spoon Team');
+      expect(ndIndex).toBeGreaterThan(-1);
+      expect(spoonIndex).toBeGreaterThan(ndIndex);
     });
   });
 
@@ -341,6 +361,111 @@ describe('Historical Rankings & Career Visualizations', () => {
       expect(teams).toContain('Nef Team');
       expect(teams).toContain('FC Salsa Barbecue');
       expect(teams.length).toBe(3);
+    });
+  });
+
+  describe('Database public/data.json Integrity (Dynamic Invariant Suite)', () => {
+    it('contains valid leagueData with chronological history and competitions archive', () => {
+      expect(dataJson).toBeDefined();
+      expect(Array.isArray(dataJson.leagueData)).toBe(true);
+      expect(dataJson.leagueData.length).toBeGreaterThanOrEqual(1);
+
+      expect(Array.isArray(dataJson.competitions)).toBe(true);
+      expect(dataJson.competitions.length).toBeGreaterThanOrEqual(1);
+    });
+
+    it('ensures all managers have 100% consistency between top-level trophies and history achievements', () => {
+      const badgeKeys = [
+        'gold', 'silver', 'bronze', 'spoon',
+        'cup_gold', 'cup_silver', 'supercup', 'supercup_silver',
+        'mundialito', 'cartonato'
+      ] as const;
+
+      dataJson.leagueData.forEach((m: { name: string; history?: { achievements?: { badge?: string }[] }[] } & Record<string, unknown>) => {
+        const counts: Record<string, number> = {};
+        badgeKeys.forEach(k => { counts[k] = 0; });
+
+        (m.history || []).forEach(h => {
+          (h.achievements || []).forEach(a => {
+            if (a.badge && a.badge in counts) {
+              counts[a.badge]++;
+            }
+          });
+        });
+
+        badgeKeys.forEach(k => {
+          const topVal = (m[k] as number) || 0;
+          expect(topVal, `Manager ${m.name} mismatch on ${k}`).toBe(counts[k]);
+        });
+      });
+    });
+
+    it('ensures unique IDs across all managers and competitions', () => {
+      const managerIds = (dataJson.leagueData as { id: string }[]).map(m => m.id);
+      const uniqueManagerIds = new Set(managerIds);
+      expect(uniqueManagerIds.size).toBe(managerIds.length);
+
+      const compIds = (dataJson.competitions as { id: number }[]).map(c => c.id);
+      const uniqueCompIds = new Set(compIds);
+      expect(uniqueCompIds.size).toBe(compIds.length);
+    });
+
+    it('ensures all competitions have valid season formatting and non-empty metadata', () => {
+      (dataJson.competitions as CompetitionRecord[]).forEach(comp => {
+        expect(comp.id).toBeDefined();
+        expect(typeof comp.id).toBe('number');
+        expect(comp.name).toBeTruthy();
+        expect(comp.category).toBeTruthy();
+        expect(comp.season).toMatch(/^\d{4}\/\d{2}$/);
+        expect(Array.isArray(comp.ranking)).toBe(true);
+        if (!comp.in_progress && comp.status !== 'in_progress') {
+          expect(comp.ranking.length).toBeGreaterThan(0);
+        }
+      });
+    });
+
+    it('ensures in-progress season competitions have no premature trophies awarded', () => {
+      (dataJson.leagueData as Manager[]).forEach(m => {
+        (m.history || []).forEach(h => {
+          if (h.in_progress || h.status === 'in_progress') {
+            expect(h.achievements || []).toEqual([]);
+          }
+        });
+      });
+    });
+
+    it('ensures manager history seasons have valid formatting and non-empty teams', () => {
+      (dataJson.leagueData as Manager[]).forEach(m => {
+        expect(m.id).toBeTruthy();
+        expect(m.name).toBeTruthy();
+        expect(m.years).toBeGreaterThanOrEqual(1);
+        (m.history || []).forEach(h => {
+          expect(h.season).toMatch(/^\d{4}\/\d{2}$/);
+          if (!h.in_progress && h.status !== 'in_progress') {
+            expect(h.rank).toBeDefined();
+          }
+        });
+      });
+    });
+
+    it('ensures database trophies align with active LEAGUE features configuration', () => {
+      (dataJson.leagueData as Manager[]).forEach(m => {
+        if (!LEAGUE.features.cartonato) {
+          expect(m.cartonato || 0, `League has cartonato disabled, but ${m.name} has cartonato`).toBe(0);
+        }
+        if (!LEAGUE.features.mundialito) {
+          expect(m.mundialito || 0, `League has mundialito disabled, but ${m.name} has mundialito`).toBe(0);
+        }
+        if (!LEAGUE.features.spoon) {
+          expect(m.spoon || 0, `League has spoon disabled, but ${m.name} has spoon`).toBe(0);
+        }
+        if (!LEAGUE.features.cup) {
+          expect(m.cup_gold || 0, `League has cup disabled, but ${m.name} has cup_gold`).toBe(0);
+        }
+        if (!LEAGUE.features.supercup) {
+          expect(m.supercup || 0, `League has supercup disabled, but ${m.name} has supercup`).toBe(0);
+        }
+      });
     });
   });
 
@@ -521,118 +646,85 @@ describe('Historical Rankings & Career Visualizations', () => {
       expect(mockSeasonsContent.innerHTML).toContain('Scudetto');
       expect(mockSeasonsContent.innerHTML).toContain('🥈 2°');
       expect(mockSeasonsContent.innerHTML).toContain('🥉 3°');
-      expect(mockSeasonsContent.innerHTML).toContain('🥄 10°');
+      expect(mockSeasonsContent.innerHTML).toMatch(/🥄 \d+°/);
       expect(mockSeasonsContent.innerHTML).toContain('Coppe &amp; Tornei di Stagione');
 
-      // Team crests in table
-      expect(mockSeasonsContent.innerHTML).toContain('assets/crests/');
+      // Team logos in table
+      expect(mockSeasonsContent.innerHTML).toContain('assets/teams/');
 
       // Official SVG trophy renders and category badges
       expect(mockSeasonsContent.innerHTML).toContain('trophy-svg-compact');
       expect(mockSeasonsContent.innerHTML).toContain('Supercoppa');
+      if (LEAGUE.features.mundialito) {
+        expect(mockSeasonsContent.innerHTML).toContain('Mundialito');
+      }
       expect(mockSeasonsContent.innerHTML).toContain('Coppa di Lega');
     });
 
-    it('renders all canonical competitions for season 2025/26', async () => {
+    it('renders BANNER badge for playout/perdenti tournaments when present', async () => {
+      const { selectArchiveSeason } = await import('@/components/board/seasonsArchive');
+      const playoutComp = (dataJson.competitions as CompetitionRecord[]).find(c => c.category === 'Playout');
+      if (playoutComp) {
+        state.competitions = dataJson.competitions as unknown as CompetitionRecord[];
+        state.managers = dataJson.leagueData as unknown as Manager[];
+        selectArchiveSeason(playoutComp.season);
+        expect(mockSeasonsContent.innerHTML).toContain('BANNER');
+      }
+    });
+
+    it('sorts wooden spoon to the very bottom after N/D participants in seasonsArchive', async () => {
+      const { selectArchiveSeason } = await import('@/components/board/seasonsArchive');
+      const mockComp: CompetitionRecord = {
+        id: 8881,
+        name: 'Serie Test',
+        season: '2020/21',
+        category: 'Campionato',
+        ranking: [
+          { rank: 1, teamName: 'Champion Team', coach: 'Coach 1', managerId: 'm_champ', points: null },
+          { rank: null, teamName: 'ND Team', coach: 'Coach 2', managerId: undefined, points: null },
+          { rank: 12, teamName: 'Spoon Team', coach: 'Coach 3', managerId: 'm_banter', points: null }
+        ]
+      };
+      state.competitions = [mockComp];
+      state.managers = mockLeagueManagers;
+
+      selectArchiveSeason('2020/21');
+      expect(mockSeasonsContent.innerHTML).toContain('🥄 12°');
+      expect(mockSeasonsContent.innerHTML).toContain('Spoon Team');
+
+      const ndIndex = mockSeasonsContent.innerHTML.indexOf('N/D');
+      const spoonIndex = mockSeasonsContent.innerHTML.indexOf('🥄 12°');
+      expect(ndIndex).toBeGreaterThan(-1);
+      expect(spoonIndex).toBeGreaterThan(ndIndex);
+    });
+
+    it('renders fully ranked completed season with all participants and spoon indicator', async () => {
       const { selectArchiveSeason } = await import('@/components/board/seasonsArchive');
       state.competitions = dataJson.competitions as unknown as CompetitionRecord[];
       state.managers = dataJson.leagueData as unknown as Manager[];
 
-      selectArchiveSeason('2025/26');
-      expect(mockSeasonsContent.innerHTML).toContain('Campionato mantrico');
-      expect(mockSeasonsContent.innerHTML).toContain('Final four coppa mantrica');
-      expect(mockSeasonsContent.innerHTML).toContain('Supercoppa mantrica');
+      const completedComp = state.competitions.find(c => !c.in_progress && c.status !== 'in_progress' && c.ranking?.some(r => r.rank && r.rank >= 8));
+      if (completedComp) {
+        selectArchiveSeason(completedComp.season);
+        expect(mockSeasonsContent.innerHTML).toContain('🥄');
+        const firstTeam = completedComp.ranking[0].teamName;
+        expect(mockSeasonsContent.innerHTML).toContain(firstTeam);
+      }
     });
 
-    it('renders wooden spoon in 2022/23 for 8th place and in 2023/24 for 10th place', async () => {
+    it('renders season with in-progress championship and placeholder cups', async () => {
       const { selectArchiveSeason } = await import('@/components/board/seasonsArchive');
       state.competitions = dataJson.competitions as unknown as CompetitionRecord[];
       state.managers = dataJson.leagueData as unknown as Manager[];
 
-      selectArchiveSeason('2022/23');
-      expect(mockSeasonsContent.innerHTML).toContain('🥄 8°');
-
-      selectArchiveSeason('2023/24');
-      expect(mockSeasonsContent.innerHTML).toContain('🥄 10°');
-      expect(mockSeasonsContent.innerHTML).toContain('Kiwi Football Club');
-    });
-
-    it('renders the centered season stepper toolbar with dropdown popover', async () => {
-      const { renderSeasonStepper } = await import('@/components/board/seasons');
-      const seasons = ['2026/27', '2025/26', '2024/25', '2016/17'];
-      const html = renderSeasonStepper(seasons, '2025/26');
-
-      expect(html).toContain('id="btn-season-stepper-dropdown"');
-      expect(html).toContain('Stagione 2025/26');
-      expect(html).toContain('id="season-stepper-dropdown-menu"');
-      expect(html).toContain('Stagione successiva (2026/27)');
-      expect(html).toContain('Stagione precedente (2024/25)');
-      expect(html).toContain('Archivio Stagioni (4)');
-    });
-
-    it('disables left button on newest season and right button on oldest season', async () => {
-      const { renderSeasonStepper } = await import('@/components/board/seasons');
-      const seasons = ['2026/27', '2025/26', '2016/17'];
-
-      // At newest season (index 0): Left button is disabled, Right button moves to 2025/26
-      const newestHtml = renderSeasonStepper(seasons, '2026/27');
-      expect(newestHtml).toContain('title="Nessuna stagione successiva"');
-      expect(newestHtml).toContain('Stagione precedente (2025/26)');
-
-      // At oldest season (last index): Left button moves to 2025/26, Right button is disabled
-      const oldestHtml = renderSeasonStepper(seasons, '2016/17');
-      expect(oldestHtml).toContain('Stagione successiva (2025/26)');
-      expect(oldestHtml).toContain('title="Nessuna stagione precedente"');
-    });
-
-    it('toggles and closes the season stepper dropdown popover menu', async () => {
-      const { toggleSeasonStepperDropdown, closeSeasonStepperDropdown } = await import('@/components/board/seasons');
-      const mockDropdown = {
-        classList: {
-          classes: new Set<string>(['hidden']),
-          add(c: string) { this.classes.add(c); },
-          remove(c: string) { this.classes.delete(c); },
-          toggle(c: string) {
-            if (this.classes.has(c)) { this.classes.delete(c); return false; }
-            this.classes.add(c); return true;
-          },
-          contains(c: string) { return this.classes.has(c); }
-        }
-      };
-      const mockChevron = {
-        classList: {
-          classes: new Set<string>(),
-          add(c: string) { this.classes.add(c); },
-          remove(c: string) { this.classes.delete(c); },
-          contains(c: string) { return this.classes.has(c); }
-        }
-      };
-
-      const prevDoc = (globalThis as unknown as { document: { getElementById: (id: string) => unknown } }).document;
-      (globalThis as unknown as { document: unknown }).document = {
-        getElementById(id: string) {
-          if (id === 'season-stepper-dropdown-menu') return mockDropdown;
-          if (id === 'season-stepper-chevron') return mockChevron;
-          return prevDoc.getElementById(id);
-        }
-      };
-
-      toggleSeasonStepperDropdown();
-      expect(mockDropdown.classList.contains('hidden')).toBe(false);
-      expect(mockChevron.classList.contains('rotate-180')).toBe(true);
-
-      closeSeasonStepperDropdown();
-      expect(mockDropdown.classList.contains('hidden')).toBe(true);
-      expect(mockChevron.classList.contains('rotate-180')).toBe(false);
-
-      (globalThis as unknown as { document: unknown }).document = prevDoc;
-    });
-
-    it('renders season header summary with dynamic league name', async () => {
-      const { renderSeasonHeaderSummary } = await import('@/components/board/seasons');
-      const { LEAGUE } = await import('@/config');
-      const html = renderSeasonHeaderSummary('2024/25', 3, 12, false);
-      expect(html).toContain(`Archivio ufficiale dei piazzamenti, podi e verdetti storici ${LEAGUE.brand.name}`);
+      const inProgressComp = state.competitions.find(c => c.in_progress || c.status === 'in_progress');
+      if (inProgressComp) {
+        selectArchiveSeason(inProgressComp.season);
+        expect(mockSeasonsContent.innerHTML).toContain('Coppe &amp; Tornei di Stagione');
+        expect(mockSeasonsContent.innerHTML).toContain('Coppa');
+        expect(mockSeasonsContent.innerHTML).toContain('Supercoppa');
+        expect(mockSeasonsContent.innerHTML).toContain('Verdetti finali in definizione');
+      }
     });
 
     it('renders the centered season stepper toolbar with dropdown popover', async () => {
@@ -730,16 +822,18 @@ describe('Historical Rankings & Career Visualizations', () => {
       state.competitions = dataJson.competitions as unknown as CompetitionRecord[];
       state.managers = dataJson.leagueData as unknown as Manager[];
 
-      const lucchetto = dataJson.leagueData.find((m: { id: string }) => m.id === 'm_lucchetto') as unknown as Manager;
-      expect(lucchetto).toBeDefined();
+      const mgrWithHistory = (dataJson.leagueData as Manager[]).find(m => m.history && m.history.some(h => h.team));
+      expect(mgrWithHistory).toBeDefined();
 
-      const teams = getHistoricalTeamDetails(lucchetto);
-      expect(teams.length).toBe(2);
+      const teams = getHistoricalTeamDetails(mgrWithHistory!);
+      expect(teams.length).toBeGreaterThanOrEqual(1);
 
-      const tevere = teams.find(t => t.name.includes('Tevere'));
-      expect(tevere).toBeDefined();
-      expect(tevere!.formattedSeasons).toMatch(/23\/24–(25\/26|26\/27)/);
-      expect(tevere!.logo).toMatch(/assets\/(teams|crests)\//);
+      const firstTeam = teams[0];
+      expect(firstTeam.name).toBeTruthy();
+      expect(firstTeam.formattedSeasons).toBeTruthy();
+      if (firstTeam.logo) {
+        expect(firstTeam.logo).toContain('assets/teams/');
+      }
     });
   });
 

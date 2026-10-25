@@ -42,7 +42,7 @@ def build_data(output_file: Optional[str] = None) -> int:
         with open(titles_file, 'r', encoding='utf-8') as f:
             custom_titles = json.load(f)
 
-    season_files = glob.glob(os.path.join(seasons_dir, '*.json'))
+    season_files = [f for f in glob.glob(os.path.join(seasons_dir, '*.json')) if not f.endswith('_rounds.json')]
     if not season_files:
         error(f"No season files found in {seasons_dir}!")
         return 1
