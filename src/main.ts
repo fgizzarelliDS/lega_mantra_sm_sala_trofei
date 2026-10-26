@@ -53,15 +53,6 @@ import {
   shareHallOfFamePosterWhatsApp
 } from '@/components/board/records';
 import {
-  exportHallOfFamePosterHD,
-  copyHallOfFamePosterToClipboard,
-  sharePosterWhatsApp,
-  exportAlboHD,
-  copyAlboToClipboard,
-  shareAlboWhatsApp,
-  shareRecordWhatsApp
-} from '@/export';
-import {
   findManagerByParam,
   getManagerParamFromURL,
   getH2HParamFromURL,
@@ -155,18 +146,11 @@ export {
   closeAllRecordShareDropdowns,
   exportRecordCard,
   copyRecordCard,
-  shareRecordWhatsApp,
   togglePosterShareDropdown,
   closePosterShareDropdown,
   exportHallOfFamePoster,
   copyHallOfFamePoster,
-  exportHallOfFamePosterHD,
-  copyHallOfFamePosterToClipboard,
-  sharePosterWhatsApp,
-  shareHallOfFamePosterWhatsApp,
-  exportAlboHD,
-  copyAlboToClipboard,
-  shareAlboWhatsApp
+  shareHallOfFamePosterWhatsApp
 };
 export { updateStatistics, renderTopStatsCards };
 export { promptPWAInstall };

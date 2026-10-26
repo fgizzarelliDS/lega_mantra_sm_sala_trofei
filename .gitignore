@@ -29,6 +29,8 @@ public/assets/trophies/*
 data/*.jpeg
 data/live/
 data/matches/
+data/seasons/*_rounds.json
+*.csv
 
 # Editor directories and files
 .vscode/
