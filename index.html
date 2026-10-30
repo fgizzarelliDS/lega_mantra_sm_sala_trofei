@@ -138,6 +138,14 @@
           <span class="inline">H2H</span>
         </button>
 
+        <!-- Elo Rating & Power Studio Button -->
+        <button type="button" onclick="openEloModal()"
+          class="px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-bold border border-violet-500/40 bg-violet-500/10 text-violet-300 hover:bg-violet-500/20 transition flex items-center gap-1.5 shadow-sm"
+          title="Rating Elo, Power Rankings e Studio Golo/Sfiga">
+          <i class="fa-solid fa-bolt"></i>
+          <span class="inline">Elo</span>
+        </button>
+
         <!-- PWA Native Install Button (hidden until prompt available) -->
         <button id="btn-pwa-install" onclick="promptPWAInstall()"
           class="hidden px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-bold border border-emerald-500/40 bg-emerald-500/15 text-emerald-300 hover:bg-emerald-500/25 transition items-center gap-1.5 shadow-sm"
@@ -341,7 +349,7 @@
         </div>
 
         <!-- Quick Summary Cards (Interactive Roll of Honor Triggers) -->
-        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4 mb-6 max-w-5xl mx-auto">
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 mb-6 max-w-4xl mx-auto">
           <!-- Card 0: Stagioni Totali -->
           <div onclick="window.openTrophyModal && window.openTrophyModal('seasons')"
             title="Clicca per visualizzare la cronologia e i verdetti di tutte le stagioni"
@@ -396,7 +404,7 @@
           </div>
 
           <!-- Card 3: Mundialito -->
-          <div onclick="window.openTrophyModal && window.openTrophyModal('mundialito')"
+          <div data-feature="mundialito" onclick="window.openTrophyModal && window.openTrophyModal('mundialito')"
             title="Clicca per visualizzare l'Albo d'Oro e i finalisti del Mundialito"
             class="h-[76px] sm:h-[82px] px-3 py-2.5 rounded-2xl albo-table-wrap flex items-center gap-2.5 sm:gap-3 cursor-pointer transition-all duration-200 hover:scale-[1.02] active:scale-95 hover:border-amber-500/50 shadow-sm group">
             <div
@@ -430,7 +438,7 @@
           </div>
 
           <!-- Card 5: Banner Cartonato -->
-          <div onclick="window.openTrophyModal && window.openTrophyModal('cartonato')"
+          <div data-feature="cartonato" onclick="window.openTrophyModal && window.openTrophyModal('cartonato')"
             title="Clicca per visualizzare l'Albo dei Cartonati e Playout"
             class="h-[76px] sm:h-[82px] px-3 py-2.5 rounded-2xl albo-table-wrap flex items-center gap-2.5 sm:gap-3 cursor-pointer transition-all duration-200 hover:scale-[1.02] active:scale-95 hover:border-amber-500/50 shadow-sm group">
             <div
@@ -528,6 +536,7 @@
   <div id="manager-modal-root"></div>
   <div id="concentration-modal-root"></div>
   <div id="head-to-head-modal-root"></div>
+  <div id="elo-modal-root"></div>
   <div id="season-modal-root"></div>
 
 

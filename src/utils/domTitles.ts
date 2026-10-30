@@ -56,7 +56,6 @@ export function applyTitlesToDOM(titles: TitlesConfig = state.titles): void {
       }
     });
   }
-
   // Apply league feature visibility toggles (e.g. Mundialito, Cartonato)
   applyFeatureFlagsToDOM();
 }
