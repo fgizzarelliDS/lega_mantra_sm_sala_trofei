@@ -15,7 +15,9 @@ import {
   loadAnalyticsEloData,
   getCachedAnalyticsManagers,
   setCachedAnalyticsManagers,
-  getActiveEloConfig
+  getActiveEloConfig,
+  formatElo,
+  formatEloDelta
 } from '@/analytics/analyticsCore';
 import { getLiveSeasonDetails, loadLiveSeasonDetails } from '@/components/board/seasons/liveAnalytics';
 
@@ -211,8 +213,8 @@ export function refreshEloTab(): void {
   // Also refresh legacy concentration container if present
   if (typeof window !== 'undefined') {
     const container = document.getElementById('concentration-modal-content');
-    if (container && (window as any).switchAnalyticsTab) {
-      (window as any).switchAnalyticsTab('elo');
+    if (container && window.switchAnalyticsTab) {
+      window.switchAnalyticsTab('elo');
     }
   }
 }
@@ -319,7 +321,6 @@ export function showEloChartHover(
 ): void {
   const banner = document.getElementById('elo-chart-hover-box');
   if (!banner) return;
-  const deltaSign = delta > 0 ? '+' : '';
   const deltaColor = delta > 0 ? 'text-emerald-400' : delta < 0 ? 'text-rose-400' : 'text-slate-400';
   const resBadge = result === 'W' ? 'text-emerald-400 font-bold' : result === 'L' ? 'text-rose-400 font-bold' : 'text-amber-400 font-bold';
 
@@ -333,8 +334,8 @@ export function showEloChartHover(
         <span class="${resBadge} shrink-0">(${result})</span>
       </div>
       <div class="flex items-center gap-2 font-mono shrink-0">
-        <span class="font-black text-amber-400 text-xs sm:text-sm">${elo.toFixed(1)} pt</span>
-        <span class="${deltaColor} font-bold text-[11px]">(${deltaSign}${delta.toFixed(1)})</span>
+        <span class="font-black text-amber-400 text-xs sm:text-sm">${formatElo(elo)} pt</span>
+        <span class="${deltaColor} font-bold text-[11px]">(${formatEloDelta(delta)})</span>
         ${winProb > 0 ? `<span class="opacity-75 text-[10px] font-sans" style="color: var(--text-muted);">(Prob. ${winProb.toFixed(0)}%)</span>` : ''}
       </div>
     </div>
@@ -765,19 +766,19 @@ export function renderEloTab(): string {
 
 // Global window registration
 if (typeof window !== 'undefined') {
-  (window as any).openEloModal = openEloModal;
-  (window as any).closeEloModal = closeEloModal;
-  (window as any).switchEloModalTab = switchEloModalTab;
-  (window as any).switchEloScatterSeason = switchEloScatterSeason;
-  (window as any).switchEloLuckSubMode = switchEloLuckSubMode;
-  (window as any).switchEloMode = switchEloMode;
-  (window as any).switchEloChartSeason = switchEloChartSeason;
-  (window as any).toggleEloManagerVisibility = toggleEloManagerVisibility;
-  (window as any).showAllEloManagers = showAllEloManagers;
-  (window as any).hideAllEloManagers = hideAllEloManagers;
-  (window as any).selectEloChartPoint = selectEloChartPoint;
-  (window as any).showEloChartHover = showEloChartHover;
-  (window as any).clearEloChartHover = clearEloChartHover;
-  (window as any).sortEloLeaderboard = sortEloLeaderboard;
-  (window as any).retryEloFetch = retryEloFetch;
+  window.openEloModal = openEloModal;
+  window.closeEloModal = closeEloModal;
+  window.switchEloModalTab = switchEloModalTab;
+  window.switchEloScatterSeason = switchEloScatterSeason;
+  window.switchEloLuckSubMode = switchEloLuckSubMode;
+  window.switchEloMode = switchEloMode;
+  window.switchEloChartSeason = switchEloChartSeason;
+  window.toggleEloManagerVisibility = toggleEloManagerVisibility;
+  window.showAllEloManagers = showAllEloManagers;
+  window.hideAllEloManagers = hideAllEloManagers;
+  window.selectEloChartPoint = selectEloChartPoint;
+  window.showEloChartHover = showEloChartHover;
+  window.clearEloChartHover = clearEloChartHover;
+  window.sortEloLeaderboard = sortEloLeaderboard;
+  window.retryEloFetch = retryEloFetch;
 }

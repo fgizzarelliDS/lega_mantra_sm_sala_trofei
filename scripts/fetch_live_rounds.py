@@ -335,12 +335,16 @@ def fetch_single_competition(competition_id: int, base_dir: str, headers: Dict[s
             is_match_played = bool(is_calculated or h_fp > 0 or a_fp > 0 or (result_str and result_str != "-"))
             if is_match_played:
                 round_has_played_match = True
+            h_logo = h_info.get("logo") or m.get("homeLogo")
+            a_logo = a_info.get("logo") or m.get("awayLogo")
 
             match_entry = {
                 "homeTeam": h_team,
                 "awayTeam": a_team,
                 "homeManagerId": h_mgr,
                 "awayManagerId": a_mgr,
+                "homeLogo": h_logo,
+                "awayLogo": a_logo,
                 "homeScore": h_score,
                 "awayScore": a_score,
                 "homeFantaPoints": round(h_fp, 1),
