@@ -60,7 +60,8 @@ export function shareAlboWhatsApp(): void {
 /**
  * Triggers high-resolution Albo d'Oro export PNG download
  */
+import { exportGraphicHD } from '@/export/canvas';
+
 export async function exportAlboHD(): Promise<void> {
-  const { exportGraphicHD } = await import('@/export/canvas');
   await exportGraphicHD();
 }

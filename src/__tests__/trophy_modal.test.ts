@@ -214,6 +214,8 @@ describe('Interactive Trophy Modals & Roll of Honor Suite', () => {
       expect(html).toContain('Supercoppa');
       if (LEAGUE.features.mundialito) {
         expect(html).toContain('Mundialito');
+      } else {
+        expect(html).not.toContain('Mundialito');
       }
       // The Seasons Overview is the ONLY modal that keeps In Corso
       expect(html).toContain('In Corso');
@@ -224,6 +226,23 @@ describe('Interactive Trophy Modals & Roll of Honor Suite', () => {
         expect(season2627Block).toContain('In Corso');
         expect(season2627Block).toContain('>-<');
       }
+    });
+
+    it('renders Mundialito card in Seasons Overview when a Mundialito competition is present', () => {
+      const mockComps: CompetitionRecord[] = [
+        {
+          id: 999999,
+          name: 'Mundialito di Prova',
+          category: 'Mundialito',
+          season: '2025/26',
+          status: 'completed',
+          in_progress: false,
+          ranking: [{ rank: 1, managerId: 'm_peterdani', coach: 'PeterDani', teamName: 'Grassotthers', points: 10 }]
+        }
+      ];
+      const html = renderSeasonsOverviewRollHTML(mockComps, state.managers);
+      expect(html).toContain('Mundialito');
+      expect(html).toContain('PeterDani');
     });
   });
 
