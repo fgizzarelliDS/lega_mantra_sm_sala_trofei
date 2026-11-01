@@ -14,7 +14,7 @@ export function renderMonteCarloTabHTML(
   totalLeagueRounds: number,
   lastCompletedRound: number,
   _teamSoS?: TeamSoSMetrics,
-  mcMinRounds: number = 4
+  mcMinRounds: number = 5
 ): string {
   const mc = luck?.monteCarlo;
   if (!mc || typeof mc.medianPoints !== 'number' || mc.pPodiumPct === null) {

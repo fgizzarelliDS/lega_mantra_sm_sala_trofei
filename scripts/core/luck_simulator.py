@@ -353,7 +353,7 @@ def run_monte_carlo_schedule_simulation(
 
     # Project future rounds if R >= mc_min_rounds and total_rounds > R
     active_odds_cfg = odds_config or {}
-    mc_min_rounds = int(active_odds_cfg.get('mc_min_rounds', 4))
+    mc_min_rounds = int(active_odds_cfg.get('mc_min_rounds', 5))
     enable_projections = (r_completed >= mc_min_rounds and total_rounds > r_completed)
     title_counts = [0] * n_teams
     podium_counts = [0] * n_teams
