@@ -4,6 +4,11 @@ import {
   RADAR_CANONICAL_AXES,
   type RadarAxisMetadata
 } from '@/analytics/radarAxes';
+import {
+  calculateRadarSvgPoints,
+  type TacticalProfile
+} from '@/analytics/tacticalProfiler';
+import { escapeHtml } from '@/utils/dom';
 
 export { computeH2HAxes, RADAR_CANONICAL_AXES };
 export type { H2HAxisData, RadarAxisMetadata };
@@ -292,6 +297,117 @@ export function renderH2HDuelBars(
       <div class="rounded-xl overflow-hidden mt-1">
         ${rows}
       </div>
+    </div>
+  `;
+}
+
+/**
+ * Renders a High-Definition Dual-Polygon 5-Axis Tactical Radar SVG 
+ * Compares Manager A vs Manager B on POT, CIN, LUK, REG, KOC against League Average (50%)
+ */
+export function renderDualRadar5AxesSVG(
+  profileA: TacticalProfile,
+  profileB: TacticalProfile,
+  nameA: string,
+  nameB: string,
+  viewWidth = 440,
+  viewHeight = 305
+): string {
+  const cx = viewWidth / 2;
+  const cy = 156;
+  const r = 110;
+
+  // Compute 5 polygon points for both managers
+  const ptsA = calculateRadarSvgPoints(
+    {
+      pot: profileA.axes.pot.score,
+      cin: profileA.axes.cin.score,
+      luk: profileA.axes.luk.score,
+      reg: profileA.axes.reg.score,
+      koc: profileA.axes.koc.score
+    },
+    cx,
+    cy,
+    r
+  );
+
+  const ptsB = calculateRadarSvgPoints(
+    {
+      pot: profileB.axes.pot.score,
+      cin: profileB.axes.cin.score,
+      luk: profileB.axes.luk.score,
+      reg: profileB.axes.reg.score,
+      koc: profileB.axes.koc.score
+    },
+    cx,
+    cy,
+    r
+  );
+
+  // League average baseline at 50% and concentric rings (100%, 75%, 25%) computed dynamically from (cx, cy, r)
+  const avgPts = calculateRadarSvgPoints({ pot: 50, cin: 50, luk: 50, reg: 50, koc: 50 }, cx, cy, r);
+  const ring100 = calculateRadarSvgPoints({ pot: 100, cin: 100, luk: 100, reg: 100, koc: 100 }, cx, cy, r);
+  const ring75 = calculateRadarSvgPoints({ pot: 75, cin: 75, luk: 75, reg: 75, koc: 75 }, cx, cy, r);
+  const ring25 = calculateRadarSvgPoints({ pot: 25, cin: 25, luk: 25, reg: 25, koc: 25 }, cx, cy, r);
+
+  const axes = [
+    { key: 'pot', label: 'POTENZA', x: cx, y: 18, scoreY: 33, anchor: 'middle', rawA: profileA.axes.pot.raw, rawB: profileB.axes.pot.raw },
+    { key: 'cin', label: 'CINISMO', x: cx + 118, y: 118, scoreY: 133, anchor: 'start', rawA: profileA.axes.cin.raw, rawB: profileB.axes.cin.raw },
+    { key: 'luk', label: 'FORTUNA', x: cx + 72, y: 269, scoreY: 284, anchor: 'middle', rawA: profileA.axes.luk.raw, rawB: profileB.axes.luk.raw },
+    { key: 'reg', label: 'STABILITÀ', x: cx - 72, y: 269, scoreY: 284, anchor: 'middle', rawA: profileA.axes.reg.raw, rawB: profileB.axes.reg.raw },
+    { key: 'koc', label: 'COPPE', x: cx - 118, y: 118, scoreY: 133, anchor: 'end', rawA: profileA.axes.koc.raw, rawB: profileB.axes.koc.raw }
+  ];
+
+  return `
+    <div class="w-full flex flex-col items-center">
+      <!-- Radar Legend -->
+      <div class="flex items-center justify-between w-full mb-1 px-2 text-xs font-bold">
+        <span class="flex items-center gap-1.5" style="color: var(--h2h-contender-a, #f59e0b);">
+          <span class="w-3 h-1.5 rounded-sm inline-block" style="background-color: var(--h2h-contender-a, #f59e0b);"></span>
+          <span>${escapeHtml(nameA)}</span>
+        </span>
+        <span class="text-[11px] opacity-60" style="color: var(--text-muted);">
+          <span class="w-3 h-1 border-b border-dashed inline-block mr-1 opacity-60" style="border-color: var(--text-muted);"></span>
+          Media Lega (50)
+        </span>
+        <span class="flex items-center gap-1.5" style="color: var(--h2h-contender-b, #06b6d4);">
+          <span>${escapeHtml(nameB)}</span>
+          <span class="w-3 h-1.5 rounded-sm inline-block" style="background-color: var(--h2h-contender-b, #06b6d4);"></span>
+        </span>
+      </div>
+
+      <svg viewBox="0 0 ${viewWidth} ${viewHeight}" class="w-full max-w-[420px] h-auto my-1 select-none">
+        <!-- Concentric Pentagons (100%, 75%, 25%) -->
+        <polygon points="${ring100}" fill="none" stroke="currentColor" stroke-opacity="0.20" stroke-width="1.4"></polygon>
+        <polygon points="${ring75}" fill="none" stroke="currentColor" stroke-opacity="0.14" stroke-width="1.1"></polygon>
+        <polygon points="${ring25}" fill="none" stroke="currentColor" stroke-opacity="0.12" stroke-width="1"></polygon>
+
+        <!-- Spokes from center (220, 156) -->
+        <line x1="220" y1="156" x2="220" y2="46" stroke="currentColor" stroke-opacity="0.18" stroke-width="1.2"></line>
+        <line x1="220" y1="156" x2="325" y2="122" stroke="currentColor" stroke-opacity="0.18" stroke-width="1.2"></line>
+        <line x1="220" y1="156" x2="285" y2="245" stroke="currentColor" stroke-opacity="0.18" stroke-width="1.2"></line>
+        <line x1="220" y1="156" x2="155" y2="245" stroke="currentColor" stroke-opacity="0.18" stroke-width="1.2"></line>
+        <line x1="220" y1="156" x2="115" y2="122" stroke="currentColor" stroke-opacity="0.18" stroke-width="1.2"></line>
+
+        <!-- League Average Baseline (Dashed 50%) -->
+        <polygon points="${avgPts}" fill="currentColor" fill-opacity="0.05" stroke="currentColor" stroke-opacity="0.38" stroke-width="1.8" stroke-dasharray="5 3"></polygon>
+
+        <!-- Manager A Polygon -->
+        <polygon points="${ptsA}" fill="var(--h2h-contender-a, #f59e0b)" fill-opacity="0.22" stroke="var(--h2h-contender-a, #f59e0b)" stroke-width="2.6" style="filter: drop-shadow(0 0 6px rgba(245, 158, 11, 0.45));"></polygon>
+
+        <!-- Manager B Polygon -->
+        <polygon points="${ptsB}" fill="var(--h2h-contender-b, #06b6d4)" fill-opacity="0.22" stroke="var(--h2h-contender-b, #06b6d4)" stroke-width="2.6" style="filter: drop-shadow(0 0 6px rgba(6, 182, 212, 0.45));"></polygon>
+
+        <!-- 5 Axis Labels with Comparative Scores -->
+        ${axes.map(ax => `
+          <text x="${ax.x}" y="${ax.y}" text-anchor="${ax.anchor}" fill="currentColor" opacity="0.9" font-size="11" font-weight="900" letter-spacing="0.5">${ax.label}</text>
+          <text x="${ax.x}" y="${ax.scoreY}" text-anchor="${ax.anchor}" font-size="10" font-weight="800">
+            <tspan fill="var(--h2h-contender-a, #f59e0b)">${ax.rawA}</tspan>
+            <tspan fill="currentColor" opacity="0.45"> vs </tspan>
+            <tspan fill="var(--h2h-contender-b, #06b6d4)">${ax.rawB}</tspan>
+          </text>
+        `).join('')}
+      </svg>
     </div>
   `;
 }
