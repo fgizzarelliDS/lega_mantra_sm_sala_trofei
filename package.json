@@ -1,7 +1,7 @@
 {
   "name": "se55o-mantrico-sala-trofei",
   "private": true,
-  "version": "1.4.3",
+  "version": "1.4.4",
   "engineVersion": "1.9.2",
   "type": "module",
   "scripts": {
